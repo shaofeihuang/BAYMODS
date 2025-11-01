@@ -38,6 +38,14 @@ if __name__ == "__main__":
 
         if st.button("Compute Risk Score"):
             load_model_attributes()
+            print (st.session_state.keys())
+            saved_session_state = {
+                key: st.session_state[key]
+                for key in st.session_state.keys()
+            }
+            print (saved_session_state.keys())
+            with open("session.json", "wb") as f:
+                pickle.dump(saved_session_state, f)
 
             compute_risk_score()
 
@@ -47,15 +55,11 @@ if __name__ == "__main__":
         st.title("Multi-Objective Optimisation")
         n_trials = st.number_input("Number of Trials per Run", min_value=10, max_value=1000, value=100, step=10)
         n_runs = st.number_input("Number of Concurrent Runs", min_value=1, max_value=20, value=5, step=1)
-        graph = st.checkbox("Show Optimisation Graph", value=True)
+        if 'aml_data' in st.session_state:
+            st.write("Number of vulnerabilitiies in BN: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
+        graph = st.checkbox("Show Optimisation Graph", value=False)
         verbose = st.checkbox("Verbose Output", value=True)
         tmp_output = "output.csv"
-
-        if ('aml_data' in st.session_state):
-            n_vulns = len(st.session_state['aml_data'].VulnerabilityinSystem)
-            
-        if 'futures' not in st.session_state:
-            st.session_state['futures'] = None
 
         if st.button("Start Optimisation"):
             if os.path.exists(tmp_output):
@@ -65,14 +69,13 @@ if __name__ == "__main__":
 
             with ProcessPoolExecutor() as executor:
                 futures = [
-                    executor.submit(run_study, n_trials, n_vulns, graph, verbose, tmp_output)
+                    executor.submit(run_study, n_trials, graph, verbose, tmp_output)
                     for run in range(n_runs)
                 ]
                 for future in futures:
                     future.result()  # Wait for all processes to complete
 
-            if st.session_state['futures'] is not None:
-                all_done = all(f.done() for f in st.session_state['futures'])
+            all_done = True
 
             if all_done:
                 end_time = datetime.now()
@@ -81,3 +84,20 @@ if __name__ == "__main__":
                 minutes, seconds = divmod(remainder, 60)
                 st.success("Optimisation completed!")
                 st.write(f"Total execution time: {hours} hours {minutes} minutes {seconds} seconds")
+                
+                df = pd.read_csv(tmp_output, header=None)
+
+                v_headers = [f"V{str(i + 1).zfill(2)}" for i in range(len(df.columns) - 3)]
+                new_header_row = v_headers + ["Likelihood", "Impact", "Availability"]
+                df.columns = new_header_row
+                df.insert(0, "Run ID", range(1, len(df) + 1))
+
+                st.subheader("Optimisation Results")
+                st.write("The table below shows the results of the multi-objective optimisation." \
+                "Each row represents a Pareto-optimal configuration of mitigation priorities and the corresponding likelihood, impact, and availability probabilities.")
+                st.dataframe(df)
+
+                v_columns = df.columns[1:-3]
+                v_data = df[v_columns].apply(pd.to_numeric, errors='coerce')
+                v_means = v_data.mean()
+                st.bar_chart(v_means)

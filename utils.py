@@ -1,10 +1,11 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 import xml.etree.ElementTree as ET
 import networkx as nx
 import matplotlib.pyplot as plt
 import itertools
-import re, os, csv, json
+import re, os, csv, json, pickle
 import math
 import optuna
 from datetime import date, datetime
@@ -534,14 +535,14 @@ def create_bbn_impact(bbn_exposure):
     bbn_impact.add_edges_from([(connection['from'], connection['to']) for connection in aml_data.connections])
 
     for node in bbn_impact.nodes():
-        cpd_values = None
-
         node_context = NodeContext(
         num_parents = len(bbn_exposure.get_parents(node)),
         matching_hazard_nodes = [element for element in aml_data.HazardinSystem if element['ID'] == node],
         matching_vulnerability_nodes = [element for element in aml_data.VulnerabilityinSystem if element['ID'] == node],
         matching_asset_nodes = [element for element in aml_data.AssetinSystem if element['ID'] == node]
         )
+
+        cpd_values = None
 
         if node_context.matching_hazard_nodes:
             cpd_values = generate_cpd_values_impact(node, node_context, "Hazard")
@@ -623,12 +624,11 @@ def display_metrics():
     st.sidebar.metric("Probability of Severe Impact", value=f"{st.session_state.get('cpd_impact', 0):.4f}")
     st.sidebar.metric("Risk Score", value=f"{st.session_state.get('risk_score', 0):.2f}%")
 
-def bbn_inference(node_context: NodeContext, source_node):
+def bbn_inference(source_node):
     cpds = {}
     cpd_values_list = []
     last_node = None
     aml_data = st.session_state['aml_data']
-    num_parents = node_context.num_parents
 
     bbn_exposure = DiscreteBayesianNetwork()
     bbn_impact = DiscreteBayesianNetwork()
@@ -638,22 +638,27 @@ def bbn_inference(node_context: NodeContext, source_node):
     bbn_impact.add_edges_from([(connection['from'], connection['to']) for connection in aml_data.connections])
 
     for node in bbn_exposure.nodes():
-        num_parents = len(bbn_exposure.get_parents(node))
-        matching_hazard_nodes = [element for element in aml_data.HazardinSystem if element['ID'] == node]
-        matching_vulnerability_nodes = [element for element in aml_data.VulnerabilityinSystem if element['ID'] == node]
+        node_context = NodeContext(
+        num_parents = len(bbn_exposure.get_parents(node)),
+        matching_hazard_nodes = [element for element in aml_data.HazardinSystem if element['ID'] == node],
+        matching_vulnerability_nodes = [element for element in aml_data.VulnerabilityinSystem if element['ID'] == node],
         matching_asset_nodes = [element for element in aml_data.AssetinSystem if element['ID'] == node]
+        )
 
         cpd_values = None
 
-        if matching_hazard_nodes:
-            cpd_values = generate_cpd_values_exposure(node_context, "Hazard")
-        elif matching_vulnerability_nodes:
-            cpd_values = generate_cpd_values_exposure(node_context, "Vulnerability")
-        elif matching_asset_nodes:
-            cpd_values = generate_cpd_values_exposure(node_context, "Asset")
+        if node_context.matching_hazard_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Hazard")
+        elif node_context.matching_vulnerability_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Vulnerability")
+        elif node_context.matching_asset_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Asset")
+
+        if cpd_values is None or np.any(np.isnan(cpd_values)):
+            raise ValueError(f"Missing or invalid CPD values for node {node}")
 
         cpd = TabularCPD(variable=node, variable_card=2, values=cpd_values,
-                        evidence=bbn_exposure.get_parents(node), evidence_card=[2] * num_parents)
+                        evidence=bbn_exposure.get_parents(node), evidence_card=[2] * node_context.num_parents)
 
         cpds[node] = cpd
         cpd_values_list.append((node, cpd_values.tolist(), cpd.variables, cpd.cardinality))
@@ -665,22 +670,27 @@ def bbn_inference(node_context: NodeContext, source_node):
     last_node = last_nodes[0] if last_nodes else None
 
     for node in bbn_impact.nodes():
-        num_parents = len(bbn_exposure.get_parents(node))
+        node_context = NodeContext(
+        num_parents = len(bbn_exposure.get_parents(node)),
+        matching_hazard_nodes = [element for element in aml_data.HazardinSystem if element['ID'] == node],
+        matching_vulnerability_nodes = [element for element in aml_data.VulnerabilityinSystem if element['ID'] == node],
+        matching_asset_nodes = [element for element in aml_data.AssetinSystem if element['ID'] == node]
+        )
+        
         cpd_values = None
 
-        matching_hazard_nodes = [element for element in aml_data.HazardinSystem if element['ID'] == node]
-        matching_vulnerability_nodes = [element for element in aml_data.VulnerabilityinSystem if element['ID'] == node]
-        matching_asset_nodes = [element for element in aml_data.AssetinSystem if element['ID'] == node]
+        if node_context.matching_hazard_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Hazard")
+        elif node_context.matching_vulnerability_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Vulnerability")
+        elif node_context.matching_asset_nodes:
+            cpd_values = generate_cpd_values_impact(node, node_context, "Asset")
 
-        if matching_hazard_nodes:
-            cpd_values = generate_cpd_values_impact(node, num_parents, aml_data, node_context, "Hazard")
-        elif matching_vulnerability_nodes:
-            cpd_values = generate_cpd_values_impact(node, num_parents, aml_data, node_context, "Vulnerability")
-        elif matching_asset_nodes:
-            cpd_values = generate_cpd_values_impact(node, num_parents, aml_data, node_context, "Asset")
+        if cpd_values is None or np.any(np.isnan(cpd_values)):
+            raise ValueError(f"Missing or invalid CPD values for node {node}")
 
         cpd = TabularCPD(variable=node, variable_card=2, values=cpd_values,
-                        evidence=bbn_exposure.get_parents(node), evidence_card=[2] * num_parents)
+                        evidence=bbn_exposure.get_parents(node), evidence_card=[2] * node_context.num_parents)
 
         cpds[node] = cpd
         cpd_values_list.append((node, cpd_values.tolist(), cpd.variables, cpd.cardinality))
@@ -702,23 +712,34 @@ def bbn_inference(node_context: NodeContext, source_node):
         else:
             pass
 
-def objective(trial, n_vulns):
+def objective(trial):
     mitigation_prob_dict = {}
+
+    with open("session.json", "rb") as f:
+        try:
+            data = pickle.load(f)
+            st.session_state.update(data)
+        except json.JSONDecodeError:
+            st.session_state = {}
+
+    n_vulns = len(st.session_state['aml_data'].VulnerabilityinSystem)
 
     for i in range(1, n_vulns + 1):
         prob_mitigation_value = trial.suggest_float(f'Mitigation_V{i}', 0, 1)
         mitigation_prob_dict[f'{i}'] = prob_mitigation_value
 
     for element in st.session_state['aml_data'].VulnerabilityinSystem:
-        if element['ID'] in [f"V[{i}]" for i in range(1, n_vulns + 1)]:
-            index = element['ID'][1:]  # Extract the numeric part of the ID (e.g., "V1" -> "1")
-            element['Probability of Mitigation'] = mitigation_prob_dict[index]  # Replace with the corresponding value
+            match = re.match(r'\[(V0*)(\d+)\]', element['ID'])
+            index = match.group(2).lstrip('0')
+            index = index if index != '' else '0'
+            if index.isdigit() and 1 <= int(index) <= n_vulns:
+                element['Probability of Mitigation'] = mitigation_prob_dict[index]
 
-    return bbn_inference()
+    return bbn_inference(st.session_state['start_node'])
 
-def run_study(n_trials, n_vulns, graph, verbose, output):
+def run_study(n_trials, graph, verbose, output):
     study = optuna.create_study(directions=["minimize", "minimize", "maximize"])
-    study.optimize(lambda trial: objective(trial, n_vulns), n_trials, timeout=300)
+    study.optimize(objective, n_trials, timeout=300)
 
     if graph:
         fig = optuna.visualization.plot_pareto_front(study, target_names=["Likelihood", "Impact", "Availability"])
@@ -727,11 +748,11 @@ def run_study(n_trials, n_vulns, graph, verbose, output):
     trial_with_highest_availability = max(study.best_trials, key=lambda t: t.values[2])
 
     if verbose:
-        st.write(f"Number of trials on the Pareto front: {len(study.best_trials)}")
-        st.write("Trial with highest availability: ")
-        st.write(f"\tTrial: {trial_with_highest_availability.number}")
-        st.write(f"\tParams: {trial_with_highest_availability.params}")
-        st.write(f"\tLikelihood: {trial_with_highest_availability.values[0]}, Impact: {trial_with_highest_availability.values[1]}, Availability: {trial_with_highest_availability.values[2]}")
+        print(f"Number of trials on the Pareto front: {len(study.best_trials)}")
+        print("Trial with highest availability: ")
+        print(f"\tTrial: {trial_with_highest_availability.number}")
+        print(f"\tParams: {trial_with_highest_availability.params}")
+        print(f"\tLikelihood: {trial_with_highest_availability.values[0]}, Impact: {trial_with_highest_availability.values[1]}, Availability: {trial_with_highest_availability.values[2]}")
 
     params = trial_with_highest_availability.params
     values = trial_with_highest_availability.values
