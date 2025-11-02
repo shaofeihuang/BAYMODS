@@ -1,5 +1,4 @@
-# BAYMODS
-![BAYMODS Logo](logo.png)
+# BAYMODS (Bayesian Modeling and Decision Support)
 
 ## Overview
 
