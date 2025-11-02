@@ -4,8 +4,7 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import networkx as nx
 import matplotlib.pyplot as plt
-import itertools
-import re, os, csv, json, pickle
+import re, os, csv, json, pickle, glob
 import math
 import optuna
 from datetime import date, datetime
@@ -623,6 +622,11 @@ def display_metrics():
     st.sidebar.metric("Probability of Exposure", value=f"{st.session_state.get('cpd_prob', 0):.4f}")
     st.sidebar.metric("Probability of Severe Impact", value=f"{st.session_state.get('cpd_impact', 0):.4f}")
     st.sidebar.metric("Risk Score", value=f"{st.session_state.get('risk_score', 0):.2f}%")
+
+
+###########################################################################################################
+#   Optimization with Optuna
+###########################################################################################################
 
 def bbn_inference(source_node):
     cpds = {}

@@ -28,7 +28,15 @@ if __name__ == "__main__":
     tab1, tab2 = st.tabs(["Probabilistic Risk Analysis", "Multi-Objective Optimisation"])
 
     with tab1:
-        st.title("Probabilistic Analysis")
+        st.title("Probabilistic Risk Analysis")
+        st.markdown("""
+        This module performs probabilistic risk analysis using Bayesian Networks to compute the likelihood of successful attacks, serious impacts, and overall risk scores based on the provided system model.
+        """)
+        st.markdown("""
+        **Note:** If you encounter "ValueError: Node Attacker not in graph", please ensure that the Attacker ID you selected matches the one defined in your AutomationML file.
+        """)
+        st.markdown("""---""")
+
         uploaded_aml = st.file_uploader("Upload your AutomationML file", type=["aml", "xml"])
 
         if uploaded_aml is not None:
@@ -53,23 +61,32 @@ if __name__ == "__main__":
 
     with tab2:
         st.title("Multi-Objective Optimisation")
-        n_trials = st.number_input("Number of Trials per Run", min_value=10, max_value=1000, value=100, step=10)
-        n_runs = st.number_input("Number of Concurrent Runs", min_value=1, max_value=20, value=5, step=1)
+        st.markdown("""
+        This module performs multi-objective optimisation using Optuna to identify Pareto-optimal mitigation strategies that balance likelihood reduction, impact minimisation, and availability maximisation.
+        """)
+        st.markdown("""---""")
+        n_trials = st.number_input("Number of Trials per Run", min_value=10, max_value=10000, value=100, step=10)
+        n_runs = st.number_input("Number of Concurrent Runs", min_value=1, max_value=20, value=1, step=1)
         if 'aml_data' in st.session_state:
-            st.write("Number of vulnerabilitiies in BN: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
+            st.write("Number of vulnerabilitiies detected in model: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
         graph = st.checkbox("Show Optimisation Graph", value=False)
-        verbose = st.checkbox("Verbose Output", value=True)
-        tmp_output = "output.csv"
+        verbose = st.checkbox("Verbose Console Output", value=True)
 
         if st.button("Start Optimisation"):
-            if os.path.exists(tmp_output):
-                os.remove(tmp_output) # clean up previous output file
+
+            files_to_remove = glob.glob("output-*.csv")
+            for file_path in files_to_remove:
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+
+            timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+            output = f"output-{timestamp}.csv"
 
             start_time = datetime.now()
 
             with ProcessPoolExecutor() as executor:
                 futures = [
-                    executor.submit(run_study, n_trials, graph, verbose, tmp_output)
+                    executor.submit(run_study, n_trials, graph, verbose, output)
                     for run in range(n_runs)
                 ]
                 for future in futures:
@@ -85,17 +102,31 @@ if __name__ == "__main__":
                 st.success("Optimisation completed!")
                 st.write(f"Total execution time: {hours} hours {minutes} minutes {seconds} seconds")
                 
-                df = pd.read_csv(tmp_output, header=None)
+                df = pd.read_csv(output, header=None)
 
                 v_headers = [f"V{str(i + 1).zfill(2)}" for i in range(len(df.columns) - 3)]
                 new_header_row = v_headers + ["Likelihood", "Impact", "Availability"]
                 df.columns = new_header_row
                 df.insert(0, "Run ID", range(1, len(df) + 1))
-
+        
+                st.markdown("""---""")
                 st.subheader("Optimisation Results")
                 st.write("The table below shows the results of the multi-objective optimisation." \
                 "Each row represents a Pareto-optimal configuration of mitigation priorities and the corresponding likelihood, impact, and availability probabilities.")
+
+                st.markdown("""
+                **Table explanation:**
+                - Run ID: Identifier for each optimisation run.
+                - V01, V02, ...: Mitigation priority values for each vulnerability (highest priority: 0, second highest: 1, and so on).
+                """)
+                
                 st.dataframe(df)
+
+                st.markdown("""
+                **Bar chart explanation:**
+                - The bar chart visualises the average mitigation priority assigned to each vulnerability across all Pareto-optimal solutions.
+                - Lower average values indicate higher priority for mitigation.
+                """)
 
                 v_columns = df.columns[1:-3]
                 v_data = df[v_columns].apply(pd.to_numeric, errors='coerce')
