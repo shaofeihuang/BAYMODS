@@ -1,5 +1,4 @@
 # BAYMODS
-
 ![BAYMODS Logo](logo.png)
 
 ## Overview
@@ -33,13 +32,13 @@ pip install networkx
 pip install matplotlib
 pip install numpy
 pip install scipy
-pip install pymoo
+pip install optuna
 ```
 
 Or install all dependencies at once:
 
 ```bash
-pip install streamlit pgmpy pandas networkx matplotlib numpy scipy pymoo
+pip install streamlit pgmpy pandas networkx matplotlib numpy scipy optuna
 ```
 
 ## Usage
@@ -47,12 +46,14 @@ pip install streamlit pgmpy pandas networkx matplotlib numpy scipy pymoo
 ### Running the Application
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/shaofeihuang/BAYMODS.git
 cd BAYMODS
 ```
 
 2. Launch the Streamlit application:
+
 ```bash
 streamlit run main.py
 ```
@@ -93,6 +94,7 @@ BAYMODS/
 ## File Format
 
 BAYMODS uses AML (Attack Modeling Language) files for attack model specification. These files define:
+
 - Attack graph nodes and relationships
 - Conditional probability distributions
 - Defense mechanisms and their parameters
@@ -125,7 +127,7 @@ Please refer to the repository for license information.
 This tool leverages:
 - [Streamlit](https://streamlit.io/) for the web interface
 - [pgmpy](https://pgmpy.org/) for Bayesian Network modeling
-- [pymoo](https://pymoo.org/) for multi-objective optimization
+- [Optuna](https://optuna.org/) for multi-objective optimization
 
 ## Contributing
 
