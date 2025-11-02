@@ -4,7 +4,7 @@ import pandas as pd
 import xml.etree.ElementTree as ET
 import networkx as nx
 import matplotlib.pyplot as plt
-import re, os, csv, json, pickle, glob
+import re, os, csv, json, pickle, glob, ast
 import math
 import optuna
 from datetime import date, datetime
@@ -584,10 +584,11 @@ def compute_risk_score():
     st.session_state['cpd_impact'] = cpd_impact
     st.session_state['risk_score'] = risk_score
 
-    st.write("[*] Timestamp:", datetime.now())
-    st.write("[*] Posterior Probability of Exposure:", cpd_prob)
-    st.write("[*] Posterior Probability of Impact:", cpd_impact)
-    st.write('[*] Risk score: {:.2f} %'.format(risk_score))
+    st.markdown("""---""")
+    st.subheader("Risk Assessment Results")
+    st.info(f"Posterior Probability of Exposure: {cpd_prob}")
+    st.info(f"Posterior Probability of Impact: {cpd_impact}")
+    st.info(f"Risk Score: {risk_score:.2f} %")
     display_metrics()
 
 
@@ -729,7 +730,7 @@ def objective(trial):
     n_vulns = len(st.session_state['aml_data'].VulnerabilityinSystem)
 
     for i in range(1, n_vulns + 1):
-        prob_mitigation_value = trial.suggest_float(f'Mitigation_V{i}', 0, 1)
+        prob_mitigation_value = trial.suggest_float(f'Mitigation_V{i:02d}', 0, 1)
         mitigation_prob_dict[f'{i}'] = prob_mitigation_value
 
     for element in st.session_state['aml_data'].VulnerabilityinSystem:
@@ -742,6 +743,7 @@ def objective(trial):
     return bbn_inference(st.session_state['start_node'])
 
 def run_study(n_trials, graph, verbose, output):
+    run_id, _ = os.path.splitext('-'.join(output.split('-')[1:3]))
     study = optuna.create_study(directions=["minimize", "minimize", "maximize"])
     study.optimize(objective, n_trials, timeout=300)
 
@@ -752,17 +754,28 @@ def run_study(n_trials, graph, verbose, output):
     trial_with_highest_availability = max(study.best_trials, key=lambda t: t.values[2])
 
     if verbose:
+        print(f"Run ID: {run_id}")
         print(f"Number of trials on the Pareto front: {len(study.best_trials)}")
         print("Trial with highest availability: ")
         print(f"\tTrial: {trial_with_highest_availability.number}")
         print(f"\tParams: {trial_with_highest_availability.params}")
         print(f"\tLikelihood: {trial_with_highest_availability.values[0]}, Impact: {trial_with_highest_availability.values[1]}, Availability: {trial_with_highest_availability.values[2]}")
 
+    best_trial = f"{run_id}-{datetime.now():%H%M%S%f}"
+    best_trial_filename = f"{best_trial}.txt"
+    with open(best_trial_filename, "w", newline="") as file:
+        file.write(f"Run ID: {run_id}\n")
+        file.write(f"Number of trials on the Pareto front: {len(study.best_trials)}\n")
+        file.write("Trial with highest availability:\n")
+        file.write(f"Trial: {trial_with_highest_availability.number}\n")
+        file.write(f"Params: {trial_with_highest_availability.params}\n")
+        file.write(f"Likelihood: {trial_with_highest_availability.values[0]}, Impact: {trial_with_highest_availability.values[1]}, Availability: {trial_with_highest_availability.values[2]}\n")
+
     params = trial_with_highest_availability.params
     values = trial_with_highest_availability.values
     sorted_params = sorted(enumerate(params.values()), key=lambda item: item[1], reverse=True)
     sorted_indices = [item[0] for item in sorted_params]
-    row = sorted_indices + [f"{values[0]:.3f}", f"{values[1]:.3f}", f"{values[2]:.3f}"]
+    row = sorted_indices + [f"{best_trial}", f"{values[0]:.3f}", f"{values[1]:.3f}", f"{values[2]:.3f}"]
 
     with open(output, "a", newline="") as file:
         writer = csv.writer(file)
