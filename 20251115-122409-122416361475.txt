@@ -1,0 +1,6 @@
+Run ID: 20251115-122409
+Number of trials on the Pareto front: 1000
+Trial with highest availability:
+Trial: 587
+Params: {'Mitigation_V01': 0.0035114583443603964, 'Mitigation_V02': 0.030883218592162587, 'Mitigation_V03': 0.07005496404335532, 'Mitigation_V04': 0.04596735682376263, 'Mitigation_V05': 0.1745775524641936, 'Mitigation_V06': 0.34365647493929974, 'Mitigation_V07': 0.0930434333723239}
+Likelihood: 0.7408180851528103, Impact: 0.25918191484718966, Availability: 54.88114352894765
