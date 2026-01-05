@@ -735,8 +735,11 @@ def objective(trial):
 
     for element in st.session_state['aml_data'].VulnerabilityinSystem:
             match = re.match(r'\[(V0*)(\d+)\]', element['ID'])
-            index = match.group(2).lstrip('0')
-            index = index if index != '' else '0'
+            if match:
+                index = match.group(2).lstrip('0')
+                index = index if index != '' else '0'
+            else:
+                index = element['ID'].lstrip('V')
             if index.isdigit() and 1 <= int(index) <= n_vulns:
                 element['Probability of Mitigation'] = mitigation_prob_dict[index]
 
