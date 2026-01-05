@@ -37,8 +37,13 @@ def calculate_lev(epss_scores):
     if not epss_scores:
         return None
     prob_no_exploit = 1.0
+    window = len(epss_scores)
     for p in epss_scores:
-        prob_no_exploit *= (1 - float(p))
+        if window >= 30:
+            weight = 1
+        else:
+            weight = window / 30
+        prob_no_exploit *= (1 - float(p) *  weight)
     return 1 - prob_no_exploit
 
 def get_cvss_score(cve_id, api_key=None):
@@ -78,7 +83,7 @@ def main():
     if epss_scores:
         lev_score = calculate_lev(epss_scores)
         print(f"EPSS time series for {cve_id}: {epss_scores}")
-        print(f"LEV score for {cve_id}: {lev_score:.4f} ({lev_score * 100:.2f}%)")
+        print(f"LEV score for {cve_id}: {lev_score:.4f} ({lev_score * 100:.4f}%)")
     else:
         lev_score = None
         print(f"No EPSS time series data available for {cve_id}")
@@ -118,7 +123,7 @@ def main():
                 composite = float(latest_epss)
             else:
                 composite = "N/A"
-            print(f"Composite Probability for {cve_id} = {composite}")
+            print(f"Composite Probability for {cve_id} = {composite:.4f}")
     except Exception as e:
         print(f"Error calculating composite probability: {e}")
 
