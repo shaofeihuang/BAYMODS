@@ -9,7 +9,6 @@ BAYMODS (Bayesian and Multi-Objective Decision Support) is an interactive web-ba
 - **Bayesian Network Model Analysis**: Upload and analyze CPS attack models in AutomationML format
 - **Risk Assessment**: Calculate and analyze security risks using Bayesian inference techniques
 - **Multi-Objective Optimization**: Find optimal defense strategies balancing system availability and risk reduction
-- **Real-time Analysis**: Dynamic probability updates and risk calculations
 - **Example Models**: Pre-configured attack scenarios including automotive, energy grid, and solar power systems
 
 ## Installation
