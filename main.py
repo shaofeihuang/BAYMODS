@@ -6,10 +6,8 @@ st.session_state['date_input'] = "2024-01-01" # Default date input
 if __name__ == "__main__":
     with st.sidebar:
         st.image("logo.png")
-        st.title("BAYMODS - CPS Risk Assessment")
+        st.title("BAYMODS (Bayesian and Multi-Objective Decision Support)")
         st.markdown("""
-        **BAYMODS** is a CPS risk assessment tool using Bayesian Networks.
-        
         **Instructions:**
         1. Upload your AutomationML file.
         2. Select the attacker ID from the dropdown.
@@ -30,7 +28,7 @@ if __name__ == "__main__":
     with tab1:
         st.title("Probabilistic Risk Analysis")
         st.markdown("""
-        This module performs probabilistic risk analysis using Bayesian Networks to compute the likelihood of successful attacks, serious impacts, and overall risk scores based on the provided system model.
+        This module performs probabilistic risk analysis (single trial) using Bayesian Networks to compute the likelihood of successful attacks, serious impacts, and overall risk scores based on the provided system model.
         """)
         st.markdown("""
         **Note:** If you encounter "ValueError: Node Attacker not in graph", please ensure that the Attacker ID you selected matches the one defined in your AutomationML file.

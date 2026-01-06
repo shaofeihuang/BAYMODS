@@ -1,0 +1,2063 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="cps.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+
+  <InstanceHierarchy Name="CPS_Assets">
+    <Version>1.0</Version>
+
+    <!-- Users/Attackers -->
+    <InternalElement Name="Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>100</Value>
+      </Attribute>
+      <ExternalInterface Name="AttackerInterface" ID="[U01]Attacker_ExtIf" RefBaseClassPath="AutomationMLInterfaceClassLib/AttackSurface" />
+    </InternalElement>
+
+    <!-- Assets -->
+    <InternalElement Name="Building Management System (BMS) Protocols (Modbus, BACnet, OPC UA)" ID="[A01] Building Management System (BMS) Protocols (Modbus, BACnet, OPC UA)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>BMS-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>BMS Protocol Stack</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.2</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BMS_Protocols_Interface" ID="[A01]BMS_Protocols_ExtIf">
+        <ExternalInterface Name="ModbusTCP" RefBaseClassPath="AutomationMLInterfaceClassLib/ModbusTCP" />
+        <ExternalInterface Name="BACnet" RefBaseClassPath="AutomationMLInterfaceClassLib/BACnet" />
+        <ExternalInterface Name="OPCUA" RefBaseClassPath="AutomationMLInterfaceClassLib/OPCUA" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Engineering Workstation (PLC Programming, HMI Configuration)" ID="[A02] Engineering Workstation (PLC Programming, HMI Configuration)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>EW-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Engineering Workstation</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.7</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-05-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="EngWS_Interface" ID="[A02]EngWS_ExtIf">
+        <ExternalInterface Name="PLC_Programming" RefBaseClassPath="AutomationMLInterfaceClassLib/PLCProgramming" />
+        <ExternalInterface Name="HMI_Config" RefBaseClassPath="AutomationMLInterfaceClassLib/HMIConfiguration" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="PLC Firmware/Logic (Ladder Logic, Control Algorithms)" ID="[A03] PLC Firmware/Logic (Ladder Logic, Control Algorithms)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PLC-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>PLC Firmware</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.5</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-11-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PLC_Firmware_Interface" ID="[A03]PLC_Firmware_ExtIf">
+        <ExternalInterface Name="LadderLogic" RefBaseClassPath="AutomationMLInterfaceClassLib/LadderLogic" />
+        <ExternalInterface Name="ControlAlgorithms" RefBaseClassPath="AutomationMLInterfaceClassLib/ControlAlgorithms" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Safety Instrumented Systems (SIS) or Interlocks" ID="[A04] Safety Instrumented Systems (SIS) or Interlocks" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>SIS-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Safety Interlock System</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-03-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SIS_Interface" ID="[A04]SIS_ExtIf">
+        <ExternalInterface Name="TemperatureInterlock" RefBaseClassPath="AutomationMLInterfaceClassLib/TemperatureInterlock" />
+        <ExternalInterface Name="PressureInterlock" RefBaseClassPath="AutomationMLInterfaceClassLib/PressureInterlock" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="SCADA/HMI Audit Logs (Operator Actions, System Events)" ID="[A05] SCADA/HMI Audit Logs (Operator Actions, System Events)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>LOG-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Audit Log System</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>4.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.3</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-02-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="AuditLogs_Interface" ID="[A05]AuditLogs_ExtIf">
+        <ExternalInterface Name="OperatorActions" RefBaseClassPath="AutomationMLInterfaceClassLib/OperatorActions" />
+        <ExternalInterface Name="SystemEvents" RefBaseClassPath="AutomationMLInterfaceClassLib/SystemEvents" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Historian Database (Time-Series Operational Data)" ID="[A06] Historian Database (Time-Series Operational Data)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>HIST-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Time-Series Database</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>7.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-07-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="Historian_Interface" ID="[A06]Historian_ExtIf">
+        <ExternalInterface Name="TimeSeriesData" RefBaseClassPath="AutomationMLInterfaceClassLib/TimeSeriesData" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Heating System Web Interface (Configuration, Monitoring)" ID="[A07] Heating System Web Interface (Configuration, Monitoring)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>WEB-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Web Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00025</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.5</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-09-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WebInterface" ID="[A07]WebInterface_ExtIf">
+        <ExternalInterface Name="HTTP" RefBaseClassPath="AutomationMLInterfaceClassLib/HTTP" />
+        <ExternalInterface Name="HTTPS" RefBaseClassPath="AutomationMLInterfaceClassLib/HTTPS" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Enterprise Integration Points (APIs, Gateways)" ID="[A08] Enterprise Integration Points (APIs, Gateways)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>EIP-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Enterprise Gateway</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.8</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00015</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.1</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-04-05</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="EnterpriseGateway_Interface" ID="[A08]EnterpriseGateway_ExtIf">
+        <ExternalInterface Name="REST_API" RefBaseClassPath="AutomationMLInterfaceClassLib/RESTAPI" />
+        <ExternalInterface Name="MQTT" RefBaseClassPath="AutomationMLInterfaceClassLib/MQTT" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Network Infrastructure (Switches, Routers, Firewalls)" ID="[A09] Network Infrastructure (Switches, Routers, Firewalls)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>NET-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Network Infrastructure</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>5.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00008</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.0</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2016-12-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="NetworkInfrastructure_Interface" ID="[A09]NetworkInfrastructure_ExtIf">
+        <ExternalInterface Name="Ethernet" RefBaseClassPath="AutomationMLInterfaceClassLib/Ethernet" />
+        <ExternalInterface Name="ModbusTCP" RefBaseClassPath="AutomationMLInterfaceClassLib/ModbusTCP" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="PLC Communication Channels (Cyclic Polling, Heartbeats)" ID="[A10] PLC Communication Channels (Cyclic Polling, Heartbeats)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PLC-COMM-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>PLC Communication</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00012</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-01-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PLC_Comm_Interface" ID="[A10]PLC_Comm_ExtIf">
+        <ExternalInterface Name="CyclicPolling" RefBaseClassPath="AutomationMLInterfaceClassLib/CyclicPolling" />
+        <ExternalInterface Name="Heartbeats" RefBaseClassPath="AutomationMLInterfaceClassLib/Heartbeats" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="HMI/SCADA Servers (Operator Interfaces)" ID="[A11] HMI/SCADA Servers (Operator Interfaces)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>HMI-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>HMI/SCADA Server</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>4.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00009</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.3</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-06-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="HMI_SCADA_Interface" ID="[A11]HMI_SCADA_ExtIf">
+        <ExternalInterface Name="OperatorInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/OperatorInterface" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Access Control Mechanisms (RBAC, Local Accounts)" ID="[A12] Access Control Mechanisms (RBAC, Local Accounts)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>ACM-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Access Control System</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00018</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.1</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-11-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="AccessControl_Interface" ID="[A12]AccessControl_ExtIf">
+        <ExternalInterface Name="RBAC" RefBaseClassPath="AutomationMLInterfaceClassLib/RBAC" />
+        <ExternalInterface Name="LocalAccounts" RefBaseClassPath="AutomationMLInterfaceClassLib/LocalAccounts" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Remote Access Portals (VPN, Jump Hosts)" ID="[A13] Remote Access Portals (VPN, Jump Hosts)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>RAP-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Remote Access Portal</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.7</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00022</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-03-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="RemoteAccess_Interface" ID="[A13]RemoteAccess_ExtIf">
+        <ExternalInterface Name="VPN" RefBaseClassPath="AutomationMLInterfaceClassLib/VPN" />
+        <ExternalInterface Name="RDP" RefBaseClassPath="AutomationMLInterfaceClassLib/RDP" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Network Segmentation (VLANs, Firewalls)" ID="[A14] Network Segmentation (VLANs, Firewalls)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>NS-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Network Segmentation</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.6</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-08-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="NetworkSegmentation_Interface" ID="[A14]NetworkSegmentation_ExtIf">
+        <ExternalInterface Name="VLAN" RefBaseClassPath="AutomationMLInterfaceClassLib/VLAN" />
+        <ExternalInterface Name="Firewall" RefBaseClassPath="AutomationMLInterfaceClassLib/Firewall" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromised Field Device (Sensor, Actuator, RTU)" ID="[A15] Compromised Field Device (Sensor, Actuator, RTU)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>FD-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Field Device</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.4</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-05-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FieldDevice_Interface" ID="[A15]FieldDevice_ExtIf">
+        <ExternalInterface Name="ModbusRTU" RefBaseClassPath="AutomationMLInterfaceClassLib/ModbusRTU" />
+        <ExternalInterface Name="SensorData" RefBaseClassPath="AutomationMLInterfaceClassLib/SensorData" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Engineering Workstation (Shared Across Multiple Systems)" ID="[A16] Engineering Workstation (Shared Across Multiple Systems)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>EW-002</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Shared Engineering WS</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00025</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.7</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-07-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SharedEngWS_Interface" ID="[A16]SharedEngWS_ExtIf">
+        <ExternalInterface Name="MultiSystemAccess" RefBaseClassPath="AutomationMLInterfaceClassLib/MultiSystemAccess" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Local HMI Panels (Unsecured Physical Access)" ID="[A17] Local HMI Panels (Unsecured Physical Access)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>LHMI-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Local HMI Panel</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0004</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-09-05</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="LocalHMI_Interface" ID="[A17]LocalHMI_ExtIf">
+        <ExternalInterface Name="PhysicalAccess" RefBaseClassPath="AutomationMLInterfaceClassLib/PhysicalAccess" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Field Devices (Sensors, Actuators, Valves)" ID="[A18] Field Devices (Sensors, Actuators, Valves)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>FD-002</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Field Device</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00035</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>8.2</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-04-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FieldDevices_Interface" ID="[A18]FieldDevices_ExtIf">
+        <ExternalInterface Name="SensorInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/SensorInterface" />
+        <ExternalInterface Name="ActuatorInterface" RefBaseClassPath="AutomationMLInterfaceClassLib/ActuatorInterface" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="USB Ports on Engineering Workstations/PLCs" ID="[A19] USB Ports on Engineering Workstations/PLCs" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>USB-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>USB Port</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-02-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="USB_Interface" ID="[A19]USB_ExtIf">
+        <ExternalInterface Name="USBDataTransfer" RefBaseClassPath="AutomationMLInterfaceClassLib/USBDataTransfer" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Supply Chain (Third-Party Vendors, Firmware Updates)" ID="[A20] Supply Chain (Third-Party Vendors, Firmware Updates)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>SC-001</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Supply Chain</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>9.0</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2015-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SupplyChain_Interface" ID="[A20]SupplyChain_ExtIf">
+        <ExternalInterface Name="FirmwareUpdates" RefBaseClassPath="AutomationMLInterfaceClassLib/FirmwareUpdates" />
+        <ExternalInterface Name="VendorAccess" RefBaseClassPath="AutomationMLInterfaceClassLib/VendorAccess" />
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Vulnerabilities">
+    <Version>1.0</Version>
+
+    <InternalElement Name="Weak or Missing Authentication in BMS Protocols" ID="[V01] Weak or Missing Authentication in BMS Protocols" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Authentication Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V01_Interface" ID="[V01]WeakAuth_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Modbus TCP/RTU Lacking Authentication (Default Configuration)" ID="[V02] Modbus TCP/RTU Lacking Authentication (Default Configuration)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Modbus Authentication Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V02_Interface" ID="[V02]ModbusAuth_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="BACnet Broadcast Messages Vulnerable to Spoofing (Who-Is, I-Am)" ID="[V03] BACnet Broadcast Messages Vulnerable to Spoofing (Who-Is, I-Am)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>BACnet Spoofing</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V03_Interface" ID="[V03]BACnetSpoof_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="OPC UA Misconfigured Certificates or Disabled Encryption" ID="[V04] OPC UA Misconfigured Certificates or Disabled Encryption" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>OPC UA Misconfiguration</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V04_Interface" ID="[V04]OPCUAMisconfig_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2022-3028 (BMS Protocol Vulnerability)" ID="[V05] Exploit CVE-2022-3028 (BMS Protocol Vulnerability)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2022-3028</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>BMS Protocol Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.1</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V05_Interface" ID="[V05]CVE_2022_3028_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Weak Access Controls on Engineering Workstations (Default/Shared Credentials)" ID="[V06] Weak Access Controls on Engineering Workstations (Default/Shared Credentials)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Weak Access Control</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V06_Interface" ID="[V06]WeakAccessControl_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-22893 (Control Logic Vulnerability)" ID="[V07] Exploit CVE-2021-22893 (Control Logic Vulnerability)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-22893</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Control Logic Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.92</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.15</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V07_Interface" ID="[V07]CVE_2021_22893_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthenticated Firmware Update Mechanism" ID="[V08] Unauthenticated Firmware Update Mechanism" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.3</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Firmware Update Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.1</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V08_Interface" ID="[V08]FirmwareUpdate_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Insecure Log Storage (Unencrypted, Writable by Low-Privilege Users)" ID="[V09] Insecure Log Storage (Unencrypted, Writable by Low-Privilege Users)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Log Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V09_Interface" ID="[V09]InsecureLogs_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Excessive Permissions on Historian (Read/Write for Non-Admin Users)" ID="[V10] Excessive Permissions on Historian (Read/Write for Non-Admin Users)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.7</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Historian Data Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.25</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V10_Interface" ID="[V10]HistorianPerms_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2020-25223 (Web Interface Vulnerability)" ID="[V11] Exploit CVE-2020-25223 (Web Interface Vulnerability)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2020-25223</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.6</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Web Interface Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V11_Interface" ID="[V11]CVE_2020_25223_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Default or Weak Credentials on Web Interface" ID="[V12] Default or Weak Credentials on Web Interface" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.3</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Default Credential Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V12_Interface" ID="[V12]DefaultCreds_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Insecure API Endpoints (Lack of Rate Limiting, Authentication)" ID="[V13] Insecure API Endpoints (Lack of Rate Limiting, Authentication)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>API Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V13_Interface" ID="[V13]InsecureAPI_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2019-18218 (Network Protocol Vulnerability)" ID="[V14] Exploit CVE-2019-18218 (Network Protocol Vulnerability)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2019-18218</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Network Protocol Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.1</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V14_Interface" ID="[V14]CVE_2019_18218_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-34527 (Privilege Escalation Vulnerability)" ID="[V15] Exploit CVE-2021-34527 (Privilege Escalation Vulnerability)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-34527</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Privilege Escalation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.1</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V15_Interface" ID="[V15]CVE_2021_34527_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Theft of Credentials (Keylogging, Pass-the-Hash)" ID="[V16] Theft of Credentials (Keylogging, Pass-the-Hash)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.4</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Credential Theft</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V16_Interface" ID="[V16]CredentialTheft_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Misconfigured VPN (Weak Encryption, No MFA)" ID="[V17] Misconfigured VPN (Weak Encryption, No MFA)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>VPN Misconfiguration</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V17_Interface" ID="[V17]VPNMisconfig_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Flat Network Architecture (No Segmentation Between OT Levels)" ID="[V18] Flat Network Architecture (No Segmentation Between OT Levels)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Network Segmentation Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V18_Interface" ID="[V18]FlatNetwork_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Weak ACLs on Industrial Switches (Allow Unrestricted Traffic)" ID="[V19] Weak ACLs on Industrial Switches (Allow Unrestricted Traffic)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>ACL Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.25</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V19_Interface" ID="[V19]WeakACLs_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Default Credentials on Field Devices (Modbus, BACnet Devices)" ID="[V20] Default Credentials on Field Devices (Modbus, BACnet Devices)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.6</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Field Device Default Credentials</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V20_Interface" ID="[V20]FieldDeviceCreds_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Shared Credentials Across Multiple OT Systems" ID="[V21] Shared Credentials Across Multiple OT Systems" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.4</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Credential Reuse</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V21_Interface" ID="[V21]SharedCreds_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unrestricted USB Access (No Disabling or Whitelisting)" ID="[V23] Unrestricted USB Access (No Disabling or Whitelisting)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>USB-Based Malware</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V23_Interface" ID="[V23]USBAccess_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromised Firmware or Patch Updates" ID="[V24] Compromised Firmware or Patch Updates" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.6</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Supply Chain Compromise</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.1</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="V24_Interface" ID="[V24]FirmwareCompromise_ExtIf">
+        <ExternalInterface Name="ExploitPath" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Hazards">
+    <Version>1.0</Version>
+
+    <InternalElement Name="Spoofed Sensor Data (Temperature, Pressure, Flow)" ID="[H01] Spoofed Sensor Data (Temperature, Pressure, Flow)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="H01_Interface" ID="[H01]SpoofedSensorData_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="False Low-Temperature Readings Causing Overcompensation (Overheating Risk)" ID="[H02] False Low-Temperature Readings Causing Overcompensation (Overheating Risk)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="H02_Interface" ID="[H02]Overcompensation_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="False High-Temperature Readings Causing System Shutdown (DoS)" ID="[H03] False High-Temperature Readings Causing System Shutdown (DoS)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H03_Interface" ID="[H03]FalseHighTemp_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoofed Control Commands (Direct Actuator Manipulation)" ID="[H04] Spoofed Control Commands (Direct Actuator Manipulation)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="H04_Interface" ID="[H04]SpoofedCommands_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Modbus Commands to Actuators (e.g., Open Valve 100%)" ID="[H05] Unauthorized Modbus Commands to Actuators (e.g., Open Valve 100%)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H05_Interface" ID="[H05]ModbusCommands_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Injection of Malicious Firmware (Altered Control Loops)" ID="[H06] Injection of Malicious Firmware (Altered Control Loops)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.6</Value>
+      </Attribute>
+      <ExternalInterface Name="H06_Interface" ID="[H06]MaliciousFirmware_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Logic Bomb in PLC Code (Time/Delay-Based Trigger)" ID="[H07] Logic Bomb in PLC Code (Time/Delay-Based Trigger)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="H07_Interface" ID="[H07]LogicBomb_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Bypass or Disable Safety Interlocks (Max Temperature Limits)" ID="[H08] Bypass or Disable Safety Interlocks (Max Temperature Limits)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.8</Value>
+      </Attribute>
+      <ExternalInterface Name="H08_Interface" ID="[H08]SafetyBypass_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tampering-Induced Physical Hazards" ID="[H09] Tampering-Induced Physical Hazards" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H09_Interface" ID="[H09]PhysicalHazards_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Overheating of Critical Components (Boiler, Heat Exchanger)" ID="[H10] Overheating of Critical Components (Boiler, Heat Exchanger)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.9</Value>
+      </Attribute>
+      <ExternalInterface Name="H10_Interface" ID="[H10]Overheating_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Erratic Actuator Behavior (Rapid Cycling of Valves/Dampers)" ID="[H11] Erratic Actuator Behavior (Rapid Cycling of Valves/Dampers)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="H11_Interface" ID="[H11]ErraticActuators_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Deletion of Critical Logs (Covering Tracks)" ID="[H12] Deletion of Critical Logs (Covering Tracks)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="H12_Interface" ID="[H12]LogDeletion_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Injection of False Log Entries (Misleading Forensics)" ID="[H13] Injection of False Log Entries (Misleading Forensics)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.3</Value>
+      </Attribute>
+      <ExternalInterface Name="H13_Interface" ID="[H13]FalseLogs_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Alter Historical Trends (Hide Equipment Degradation)" ID="[H14] Alter Historical Trends (Hide Equipment Degradation)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.1</Value>
+      </Attribute>
+      <ExternalInterface Name="H14_Interface" ID="[H14]AlterTrends_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Lack of Accountability for Malicious Actions" ID="[H15] Lack of Accountability for Malicious Actions" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H15_Interface" ID="[H15]NoAccountability_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Prolonged Undetected Malicious Activities (Persistent Compromise)" ID="[H16] Prolonged Undetected Malicious Activities (Persistent Compromise)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="H16_Interface" ID="[H16]PersistentCompromise_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exposure of Sensitive Operational Data" ID="[H17] Exposure of Sensitive Operational Data" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.8</Value>
+      </Attribute>
+      <ExternalInterface Name="H17_Interface" ID="[H17]DataExposure_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Leak of System Configurations (PLC Logic, Network Topology)" ID="[H18] Leak of System Configurations (PLC Logic, Network Topology)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.0</Value>
+      </Attribute>
+      <ExternalInterface Name="H18_Interface" ID="[H18]ConfigLeak_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Leak of User Credentials (Reuse in Lateral Movement)" ID="[H19] Leak of User Credentials (Reuse in Lateral Movement)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="H19_Interface" ID="[H19]CredLeak_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exfiltration of Operational Data to External Servers" ID="[H20] Exfiltration of Operational Data to External Servers" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.9</Value>
+      </Attribute>
+      <ExternalInterface Name="H20_Interface" ID="[H20]DataExfiltration_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Traffic Flooding (Modbus TCP, OPC UA Ports)" ID="[H21] Traffic Flooding (Modbus TCP, OPC UA Ports)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.6</Value>
+      </Attribute>
+      <ExternalInterface Name="H21_Interface" ID="[H21]TrafficFlooding_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disrupt PLC Heartbeat Messages (Cause Fail-Safe Shutdown)" ID="[H22] Disrupt PLC Heartbeat Messages (Cause Fail-Safe Shutdown)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="H22_Interface" ID="[H22]HeartbeatDisruption_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Resource Exhaustion (CPU/Memory) via Malformed Packets" ID="[H23] Resource Exhaustion (CPU/Memory) via Malformed Packets" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.8</Value>
+      </Attribute>
+      <ExternalInterface Name="H23_Interface" ID="[H23]ResourceExhaustion_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="DoS-Induced Operational Disruption" ID="[H24] DoS-Induced Operational Disruption" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="H24_Interface" ID="[H24]DoSDisruption_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Loss of Heating Control (Freezing Risk in Critical Areas)" ID="[H25] Loss of Heating Control (Freezing Risk in Critical Areas)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.6</Value>
+      </Attribute>
+      <ExternalInterface Name="H25_Interface" ID="[H25]HeatingLoss_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Forced System Reboots (Disrupting Processes)" ID="[H26] Forced System Reboots (Disrupting Processes)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H26_Interface" ID="[H26]ForcedReboots_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Abuse of Elevated Privileges" ID="[H27] Abuse of Elevated Privileges" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="H27_Interface" ID="[H27]PrivilegeAbuse_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized System Shutdown or Reconfiguration" ID="[H28] Unauthorized System Shutdown or Reconfiguration" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H28_Interface" ID="[H28]SystemShutdown_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Persistent Backdoor Installation (Maintain Long-Term Access)" ID="[H29] Persistent Backdoor Installation (Maintain Long-Term Access)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.8</Value>
+      </Attribute>
+      <ExternalInterface Name="H29_Interface" ID="[H29]Backdoor_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Widespread System Compromise via Lateral Movement" ID="[H32] Widespread System Compromise via Lateral Movement" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.9</Value>
+      </Attribute>
+      <ExternalInterface Name="H32_Interface" ID="[H32]SystemCompromise_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Gain Control of Entire Heating System (PLCs, HMIs, Historians)" ID="[H33] Gain Control of Entire Heating System (PLCs, HMIs, Historians)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>10.0</Value>
+      </Attribute>
+      <ExternalInterface Name="H33_Interface" ID="[H33]FullSystemControl_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Physical Tampering with Sensors/Actuators (Replacement, Signal Jamming)" ID="[H34] Physical Tampering with Sensors/Actuators (Replacement, Signal Jamming)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="H34_Interface" ID="[H34]PhysicalTampering_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Introduction of Malware via USB (e.g., Stuxnet-like Payload)" ID="[H35] Introduction of Malware via USB (e.g., Stuxnet-like Payload)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="H35_Interface" ID="[H35]USBMalware_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Rogue Vendor Access (Abuse of Remote Support Tools)" ID="[H36] Rogue Vendor Access (Abuse of Remote Support Tools)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="H36_Interface" ID="[H36]RogueVendor_ExtIf">
+        <ExternalInterface Name="HazardPath" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Goals">
+    <Version>1.0</Version>
+
+    <InternalElement Name="Disrupt or Stop Cyber-Physical System Operations (Heating System)" ID="[G01] Disrupt or Stop Cyber-Physical System Operations (Heating System)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>10.0</Value>
+      </Attribute>
+      <ExternalInterface Name="G01_Interface" ID="[G01]SystemDisruption_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoof Legitimate Commands or Data" ID="[G02] Spoof Legitimate Commands or Data" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="G02_Interface" ID="[G02]CommandSpoofing_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tamper with Control Logic or System Configurations" ID="[G03] Tamper with Control Logic or System Configurations" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="G03_Interface" ID="[G03]LogicTampering_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise Logging or Audit Mechanisms (Repudiation)" ID="[G04] Compromise Logging or Audit Mechanisms (Repudiation)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.8</Value>
+      </Attribute>
+      <ExternalInterface Name="G04_Interface" ID="[G04]LogCompromise_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Information Disclosure" ID="[G05] Unauthorized Information Disclosure" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="G05_Interface" ID="[G05]InfoDisclosure_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Denial of Service (DoS) on Critical Components" ID="[G06] Denial of Service (DoS) on Critical Components" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="G06_Interface" ID="[G06]DoS_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Elevation of Privilege (Unauthorized Admin Access)" ID="[G07] Elevation of Privilege (Unauthorized Admin Access)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.6</Value>
+      </Attribute>
+      <ExternalInterface Name="G07_Interface" ID="[G07]PrivilegeEscalation_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Lateral Movement Across System Components" ID="[G08] Lateral Movement Across System Components" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="G08_Interface" ID="[G08]LateralMovement_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Physical Tampering or Access" ID="[G09] Physical Tampering or Access" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="G09_Interface" ID="[G09]PhysicalTampering_ExtIf">
+        <ExternalInterface Name="GoalPath" RefBaseClassPath="AutomationMLInterfaceClassLib/GoalPath" />
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="InternalLinks">
+    <Version>1.0</Version>
+    <InternalLink Name="U01_V02" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V02]ModbusAuth_ExtIf" />
+    <InternalLink Name="V02_V01" RefPartnerSideA="[V02]ModbusAuth_ExtIf" RefPartnerSideB="[V01]WeakAuth_ExtIf" />
+    <InternalLink Name="V01_A01" RefPartnerSideA="[V01]WeakAuth_ExtIf" RefPartnerSideB="[A01]BMS_Protocols_ExtIf" />
+    <InternalLink Name="A01_G02" RefPartnerSideA="[A01]BMS_Protocols_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V03" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V03]BACnetSpoof_ExtIf" />
+    <InternalLink Name="V03_V01" RefPartnerSideA="[V03]BACnetSpoof_ExtIf" RefPartnerSideB="[V01]WeakAuth_ExtIf" />
+    <InternalLink Name="V01_A01" RefPartnerSideA="[V01]WeakAuth_ExtIf" RefPartnerSideB="[A01]BMS_Protocols_ExtIf" />
+    <InternalLink Name="A01_G02" RefPartnerSideA="[A01]BMS_Protocols_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V04" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V04]OPCUAMisconfig_ExtIf" />
+    <InternalLink Name="V04_V01" RefPartnerSideA="[V04]OPCUAMisconfig_ExtIf" RefPartnerSideB="[V01]WeakAuth_ExtIf" />
+    <InternalLink Name="V01_A01" RefPartnerSideA="[V01]WeakAuth_ExtIf" RefPartnerSideB="[A01]BMS_Protocols_ExtIf" />
+    <InternalLink Name="A01_G02" RefPartnerSideA="[A01]BMS_Protocols_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V05" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V05]CVE_2022_3028_ExtIf" />
+    <InternalLink Name="V05_A01" RefPartnerSideA="[V05]CVE_2022_3028_ExtIf" RefPartnerSideB="[A01]BMS_Protocols_ExtIf" />
+    <InternalLink Name="A01_G02" RefPartnerSideA="[A01]BMS_Protocols_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H02" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H02]Overcompensation_ExtIf" />
+    <InternalLink Name="H02_H01" RefPartnerSideA="[H02]Overcompensation_ExtIf" RefPartnerSideB="[H01]SpoofedSensorData_ExtIf" />
+    <InternalLink Name="H01_G02" RefPartnerSideA="[H01]SpoofedSensorData_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H03" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H03]FalseHighTemp_ExtIf" />
+    <InternalLink Name="H03_H01" RefPartnerSideA="[H03]FalseHighTemp_ExtIf" RefPartnerSideB="[H01]SpoofedSensorData_ExtIf" />
+    <InternalLink Name="H01_G02" RefPartnerSideA="[H01]SpoofedSensorData_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H05" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H05]ModbusCommands_ExtIf" />
+    <InternalLink Name="H05_H04" RefPartnerSideA="[H05]ModbusCommands_ExtIf" RefPartnerSideB="[H04]SpoofedCommands_ExtIf" />
+    <InternalLink Name="H04_G02" RefPartnerSideA="[H04]SpoofedCommands_ExtIf" RefPartnerSideB="[G02]CommandSpoofing_ExtIf" />
+    <InternalLink Name="G02_G01" RefPartnerSideA="[G02]CommandSpoofing_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V06" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V06]WeakAccessControl_ExtIf" />
+    <InternalLink Name="V06_A02" RefPartnerSideA="[V06]WeakAccessControl_ExtIf" RefPartnerSideB="[A02]EngWS_ExtIf" />
+    <InternalLink Name="A02_G03" RefPartnerSideA="[A02]EngWS_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V07" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V07]CVE_2021_22893_ExtIf" />
+    <InternalLink Name="V07_A02" RefPartnerSideA="[V07]CVE_2021_22893_ExtIf" RefPartnerSideB="[A02]EngWS_ExtIf" />
+    <InternalLink Name="A02_G03" RefPartnerSideA="[A02]EngWS_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H06" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H06]MaliciousFirmware_ExtIf" />
+    <InternalLink Name="H06_V08" RefPartnerSideA="[H06]MaliciousFirmware_ExtIf" RefPartnerSideB="[V08]FirmwareUpdate_ExtIf" />
+    <InternalLink Name="V08_A03" RefPartnerSideA="[V08]FirmwareUpdate_ExtIf" RefPartnerSideB="[A03]PLC_Firmware_ExtIf" />
+    <InternalLink Name="A03_G03" RefPartnerSideA="[A03]PLC_Firmware_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H07" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H07]LogicBomb_ExtIf" />
+    <InternalLink Name="H07_A03" RefPartnerSideA="[H07]LogicBomb_ExtIf" RefPartnerSideB="[A03]PLC_Firmware_ExtIf" />
+    <InternalLink Name="A03_G03" RefPartnerSideA="[A03]PLC_Firmware_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H08" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H08]SafetyBypass_ExtIf" />
+    <InternalLink Name="H08_A04" RefPartnerSideA="[H08]SafetyBypass_ExtIf" RefPartnerSideB="[A04]SIS_ExtIf" />
+    <InternalLink Name="A04_G03" RefPartnerSideA="[A04]SIS_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H10" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H10]Overheating_ExtIf" />
+    <InternalLink Name="H10_H09" RefPartnerSideA="[H10]Overheating_ExtIf" RefPartnerSideB="[H09]PhysicalHazards_ExtIf" />
+    <InternalLink Name="H09_G03" RefPartnerSideA="[H09]PhysicalHazards_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H11" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H11]ErraticActuators_ExtIf" />
+    <InternalLink Name="H11_H09" RefPartnerSideA="[H11]ErraticActuators_ExtIf" RefPartnerSideB="[H09]PhysicalHazards_ExtIf" />
+    <InternalLink Name="H09_G03" RefPartnerSideA="[H09]PhysicalHazards_ExtIf" RefPartnerSideB="[G03]LogicTampering_ExtIf" />
+    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]LogicTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H12" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H12]LogDeletion_ExtIf" />
+    <InternalLink Name="H12_V09" RefPartnerSideA="[H12]LogDeletion_ExtIf" RefPartnerSideB="[V09]InsecureLogs_ExtIf" />
+    <InternalLink Name="V09_A05" RefPartnerSideA="[V09]InsecureLogs_ExtIf" RefPartnerSideB="[A05]AuditLogs_ExtIf" />
+    <InternalLink Name="A05_G04" RefPartnerSideA="[A05]AuditLogs_ExtIf" RefPartnerSideB="[G04]LogCompromise_ExtIf" />
+    <InternalLink Name="G04_G01" RefPartnerSideA="[G04]LogCompromise_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H13" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H13]FalseLogs_ExtIf" />
+    <InternalLink Name="H13_V09" RefPartnerSideA="[H13]FalseLogs_ExtIf" RefPartnerSideB="[V09]InsecureLogs_ExtIf" />
+    <InternalLink Name="V09_A05" RefPartnerSideA="[V09]InsecureLogs_ExtIf" RefPartnerSideB="[A05]AuditLogs_ExtIf" />
+    <InternalLink Name="A05_G04" RefPartnerSideA="[A05]AuditLogs_ExtIf" RefPartnerSideB="[G04]LogCompromise_ExtIf" />
+    <InternalLink Name="G04_G01" RefPartnerSideA="[G04]LogCompromise_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H14" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H14]AlterTrends_ExtIf" />
+    <InternalLink Name="H14_V10" RefPartnerSideA="[H14]AlterTrends_ExtIf" RefPartnerSideB="[V10]HistorianPerms_ExtIf" />
+    <InternalLink Name="V10_A06" RefPartnerSideA="[V10]HistorianPerms_ExtIf" RefPartnerSideB="[A06]Historian_ExtIf" />
+    <InternalLink Name="A06_G04" RefPartnerSideA="[A06]Historian_ExtIf" RefPartnerSideB="[G04]LogCompromise_ExtIf" />
+    <InternalLink Name="G04_G01" RefPartnerSideA="[G04]LogCompromise_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H16" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H16]PersistentCompromise_ExtIf" />
+    <InternalLink Name="H16_H15" RefPartnerSideA="[H16]PersistentCompromise_ExtIf" RefPartnerSideB="[H15]NoAccountability_ExtIf" />
+    <InternalLink Name="H15_G04" RefPartnerSideA="[H15]NoAccountability_ExtIf" RefPartnerSideB="[G04]LogCompromise_ExtIf" />
+    <InternalLink Name="G04_G01" RefPartnerSideA="[G04]LogCompromise_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V11" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V11]CVE_2020_25223_ExtIf" />
+    <InternalLink Name="V11_A07" RefPartnerSideA="[V11]CVE_2020_25223_ExtIf" RefPartnerSideB="[A07]WebInterface_ExtIf" />
+    <InternalLink Name="A07_G05" RefPartnerSideA="[A07]WebInterface_ExtIf" RefPartnerSideB="[G05]InfoDisclosure_ExtIf" />
+    <InternalLink Name="G05_G01" RefPartnerSideA="[G05]InfoDisclosure_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V12" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V12]DefaultCreds_ExtIf" />
+    <InternalLink Name="V12_A07" RefPartnerSideA="[V12]DefaultCreds_ExtIf" RefPartnerSideB="[A07]WebInterface_ExtIf" />
+    <InternalLink Name="A07_G05" RefPartnerSideA="[A07]WebInterface_ExtIf" RefPartnerSideB="[G05]InfoDisclosure_ExtIf" />
+    <InternalLink Name="G05_G01" RefPartnerSideA="[G05]InfoDisclosure_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H18" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H18]ConfigLeak_ExtIf" />
+    <InternalLink Name="H18_H17" RefPartnerSideA="[H18]ConfigLeak_ExtIf" RefPartnerSideB="[H17]DataExposure_ExtIf" />
+    <InternalLink Name="H17_G05" RefPartnerSideA="[H17]DataExposure_ExtIf" RefPartnerSideB="[G05]InfoDisclosure_ExtIf" />
+    <InternalLink Name="G05_G01" RefPartnerSideA="[G05]InfoDisclosure_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H19" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H19]CredLeak_ExtIf" />
+    <InternalLink Name="H19_H17" RefPartnerSideA="[H19]CredLeak_ExtIf" RefPartnerSideB="[H17]DataExposure_ExtIf" />
+    <InternalLink Name="H17_G05" RefPartnerSideA="[H17]DataExposure_ExtIf" RefPartnerSideB="[G05]InfoDisclosure_ExtIf" />
+    <InternalLink Name="G05_G01" RefPartnerSideA="[G05]InfoDisclosure_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H20" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H20]DataExfiltration_ExtIf" />
+    <InternalLink Name="H20_V13" RefPartnerSideA="[H20]DataExfiltration_ExtIf" RefPartnerSideB="[V13]InsecureAPI_ExtIf" />
+    <InternalLink Name="V13_A08" RefPartnerSideA="[V13]InsecureAPI_ExtIf" RefPartnerSideB="[A08]EnterpriseGateway_ExtIf" />
+    <InternalLink Name="A08_G05" RefPartnerSideA="[A08]EnterpriseGateway_ExtIf" RefPartnerSideB="[G05]InfoDisclosure_ExtIf" />
+    <InternalLink Name="G05_G01" RefPartnerSideA="[G05]InfoDisclosure_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V14" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V14]CVE_2019_18218_ExtIf" />
+    <InternalLink Name="V14_A09" RefPartnerSideA="[V14]CVE_2019_18218_ExtIf" RefPartnerSideB="[A09]NetworkInfrastructure_ExtIf" />
+    <InternalLink Name="A09_G06" RefPartnerSideA="[A09]NetworkInfrastructure_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H21" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H21]TrafficFlooding_ExtIf" />
+    <InternalLink Name="H21_A09" RefPartnerSideA="[H21]TrafficFlooding_ExtIf" RefPartnerSideB="[A09]NetworkInfrastructure_ExtIf" />
+    <InternalLink Name="A09_G06" RefPartnerSideA="[A09]NetworkInfrastructure_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H22" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H22]HeartbeatDisruption_ExtIf" />
+    <InternalLink Name="H22_A10" RefPartnerSideA="[H22]HeartbeatDisruption_ExtIf" RefPartnerSideB="[A10]PLC_Comm_ExtIf" />
+    <InternalLink Name="A10_G06" RefPartnerSideA="[A10]PLC_Comm_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H23" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H23]ResourceExhaustion_ExtIf" />
+    <InternalLink Name="H23_A11" RefPartnerSideA="[H23]ResourceExhaustion_ExtIf" RefPartnerSideB="[A11]HMI_SCADA_ExtIf" />
+    <InternalLink Name="A11_G06" RefPartnerSideA="[A11]HMI_SCADA_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H25" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H25]HeatingLoss_ExtIf" />
+    <InternalLink Name="H25_H24" RefPartnerSideA="[H25]HeatingLoss_ExtIf" RefPartnerSideB="[H24]DoSDisruption_ExtIf" />
+    <InternalLink Name="H24_G06" RefPartnerSideA="[H24]DoSDisruption_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H26" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H26]ForcedReboots_ExtIf" />
+    <InternalLink Name="H26_H24" RefPartnerSideA="[H26]ForcedReboots_ExtIf" RefPartnerSideB="[H24]DoSDisruption_ExtIf" />
+    <InternalLink Name="H24_G06" RefPartnerSideA="[H24]DoSDisruption_ExtIf" RefPartnerSideB="[G06]DoS_ExtIf" />
+    <InternalLink Name="G06_G01" RefPartnerSideA="[G06]DoS_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V15" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V15]CVE_2021_34527_ExtIf" />
+    <InternalLink Name="V15_A12" RefPartnerSideA="[V15]CVE_2021_34527_ExtIf" RefPartnerSideB="[A12]AccessControl_ExtIf" />
+    <InternalLink Name="A12_G07" RefPartnerSideA="[A12]AccessControl_ExtIf" RefPartnerSideB="[G07]PrivilegeEscalation_ExtIf" />
+    <InternalLink Name="G07_G01" RefPartnerSideA="[G07]PrivilegeEscalation_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V16" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V16]CredentialTheft_ExtIf" />
+    <InternalLink Name="V16_A12" RefPartnerSideA="[V16]CredentialTheft_ExtIf" RefPartnerSideB="[A12]AccessControl_ExtIf" />
+    <InternalLink Name="A12_G07" RefPartnerSideA="[A12]AccessControl_ExtIf" RefPartnerSideB="[G07]PrivilegeEscalation_ExtIf" />
+    <InternalLink Name="G07_G01" RefPartnerSideA="[G07]PrivilegeEscalation_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V17" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V17]VPNMisconfig_ExtIf" />
+    <InternalLink Name="V17_A13" RefPartnerSideA="[V17]VPNMisconfig_ExtIf" RefPartnerSideB="[A13]RemoteAccess_ExtIf" />
+    <InternalLink Name="A13_G07" RefPartnerSideA="[A13]RemoteAccess_ExtIf" RefPartnerSideB="[G07]PrivilegeEscalation_ExtIf" />
+    <InternalLink Name="G07_G01" RefPartnerSideA="[G07]PrivilegeEscalation_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H28" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H28]SystemShutdown_ExtIf" />
+    <InternalLink Name="H28_H27" RefPartnerSideA="[H28]SystemShutdown_ExtIf" RefPartnerSideB="[H27]PrivilegeAbuse_ExtIf" />
+    <InternalLink Name="H27_G07" RefPartnerSideA="[H27]PrivilegeAbuse_ExtIf" RefPartnerSideB="[G07]PrivilegeEscalation_ExtIf" />
+    <InternalLink Name="G07_G01" RefPartnerSideA="[G07]PrivilegeEscalation_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H29" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H29]Backdoor_ExtIf" />
+    <InternalLink Name="H29_H27" RefPartnerSideA="[H29]Backdoor_ExtIf" RefPartnerSideB="[H27]PrivilegeAbuse_ExtIf" />
+    <InternalLink Name="H27_G07" RefPartnerSideA="[H27]PrivilegeAbuse_ExtIf" RefPartnerSideB="[G07]PrivilegeEscalation_ExtIf" />
+    <InternalLink Name="G07_G01" RefPartnerSideA="[G07]PrivilegeEscalation_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H30" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H30]PhysicalTampering_ExtIf" />
+    <InternalLink Name="H30_V20" RefPartnerSideA="[H30]PhysicalTampering_ExtIf" RefPartnerSideB="[V20]FieldDeviceCreds_ExtIf" />
+    <InternalLink Name="V20_A15" RefPartnerSideA="[V20]FieldDeviceCreds_ExtIf" RefPartnerSideB="[A15]FieldDevice_ExtIf" />
+    <InternalLink Name="A15_G08" RefPartnerSideA="[A15]FieldDevice_ExtIf" RefPartnerSideB="[G08]LateralMovement_ExtIf" />
+    <InternalLink Name="G08_G01" RefPartnerSideA="[G08]LateralMovement_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H31" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H31]USBMalware_ExtIf" />
+    <InternalLink Name="H31_V21" RefPartnerSideA="[H31]USBMalware_ExtIf" RefPartnerSideB="[V21]SharedCreds_ExtIf" />
+    <InternalLink Name="V21_A16" RefPartnerSideA="[V21]SharedCreds_ExtIf" RefPartnerSideB="[A16]SharedEngWS_ExtIf" />
+    <InternalLink Name="A16_G08" RefPartnerSideA="[A16]SharedEngWS_ExtIf" RefPartnerSideB="[G08]LateralMovement_ExtIf" />
+    <InternalLink Name="G08_G01" RefPartnerSideA="[G08]LateralMovement_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H33" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H33]FullSystemControl_ExtIf" />
+    <InternalLink Name="H33_H32" RefPartnerSideA="[H33]FullSystemControl_ExtIf" RefPartnerSideB="[H32]SystemCompromise_ExtIf" />
+    <InternalLink Name="H32_G08" RefPartnerSideA="[H32]SystemCompromise_ExtIf" RefPartnerSideB="[G08]LateralMovement_ExtIf" />
+    <InternalLink Name="G08_G01" RefPartnerSideA="[G08]LateralMovement_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V22" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V22]CVE_2020_25223_ExtIf" />
+    <InternalLink Name="V22_A17" RefPartnerSideA="[V22]CVE_2020_25223_ExtIf" RefPartnerSideB="[A17]LocalHMI_ExtIf" />
+    <InternalLink Name="A17_G09" RefPartnerSideA="[A17]LocalHMI_ExtIf" RefPartnerSideB="[G09]PhysicalTampering_ExtIf" />
+    <InternalLink Name="G09_G01" RefPartnerSideA="[G09]PhysicalTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H34" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H34]PhysicalTampering_ExtIf" />
+    <InternalLink Name="H34_A18" RefPartnerSideA="[H34]PhysicalTampering_ExtIf" RefPartnerSideB="[A18]FieldDevices_ExtIf" />
+    <InternalLink Name="A18_G09" RefPartnerSideA="[A18]FieldDevices_ExtIf" RefPartnerSideB="[G09]PhysicalTampering_ExtIf" />
+    <InternalLink Name="G09_G01" RefPartnerSideA="[G09]PhysicalTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H35" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H35]USBMalware_ExtIf" />
+    <InternalLink Name="H35_V23" RefPartnerSideA="[H35]USBMalware_ExtIf" RefPartnerSideB="[V23]USBAccess_ExtIf" />
+    <InternalLink Name="V23_A19" RefPartnerSideA="[V23]USBAccess_ExtIf" RefPartnerSideB="[A19]USB_ExtIf" />
+    <InternalLink Name="A19_G09" RefPartnerSideA="[A19]USB_ExtIf" RefPartnerSideB="[G09]PhysicalTampering_ExtIf" />
+    <InternalLink Name="G09_G01" RefPartnerSideA="[G09]PhysicalTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_V24" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[V24]FirmwareCompromise_ExtIf" />
+    <InternalLink Name="V24_A20" RefPartnerSideA="[V24]FirmwareCompromise_ExtIf" RefPartnerSideB="[A20]SupplyChain_ExtIf" />
+    <InternalLink Name="A20_G09" RefPartnerSideA="[A20]SupplyChain_ExtIf" RefPartnerSideB="[G09]PhysicalTampering_ExtIf" />
+    <InternalLink Name="G09_G01" RefPartnerSideA="[G09]PhysicalTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+
+    <InternalLink Name="U01_H36" RefPartnerSideA="[U01]Attacker_ExtIf" RefPartnerSideB="[H36]RogueVendor_ExtIf" />
+    <InternalLink Name="H36_A20" RefPartnerSideA="[H36]RogueVendor_ExtIf" RefPartnerSideB="[A20]SupplyChain_ExtIf" />
+    <InternalLink Name="A20_G09" RefPartnerSideA="[A20]SupplyChain_ExtIf" RefPartnerSideB="[G09]PhysicalTampering_ExtIf" />
+    <InternalLink Name="G09_G01" RefPartnerSideA="[G09]PhysicalTampering_ExtIf" RefPartnerSideB="[G01]SystemDisruption_ExtIf" />
+  </InstanceHierarchy>
+
+  <InterfaceClassLib Name="AutomationMLInterfaceClassLib">
+    <Version>1.0</Version>
+    <InterfaceClass Name="AttackSurface" />
+    <InterfaceClass Name="ModbusTCP" />
+    <InterfaceClass Name="BACnet" />
+    <InterfaceClass Name="OPCUA" />
+    <InterfaceClass Name="PLCProgramming" />
+    <InterfaceClass Name="HMIConfiguration" />
+    <InterfaceClass Name="LadderLogic" />
+    <InterfaceClass Name="ControlAlgorithms" />
+    <InterfaceClass Name="TemperatureInterlock" />
+    <InterfaceClass Name="PressureInterlock" />
+    <InterfaceClass Name="OperatorActions" />
+    <InterfaceClass Name="SystemEvents" />
+    <InterfaceClass Name="TimeSeriesData" />
+    <InterfaceClass Name="HTTP" />
+    <InterfaceClass Name="HTTPS" />
+    <InterfaceClass Name="RESTAPI" />
+    <InterfaceClass Name="MQTT" />
+    <InterfaceClass Name="Ethernet" />
+    <InterfaceClass Name="CyclicPolling" />
+    <InterfaceClass Name="Heartbeats" />
+    <InterfaceClass Name="OperatorInterface" />
+    <InterfaceClass Name="RBAC" />
+    <InterfaceClass Name="LocalAccounts" />
+    <InterfaceClass Name="VPN" />
+    <InterfaceClass Name="RDP" />
+    <InterfaceClass Name="VLAN" />
+    <InterfaceClass Name="Firewall" />
+    <InterfaceClass Name="ModbusRTU" />
+    <InterfaceClass Name="SensorData" />
+    <InterfaceClass Name="MultiSystemAccess" />
+    <InterfaceClass Name="PhysicalAccess" />
+    <InterfaceClass Name="SensorInterface" />
+    <InterfaceClass Name="ActuatorInterface" />
+    <InterfaceClass Name="USBDataTransfer" />
+    <InterfaceClass Name="FirmwareUpdates" />
+    <InterfaceClass Name="VendorAccess" />
+    <InterfaceClass Name="ExploitPath" />
+    <InterfaceClass Name="HazardPath" />
+    <InterfaceClass Name="GoalPath" />
+  </InterfaceClassLib>
+
+  <RoleClassLib Name="Requirements">
+    <Version>1.0</Version>
+    <RoleClass Name="Process" />
+    <RoleClass Name="Safety" />
+    <RoleClass Name="Security" />
+    <RoleClass Name="Communication" />
+  </RoleClassLib>
+
+  <SystemUnitClassLib Name="AssetOfICS">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Hardware">
+      <SystemUnitClass Name="Process device">
+        <SystemUnitClass Name="Sensor">
+          <ExternalInterface Name="SensorOP" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+          <ExternalInterface Name="SensorOP" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Actuator">
+          <ExternalInterface Name="ActuatorIP" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+          <ExternalInterface Name="ActuatorIP" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Controller">
+          <ExternalInterface Name="IOfromController" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+          <ExternalInterface Name="IOfromController" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Workstation">
+          <ExternalInterface Name="IOfromWS" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+          <ExternalInterface Name="IOfromWS" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Server">
+          <ExternalInterface Name="IOfromServer" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+          <ExternalInterface Name="IOfromServer" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Machine">
+        <ExternalInterface Name="IOfromMC" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        <ExternalInterface Name="IOfromMC" RefBaseClassPath="AutomationMLInterfaceClassLib/Logic" />
+      </SystemUnitClass>
+      <SystemUnitClass Name="Network Devices">
+        <SystemUnitClass Name="IO module">
+          <ExternalInterface Name="IOfromModule" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Switch">
+          <ExternalInterface Name="IOfromSwitch" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Router">
+          <ExternalInterface Name="IOfromRouter" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Gateway">
+          <ExternalInterface Name="IOfromGateway" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Firewall">
+          <ExternalInterface Name="IOfromFirewall" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Non-Automation Devices" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="Software">
+      <SystemUnitClass Name="Firmware/ Operating system" />
+      <SystemUnitClass Name="Application" />
+      <SystemUnitClass Name="Process logic" />
+      <SystemUnitClass Name="OT adapters" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="User">
+      <ExternalInterface Name="IOfromUser" RefBaseClassPath="AutomationMLInterfaceClassLib/User" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="HazardforSystem">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Hazard">
+      <ExternalInterface Name="HazardRef" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardPath" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="VulnerabilityforSystem">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Vulnerability">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+      <ExternalInterface Name="VulnerabilityRef" RefBaseClassPath="AutomationMLInterfaceClassLib/ExploitPath" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <AttributeTypeLib Name="AttributeTypeLib">
+    <Version>1.0</Version>
+    <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
+      <Attribute Name="Vendor" AttributeDataType="xs:string" />
+      <Attribute Name="Part" AttributeDataType="xs:string" />
+      <Attribute Name="Product" AttributeDataType="xs:string" />
+      <Attribute Name="Version" AttributeDataType="xs:string" />
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float" />
+      <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Hazard" AttributeDataType="xs:string">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Severity" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <Attribute Name="Consequence" AttributeDataType="xs:string" />
+      <Attribute Name="Causes" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+    </AttributeType>
+  </AttributeTypeLib>
+</CAEXFile>
+```

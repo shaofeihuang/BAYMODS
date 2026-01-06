@@ -1,0 +1,723 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="cps.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+
+  <InstanceHierarchy Name="CPS Example">
+    <Version>0</Version>
+
+    <InternalElement Name="Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>100</Value>
+      </Attribute>
+      <ExternalInterface Name="AttackerInterface" ID="[U01] AttackerInterface" RefInterfaceType="InterfaceTypeLib/AttackerInterface">
+        <Attribute Name="AttackVector" AttributeDataType="xs:string">
+          <Value>Remote</Value>
+        </Attribute>
+        <Attribute Name="SkillLevel" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Incorrect Dosage Delivery" ID="[H01] Incorrect Dosage Delivery" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.9</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H01] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="CVE-2021-3121 (Authentication Bypass)" ID="[V01] CVE-2021-3121 (Authentication Bypass)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-3121</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Authentication Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V01] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Available</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Patient Monitoring Devices" ID="[A01] Patient Monitoring Devices" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>MedTech Inc.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PM-1000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Patient Monitor</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.3.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="DeviceInterface" ID="[A01] DeviceInterface" RefInterfaceType="InterfaceTypeLib/DeviceInterface">
+        <Attribute Name="CommunicationProtocol" AttributeDataType="xs:string">
+          <Value>TCP/IP</Value>
+        </Attribute>
+        <Attribute Name="SecurityMechanism" AttributeDataType="xs:string">
+          <Value>TLS 1.2</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Access to Sensitive Patient Data" ID="[H02] Unauthorized Access to Sensitive Patient Data" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.8</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H02] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="CVE-2020-1472 (Zerologon)" ID="[V02] CVE-2020-1472 (Zerologon)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2020-1472</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>10.0</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Zerologon</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V02] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Patched</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Medical Data Storage Systems" ID="[A02] Medical Data Storage Systems" RefBaseSystemUnitPath="AssetOfICS/SoftwareApplication">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>HealthData Corp.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>MDS-2000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Medical Data Storage</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.1.4</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-11-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="StorageInterface" ID="[A02] StorageInterface" RefInterfaceType="InterfaceTypeLib/StorageInterface">
+        <Attribute Name="DataEncryption" AttributeDataType="xs:string">
+          <Value>AES-256</Value>
+        </Attribute>
+        <Attribute Name="AccessControl" AttributeDataType="xs:string">
+          <Value>Role-Based</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disruption of Healthcare Services" ID="[H03] Disruption of Healthcare Services" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.95</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H03] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="DDoS Vulnerabilities" ID="[V03] DDoS Vulnerabilities" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.6</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>DDoS</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V03] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Partial</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Cloud-Based Analytics Platforms" ID="[A03] Cloud-Based Analytics Platforms" RefBaseSystemUnitPath="AssetOfICS/SoftwareApplication">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>CloudHealth Inc.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>CHA-5000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Cloud Analytics</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>4.2.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-03-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CloudInterface" ID="[A03] CloudInterface" RefInterfaceType="InterfaceTypeLib/CloudInterface">
+        <Attribute Name="APISecurity" AttributeDataType="xs:string">
+          <Value>OAuth 2.0</Value>
+        </Attribute>
+        <Attribute Name="RateLimiting" AttributeDataType="xs:string">
+          <Value>Enabled</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Lateral Movement to OT Network" ID="[H04] Lateral Movement to OT Network" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.88</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H04] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="CVE-2020-0601 (Cryptographic Flaw)" ID="[V04] CVE-2020-0601 (Cryptographic Flaw)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2020-0601</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.65</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Cryptographic Flaw</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V04] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Available</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Network Infrastructure" ID="[A04] Network Infrastructure" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>NetSecure Inc.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>NS-3000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Network Switch</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>5.1.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.92</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-07-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="NetworkInterface" ID="[A04] NetworkInterface" RefInterfaceType="InterfaceTypeLib/NetworkInterface">
+        <Attribute Name="TrafficFiltering" AttributeDataType="xs:string">
+          <Value>Enabled</Value>
+        </Attribute>
+        <Attribute Name="Segmentation" AttributeDataType="xs:string">
+          <Value>VLAN</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Access to IoT Devices" ID="[H05] Unauthorized Access to IoT Devices" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.75</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H05] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Default Credentials" ID="[V05] Default Credentials" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Default Credentials</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V05] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Manual</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="IoT Gateways" ID="[A05] IoT Gateways" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>IoTConnect Ltd.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>IOT-1000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>IoT Gateway</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.4.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-09-22</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IoTInterface" ID="[A05] IoTInterface" RefInterfaceType="InterfaceTypeLib/IoTInterface">
+        <Attribute Name="DeviceAuthentication" AttributeDataType="xs:string">
+          <Value>TLS</Value>
+        </Attribute>
+        <Attribute Name="DataEncryption" AttributeDataType="xs:string">
+          <Value>AES-128</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unsafe Environmental Conditions" ID="[H06] Unsafe Environmental Conditions" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.65</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H06] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>Low</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Configuration Tampering" ID="[V06] Configuration Tampering" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Configuration Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V06] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>Medium</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Manual</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="SCADA System" ID="[A06] SCADA System" RefBaseSystemUnitPath="AssetOfICS/SoftwareApplication">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>SCADA Systems Inc.</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>SC-5000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>SCADA System</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>6.3.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00004</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-05-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SCADAInterface" ID="[A06] SCADAInterface" RefInterfaceType="InterfaceTypeLib/SCADAInterface">
+        <Attribute Name="AccessControl" AttributeDataType="xs:string">
+          <Value>Role-Based</Value>
+        </Attribute>
+        <Attribute Name="AuditLogging" AttributeDataType="xs:string">
+          <Value>Enabled</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Persistent Compromise of Hospital Network" ID="[H07] Persistent Compromise of Hospital Network" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>0.98</Value>
+      </Attribute>
+      <ExternalInterface Name="HazardInterface" ID="[H07] HazardInterface" RefInterfaceType="InterfaceTypeLib/HazardInterface">
+        <Attribute Name="Severity" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="Probability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="CVE-2021-34527 (Privilege Escalation)" ID="[V07] CVE-2021-34527 (Privilege Escalation)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-34527</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Privilege Escalation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VulnerabilityInterface" ID="[V07] VulnerabilityInterface" RefInterfaceType="InterfaceTypeLib/VulnerabilityInterface">
+        <Attribute Name="Exploitability" AttributeDataType="xs:string">
+          <Value>High</Value>
+        </Attribute>
+        <Attribute Name="PatchStatus" AttributeDataType="xs:string">
+          <Value>Available</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Medical Device Operating Systems" ID="[A07] Medical Device Operating Systems" RefBaseSystemUnitPath="AssetOfICS/SoftwareApplication">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>MedOS Systems</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>MDOS-2000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Medical Device OS</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>4.1.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-11-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="OSInterface" ID="[A07] OSInterface" RefInterfaceType="InterfaceTypeLib/OSInterface">
+        <Attribute Name="KernelSecurity" AttributeDataType="xs:string">
+          <Value>SELinux</Value>
+        </Attribute>
+        <Attribute Name="UpdateMechanism" AttributeDataType="xs:string">
+          <Value>Automated</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disruption or Stoppage of Cyber-Physical System Operations" ID="[G01] Disruption or Stoppage of Cyber-Physical System Operations" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>1.0</Value>
+      </Attribute>
+      <ExternalInterface Name="GoalInterface" ID="[G01] GoalInterface" RefInterfaceType="InterfaceTypeLib/GoalInterface">
+        <Attribute Name="Criticality" AttributeDataType="xs:string">
+          <Value>Critical</Value>
+        </Attribute>
+        <Attribute Name="RecoveryTime" AttributeDataType="xs:string">
+          <Value>Immediate</Value>
+        </Attribute>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalLink Name="U01_H01" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H01] HazardInterface" />
+    <InternalLink Name="H01_V01" RefPartnerSideA="[H01] HazardInterface" RefPartnerSideB="[V01] VulnerabilityInterface" />
+    <InternalLink Name="V01_A01" RefPartnerSideA="[V01] VulnerabilityInterface" RefPartnerSideB="[A01] DeviceInterface" />
+    <InternalLink Name="A01_G01" RefPartnerSideA="[A01] DeviceInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H02" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H02] HazardInterface" />
+    <InternalLink Name="H02_V02" RefPartnerSideA="[H02] HazardInterface" RefPartnerSideB="[V02] VulnerabilityInterface" />
+    <InternalLink Name="V02_A02" RefPartnerSideA="[V02] VulnerabilityInterface" RefPartnerSideB="[A02] StorageInterface" />
+    <InternalLink Name="A02_G01" RefPartnerSideA="[A02] StorageInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H03" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H03] HazardInterface" />
+    <InternalLink Name="H03_V03" RefPartnerSideA="[H03] HazardInterface" RefPartnerSideB="[V03] VulnerabilityInterface" />
+    <InternalLink Name="V03_A03" RefPartnerSideA="[V03] VulnerabilityInterface" RefPartnerSideB="[A03] CloudInterface" />
+    <InternalLink Name="A03_G01" RefPartnerSideA="[A03] CloudInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H04" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H04] HazardInterface" />
+    <InternalLink Name="H04_V04" RefPartnerSideA="[H04] HazardInterface" RefPartnerSideB="[V04] VulnerabilityInterface" />
+    <InternalLink Name="V04_A04" RefPartnerSideA="[V04] VulnerabilityInterface" RefPartnerSideB="[A04] NetworkInterface" />
+    <InternalLink Name="A04_G01" RefPartnerSideA="[A04] NetworkInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H05" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H05] HazardInterface" />
+    <InternalLink Name="H05_V05" RefPartnerSideA="[H05] HazardInterface" RefPartnerSideB="[V05] VulnerabilityInterface" />
+    <InternalLink Name="V05_A05" RefPartnerSideA="[V05] VulnerabilityInterface" RefPartnerSideB="[A05] IoTInterface" />
+    <InternalLink Name="A05_G01" RefPartnerSideA="[A05] IoTInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H06" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H06] HazardInterface" />
+    <InternalLink Name="H06_V06" RefPartnerSideA="[H06] HazardInterface" RefPartnerSideB="[V06] VulnerabilityInterface" />
+    <InternalLink Name="V06_A06" RefPartnerSideA="[V06] VulnerabilityInterface" RefPartnerSideB="[A06] SCADAInterface" />
+    <InternalLink Name="A06_G01" RefPartnerSideA="[A06] SCADAInterface" RefPartnerSideB="[G01] GoalInterface" />
+    <InternalLink Name="U01_H07" RefPartnerSideA="[U01] AttackerInterface" RefPartnerSideB="[H07] HazardInterface" />
+    <InternalLink Name="H07_V07" RefPartnerSideA="[H07] HazardInterface" RefPartnerSideB="[V07] VulnerabilityInterface" />
+    <InternalLink Name="V07_A07" RefPartnerSideA="[V07] VulnerabilityInterface" RefPartnerSideB="[A07] OSInterface" />
+    <InternalLink Name="A07_G01" RefPartnerSideA="[A07] OSInterface" RefPartnerSideB="[G01] GoalInterface" />
+  </InstanceHierarchy>
+
+  <InterfaceClassLib Name="InterfaceTypeLib">
+    <Version>0</Version>
+    <InterfaceClass Name="AttackerInterface" />
+    <InterfaceClass Name="HazardInterface" />
+    <InterfaceClass Name="VulnerabilityInterface" />
+    <InterfaceClass Name="DeviceInterface" />
+    <InterfaceClass Name="StorageInterface" />
+    <InterfaceClass Name="CloudInterface" />
+    <InterfaceClass Name="NetworkInterface" />
+    <InterfaceClass Name="IoTInterface" />
+    <InterfaceClass Name="SCADAInterface" />
+    <InterfaceClass Name="OSInterface" />
+    <InterfaceClass Name="GoalInterface" />
+  </InterfaceClassLib>
+
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="Process" />
+    <RoleClass Name="Safety" />
+    <RoleClass Name="Security" />
+    <RoleClass Name="Communication" />
+  </RoleClassLib>
+
+  <SystemUnitClassLib Name="AssetOfICS">
+    <Version>0</Version>
+    <SystemUnitClass Name="User" ID="b1a381bb-985e-4b50-93d3-98b02d304ccd">
+      <ExternalInterface Name="IOfromUser" ID="72bfd734-8588-4801-9e7a-ed486ca78dd7" RefBaseClassPath="ConnectionBetnAssets/User based" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="Hardware" ID="">
+      <SystemUnitClass Name="Machine" ID="b0b90afc-e54a-4f70-ad1a-b57a6aa37126">
+        <ExternalInterface Name="IOfromMC" ID="fc6f76bc-152e-43d9-bf23-4e913d46feac" RefBaseClassPath="ConnectionBetnAssets/Network based" />
+        <ExternalInterface Name="IOfromMC" ID="e7ed45fb-c6e1-46d2-93a6-53d23457768c" RefBaseClassPath="ConnectionBetnAssets/Logic based" />
+      </SystemUnitClass>
+    </SystemUnitClass>
+    <SystemUnitClass Name="SoftwareApplication" ID="3932b7d5-9b84-4c3f-a14a-e8f025342011" />
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="HazardforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Hazard" ID="e5aa0b0e-32ee-4bb3-a28b-b08ac4cdc5f5">
+      <ExternalInterface Name="HazardRef" ID="e76420a9-0048-4aca-91b3-b7109a6e531b" RefBaseClassPath="ConnectionBetnAssets/HazardRef" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="VulnerabilityforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Vulnerability" ID="61c989ba-67ff-4aa8-9daa-937a4d45e0a3">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" ID="b623ff6d-1c1a-4f45-b260-965e18c18863" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" ID="b623ff6d-1c1a-4f45-b260-965e18c18863" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <ExternalInterface Name="VulnerabilityRef" ID="32ebc8a3-9568-4deb-a92e-e8647789d8a3" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <AttributeTypeLib Name="AttributeTypeLib">
+    <Version>0</Version>
+    <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
+      <Attribute Name="Vendor" AttributeDataType="xs:string" />
+      <Attribute Name="Part" AttributeDataType="xs:string" />
+      <Attribute Name="Product" AttributeDataType="xs:string" />
+      <Attribute Name="Version" AttributeDataType="xs:string" />
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float" />
+      <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Hazard" AttributeDataType="xs:string">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Severity" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <Attribute Name="Consequence" AttributeDataType="xs:string" />
+      <Attribute Name="Causes" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" ID="CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:P/RL:T/RC:R" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+    </AttributeType>
+  </AttributeTypeLib>
+</CAEXFile>
+```

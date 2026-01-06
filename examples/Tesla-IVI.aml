@@ -1,0 +1,2201 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="tesla_ivi_threat_model.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
+
+  <InstanceHierarchy Name="Tesla IVI Threat Model">
+    <Version>1.0</Version>
+
+    <!-- Attackers/Users -->
+    <InternalElement Name="Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>100</Value>
+      </Attribute>
+      <ExternalInterface Name="AttackerInterface" ID="[U01] Attacker_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/AttackerRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <!-- Assets -->
+    <InternalElement Name="Malicious Media File" ID="[A01] Malicious Media File" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Media File</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Malicious Media</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="MediaFileInterface" ID="[A01] MaliciousMediaFile_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/MediaFileRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Local Access via USB Debug Mode" ID="[A02] Local Access via USB Debug Mode" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>USB Port</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Debug Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2022.44.25</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="USBDebugInterface" ID="[A02] USBDebug_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/USBDebugRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exposed Debug Port via Wi-Fi/USB Networking" ID="[A03] Exposed Debug Port via Wi-Fi/USB Networking" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Network Interface</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Debug Port</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2022.44.25</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="DebugPortInterface" ID="[A03] DebugPort_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/DebugPortRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tampered OTA Update Package" ID="[A04] Tampered OTA Update Package" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>OTA Package</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Firmware Update</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2023.2.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="OTAUpdateInterface" ID="[A04] OTAUpdate_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/OTAUpdateRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious Firmware via USB" ID="[A05] Malicious Firmware via USB" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Firmware</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Malicious Payload</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="USBFirmwareInterface" ID="[A05] USBFirmware_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/USBFirmwareRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Physical Access via OBD-II Port" ID="[A06] Physical Access via OBD-II Port" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>OBD-II Port</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Diagnostic Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2015-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="OBDIIInterface" ID="[A06] OBDII_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/OBDIIRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="IVI CAN Gateway" ID="[A07] IVI CAN Gateway" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>CAN Gateway</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>IVI Module</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CANGatewayInterface" ID="[A07] CANGateway_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANGatewayRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious or Compromised ECU" ID="[A08] Malicious or Compromised ECU" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>ECU</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Compromised Unit</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ECUInterface" ID="[A08] ECU_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/ECURole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Rogue Cellular Tower" ID="[A09] Rogue Cellular Tower" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Cell Tower</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Rogue Base Station</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CellularTowerInterface" ID="[A09] CellularTower_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CellularTowerRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Evil Twin Wi-Fi Attack" ID="[A10] Evil Twin Wi-Fi Attack" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Wi-Fi AP</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Evil Twin</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WiFiAttackInterface" ID="[A10] WiFiAttack_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/WiFiAttackRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Man-in-the-Middle Attack on OTA Update Channel" ID="[A11] Man-in-the-Middle Attack on OTA Update Channel" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>MITM Tool</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Update Interceptor</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="MITMInterface" ID="[A11] MITM_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/MITMRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Supply Chain Attack via Third-Party CDN" ID="[A12] Supply Chain Attack via Third-Party CDN" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Third-Party</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>CDN</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Compromised Content</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainInterface" ID="[A12] SupplyChain_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/SupplyChainRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Bluetooth Proximity Attack" ID="[A13] Bluetooth Proximity Attack" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Bluetooth Device</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Proximity Attack Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BluetoothAttackInterface" ID="[A13] BluetoothAttack_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BluetoothAttackRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Fake Device Pairing" ID="[A14] Fake Device Pairing" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Fake Device</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Pairing Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FakePairingInterface" ID="[A14] FakePairing_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/FakePairingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Wi-Fi Credential Theft" ID="[A15] Wi-Fi Credential Theft" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Credential Harvester</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Wi-Fi Theft Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WiFiTheftInterface" ID="[A15] WiFiTheft_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/WiFiTheftRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious USB Device" ID="[A16] Malicious USB Device" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>USB Device</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Malicious Payload</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="USBDeviceInterface" ID="[A16] USBDevice_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/USBDeviceRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Diagnostic Mode Access via USB" ID="[A17] Diagnostic Mode Access via USB" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>USB Port</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Diagnostic Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="DiagnosticUSBInterface" ID="[A17] DiagnosticUSB_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/DiagnosticUSBRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized API Access" ID="[A18] Unauthorized API Access" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>API Client</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Unauthorized Access Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="APIAccessInterface" ID="[A18] APIAccess_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/APIAccessRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Phishing Attack on Mobile App" ID="[A19] Phishing Attack on Mobile App" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Phishing Tool</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Mobile App Spoof</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PhishingInterface" ID="[A19] Phishing_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/PhishingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Access to Backend Systems" ID="[A20] Unauthorized Access to Backend Systems" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Backend Access Tool</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Unauthorized Client</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BackendAccessInterface" ID="[A20] BackendAccess_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BackendAccessRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious App Update" ID="[A21] Malicious App Update" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>App Update</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Malicious Payload</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2023-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="MaliciousAppInterface" ID="[A21] MaliciousApp_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/MaliciousAppRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="User Tricked into Enabling Debug Mode" ID="[A22] User Tricked into Enabling Debug Mode" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Social Engineering</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Debug Mode Trick</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="DebugModeInterface" ID="[A22] DebugMode_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/DebugModeRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Hidden Voice Commands" ID="[A23] Hidden Voice Commands" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Voice Command</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Hidden Instruction</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VoiceCommandInterface" ID="[A23] VoiceCommand_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/VoiceCommandRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Physical Access to IVI Head Unit" ID="[A24] Physical Access to IVI Head Unit" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Tesla</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>IVI Head Unit</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Physical Access</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PhysicalAccessInterface" ID="[A24] PhysicalAccess_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/PhysicalAccessRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Counterfeit or Tampered IVI Hardware" ID="[A25] Counterfeit or Tampered IVI Hardware" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>IVI Hardware</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Counterfeit/Tampered</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="TamperedHardwareInterface" ID="[A25] TamperedHardware_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/TamperedHardwareRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Botnet-Based DDoS" ID="[A26] Botnet-Based DDoS" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Botnet</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>DDoS Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="DDoSInterface" ID="[A26] DDoS_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/DDoSRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="App with Infinite Loop" ID="[A27] App with Infinite Loop" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Unknown</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Mobile App</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Infinite Loop</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2022-01-01</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="InfiniteLoopInterface" ID="[A27] InfiniteLoop_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/InfiniteLoopRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <!-- Vulnerabilities -->
+    <InternalElement Name="Memory Corruption in Media Parser" ID="[V01] Memory Corruption in Media Parser" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2019-1010155</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Memory Corruption</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="MediaParserVulnInterface" ID="[V01] MediaParserVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/MediaParserVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Privilege Escalation via Linux Kernel Exploit" ID="[V02] Privilege Escalation via Linux Kernel Exploit" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Privilege Escalation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="KernelExploitVulnInterface" ID="[V02] KernelExploitVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/KernelExploitVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthenticated Access to IVI APIs" ID="[V03] Unauthenticated Access to IVI APIs" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2019-1010199</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Unauthenticated Access</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="APIAccessVulnInterface" ID="[V03] APIAccessVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/APIAccessVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Lack of Secure Boot or Firmware Signing Validation" ID="[V04] Lack of Secure Boot or Firmware Signing Validation" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Secure Boot Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SecureBootVulnInterface" ID="[V04] SecureBootVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/SecureBootVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Lack of CAN Message Authentication" ID="[V05] Lack of CAN Message Authentication" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2019-1010154</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>CAN Spoofing</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CANAuthVulnInterface" ID="[V05] CANAuthVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANAuthVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="CAN Bus Flooding via High-Priority Frames" ID="[V06] CAN Bus Flooding via High-Priority Frames" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>6.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>CAN Flooding</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CANFloodVulnInterface" ID="[V06] CANFloodVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANFloodVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Remote Code Execution via Cellular/Wi-Fi" ID="[V07] Remote Code Execution via Cellular/Wi-Fi" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2020-8944</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>9.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Remote Code Execution</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="RCEVulnInterface" ID="[V07] RCEVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/RCEVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Insecure OTA Update Protocol" ID="[V08] Insecure OTA Update Protocol" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.4</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Insecure OTA</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.65</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="OTAVulnInterface" ID="[V08] OTAVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/OTAVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="BlueBorne Vulnerability" ID="[V09] BlueBorne Vulnerability" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2017-1000250</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.3</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>BlueBorne</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BlueBorneVulnInterface" ID="[V09] BlueBorneVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BlueBorneVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthenticated Bluetooth Pairing" ID="[V10] Unauthenticated Bluetooth Pairing" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>6.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Unauthenticated Pairing</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BluetoothPairingVulnInterface" ID="[V10] BluetoothPairingVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BluetoothPairingVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="WPA3 Vulnerabilities" ID="[V11] WPA3 Vulnerabilities" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>Dragonblood</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>WPA3 Exploit</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.65</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.55</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WPA3VulnInterface" ID="[V11] WPA3Vuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/WPA3VulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="BadUSB Attack via Malicious Firmware" ID="[V12] BadUSB Attack via Malicious Firmware" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>BadUSB</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BadUSBVulnInterface" ID="[V12] BadUSBVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BadUSBVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized USB Firmware Flashing" ID="[V13] Unauthorized USB Firmware Flashing" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.2</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Unauthorized Flashing</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.65</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="USBFlashVulnInterface" ID="[V13] USBFlashVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/USBFlashVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Insecure Direct Object Reference (IDOR) in API" ID="[V14] Insecure Direct Object Reference (IDOR) in API" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>6.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>IDOR</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="IDORVulnInterface" ID="[V14] IDORVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/IDORVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="JWT Forgery or Token Theft" ID="[V15] JWT Forgery or Token Theft" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>8.1</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>JWT Forgery</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="JWTVulnInterface" ID="[V15] JWTVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/JWTVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Fake 'Update Required' Prompt" ID="[V16] Fake 'Update Required' Prompt" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>6.3</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Fake Update Prompt</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.4</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FakeUpdateVulnInterface" ID="[V16] FakeUpdateVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/FakeUpdateVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthenticated Voice Command Processing" ID="[V17] Unauthenticated Voice Command Processing" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>6.8</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Voice Command Injection</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="VoiceCommandVulnInterface" ID="[V17] VoiceCommandVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/VoiceCommandVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exposed JTAG or Debug Ports" ID="[V18] Exposed JTAG or Debug Ports" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.6</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>JTAG Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="JTAGVulnInterface" ID="[V18] JTAGVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/JTAGVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Flooding Attacks on IVI/TCU" ID="[V19] Flooding Attacks on IVI/TCU" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>7.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Network Flooding</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.75</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.65</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FloodingVulnInterface" ID="[V19] FloodingVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/FloodingVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious Third-Party App Consuming Resources" ID="[V20] Malicious Third-Party App Consuming Resources" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>5.5</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Resource Exhaustion</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.6</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ResourceExhaustionVulnInterface" ID="[V20] ResourceExhaustionVuln_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/ResourceExhaustionVulnRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <!-- Hazards -->
+    <InternalElement Name="Compromised IVI System" ID="[H01] Compromised IVI System" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="CompromisedIVIInterface" ID="[H01] CompromisedIVI_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CompromisedIVIRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromised Tesla Update Server" ID="[H02] Compromised Tesla Update Server" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.8</Value>
+      </Attribute>
+      <ExternalInterface Name="CompromisedUpdateServerInterface" ID="[H02] CompromisedUpdateServer_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CompromisedUpdateServerRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Insider Threat or Misconfigured Cloud Access" ID="[H03] Insider Threat or Misconfigured Cloud Access" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="InsiderThreatInterface" ID="[H03] InsiderThreat_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/InsiderThreatRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Third-Party Vendor Breach" ID="[H04] Third-Party Vendor Breach" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.9</Value>
+      </Attribute>
+      <ExternalInterface Name="VendorBreachInterface" ID="[H04] VendorBreach_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/VendorBreachRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Malicious Components in IVI Supply Chain" ID="[H05] Malicious Components in IVI Supply Chain" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainTamperingInterface" ID="[H05] SupplyChainTampering_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/SupplyChainTamperingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <!-- Goals -->
+    <InternalElement Name="Disrupt or Stop Tesla In-Vehicle Infotainment (IVI) System Operations" ID="[G00] Disrupt or Stop Tesla In-Vehicle Infotainment (IVI) System Operations" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>10.0</Value>
+      </Attribute>
+      <ExternalInterface Name="IVIDisruptionInterface" ID="[G00] IVIDisruption_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/IVIDisruptionRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit IVI Software Vulnerabilities" ID="[G02] Exploit IVI Software Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.0</Value>
+      </Attribute>
+      <ExternalInterface Name="IVIVulnExploitInterface" ID="[G02] IVIVulnExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/IVIVulnExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise IVI Operating System" ID="[G01] Compromise IVI Operating System" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="IVIOSCompromiseInterface" ID="[G01] IVIOSCompromise_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/IVIOSCompromiseRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Inject Malicious Firmware" ID="[G03] Inject Malicious Firmware" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="MaliciousFirmwareInterface" ID="[G03] MaliciousFirmware_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/MaliciousFirmwareRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disrupt or Inject Malicious CAN Bus Communication" ID="[G04] Disrupt or Inject Malicious CAN Bus Communication" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="CANInjectionInterface" ID="[G04] CANInjection_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANInjectionRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Inject Malicious CAN Frames" ID="[G05] Inject Malicious CAN Frames" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="CANFrameInjectionInterface" ID="[G05] CANFrameInjection_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANFrameInjectionRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Denial-of-Service on CAN Bus" ID="[G06] Denial-of-Service on CAN Bus" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.8</Value>
+      </Attribute>
+      <ExternalInterface Name="CANDoSInterface" ID="[G06] CANDoS_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CANDoSRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise Telematics Control Unit (TCU)" ID="[G07] Compromise Telematics Control Unit (TCU)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.6</Value>
+      </Attribute>
+      <ExternalInterface Name="TCUCompromiseInterface" ID="[G07] TCUCompromise_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/TCUCompromiseRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit TCU Software Vulnerabilities" ID="[G08] Exploit TCU Software Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="TCUVulnExploitInterface" ID="[G08] TCUVulnExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/TCUVulnExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tamper with OTA Updates" ID="[G09] Tamper with OTA Updates" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="OTATamperingInterface" ID="[G09] OTATampering_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/OTATamperingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit External Interfaces (Bluetooth/Wi-Fi/USB)" ID="[G10] Exploit External Interfaces (Bluetooth/Wi-Fi/USB)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.9</Value>
+      </Attribute>
+      <ExternalInterface Name="ExternalInterfaceExploitInterface" ID="[G10] ExternalInterfaceExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/ExternalInterfaceExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Bluetooth Vulnerabilities" ID="[G11] Exploit Bluetooth Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="BluetoothExploitInterface" ID="[G11] BluetoothExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BluetoothExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Wi-Fi Vulnerabilities" ID="[G12] Exploit Wi-Fi Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="WiFiExploitInterface" ID="[G12] WiFiExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/WiFiExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit USB Vulnerabilities" ID="[G13] Exploit USB Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.6</Value>
+      </Attribute>
+      <ExternalInterface Name="USBExploitInterface" ID="[G13] USBExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/USBExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise Tesla Cloud Backend" ID="[G14] Compromise Tesla Cloud Backend" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.9</Value>
+      </Attribute>
+      <ExternalInterface Name="CloudBackendCompromiseInterface" ID="[G14] CloudBackendCompromise_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/CloudBackendCompromiseRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Tesla API Vulnerabilities" ID="[G15] Exploit Tesla API Vulnerabilities" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.0</Value>
+      </Attribute>
+      <ExternalInterface Name="APIExploitInterface" ID="[G15] APIExploit_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/APIExploitRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise Backend Infrastructure" ID="[G16] Compromise Backend Infrastructure" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.8</Value>
+      </Attribute>
+      <ExternalInterface Name="BackendInfraCompromiseInterface" ID="[G16] BackendInfraCompromise_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/BackendInfraCompromiseRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Social Engineering Attacks" ID="[G17] Social Engineering Attacks" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.4</Value>
+      </Attribute>
+      <ExternalInterface Name="SocialEngineeringInterface" ID="[G17] SocialEngineering_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/SocialEngineeringRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoof IVI User Interface" ID="[G18] Spoof IVI User Interface" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.3</Value>
+      </Attribute>
+      <ExternalInterface Name="UISpoofingInterface" ID="[G18] UISpoofing_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/UISpoofingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Inject Malicious Voice Commands" ID="[G19] Inject Malicious Voice Commands" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.2</Value>
+      </Attribute>
+      <ExternalInterface Name="VoiceCommandInjectionInterface" ID="[G19] VoiceCommandInjection_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/VoiceCommandInjectionRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Physical Attacks on IVI System" ID="[G20] Physical Attacks on IVI System" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="PhysicalAttackInterface" ID="[G20] PhysicalAttack_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/PhysicalAttackRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tamper with IVI Hardware" ID="[G21] Tamper with IVI Hardware" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="HardwareTamperingInterface" ID="[G21] HardwareTampering_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/HardwareTamperingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Supply Chain Tampering" ID="[G22] Supply Chain Tampering" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainTamperingInterface" ID="[G22] SupplyChainTampering_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/SupplyChainTamperingRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Denial-of-Service (DoS) Attacks" ID="[G23] Denial-of-Service (DoS) Attacks" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="DoSAttackInterface" ID="[G23] DoSAttack_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/DoSAttackRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Network-Based DoS" ID="[G24] Network-Based DoS" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="NetworkDoSInterface" ID="[G24] NetworkDoS_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/NetworkDoSRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Resource Exhaustion on IVI" ID="[G25] Resource Exhaustion on IVI" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.0</Value>
+      </Attribute>
+      <ExternalInterface Name="ResourceExhaustionInterface" ID="[G25] ResourceExhaustion_ExtIf">
+        <SupportedRoleClass RefRoleClassPath="RoleClassLib/ResourceExhaustionRole"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <!-- Internal Links -->
+    <InternalLink Name="U01_A01">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A01] MaliciousMediaFile_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A01_V01">
+      <RefPartnerSideA>[A01] MaliciousMediaFile_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V01] MediaParserVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V01_G02">
+      <RefPartnerSideA>[V01] MediaParserVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G02] IVIVulnExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G02_G01">
+      <RefPartnerSideA>[G02] IVIVulnExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G01] IVIOSCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G01_G00">
+      <RefPartnerSideA>[G01] IVIOSCompromise_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A02">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A02] USBDebug_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A02_V02">
+      <RefPartnerSideA>[A02] USBDebug_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V02] KernelExploitVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V02_G02">
+      <RefPartnerSideA>[V02] KernelExploitVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G02] IVIVulnExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A03">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A03] DebugPort_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A03_V03">
+      <RefPartnerSideA>[A03] DebugPort_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V03] APIAccessVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V03_G02">
+      <RefPartnerSideA>[V03] APIAccessVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G02] IVIVulnExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A04">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A04] OTAUpdate_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A04_V04">
+      <RefPartnerSideA>[A04] OTAUpdate_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V04] SecureBootVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V04_G03">
+      <RefPartnerSideA>[V04] SecureBootVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G03] MaliciousFirmware_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G03_G01">
+      <RefPartnerSideA>[G03] MaliciousFirmware_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G01] IVIOSCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A05">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A05] USBFirmware_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A05_V04">
+      <RefPartnerSideA>[A05] USBFirmware_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V04] SecureBootVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A06">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A06] OBDII_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A06_V05">
+      <RefPartnerSideA>[A06] OBDII_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V05] CANAuthVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V05_G05">
+      <RefPartnerSideA>[V05] CANAuthVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G05] CANFrameInjection_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G05_G04">
+      <RefPartnerSideA>[G05] CANFrameInjection_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G04] CANInjection_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G04_G00">
+      <RefPartnerSideA>[G04] CANInjection_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_H01">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[H01] CompromisedIVI_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="H01_A07">
+      <RefPartnerSideA>[H01] CompromisedIVI_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A07] CANGateway_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A07_V05">
+      <RefPartnerSideA>[A07] CANGateway_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V05] CANAuthVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A08">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A08] ECU_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A08_V06">
+      <RefPartnerSideA>[A08] ECU_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V06] CANFloodVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V06_G06">
+      <RefPartnerSideA>[V06] CANFloodVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G06] CANDoS_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G06_G04">
+      <RefPartnerSideA>[G06] CANDoS_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G04] CANInjection_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A09">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A09] CellularTower_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A09_V07">
+      <RefPartnerSideA>[A09] CellularTower_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V07] RCEVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V07_G08">
+      <RefPartnerSideA>[V07] RCEVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G08] TCUVulnExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G08_G07">
+      <RefPartnerSideA>[G08] TCUVulnExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G07] TCUCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G07_G00">
+      <RefPartnerSideA>[G07] TCUCompromise_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A10">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A10] WiFiAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A10_V07">
+      <RefPartnerSideA>[A10] WiFiAttack_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V07] RCEVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A11">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A11] MITM_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A11_V08">
+      <RefPartnerSideA>[A11] MITM_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V08] OTAVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V08_G09">
+      <RefPartnerSideA>[V08] OTAVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G09] OTATampering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G09_G07">
+      <RefPartnerSideA>[G09] OTATampering_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G07] TCUCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A12">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A12] SupplyChain_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A12_H02">
+      <RefPartnerSideA>[A12] SupplyChain_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[H02] CompromisedUpdateServer_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="H02_G09">
+      <RefPartnerSideA>[H02] CompromisedUpdateServer_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G09] OTATampering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A13">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A13] BluetoothAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A13_V09">
+      <RefPartnerSideA>[A13] BluetoothAttack_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V09] BlueBorneVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V09_G11">
+      <RefPartnerSideA>[V09] BlueBorneVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G11] BluetoothExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G11_G10">
+      <RefPartnerSideA>[G11] BluetoothExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G10] ExternalInterfaceExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G10_G00">
+      <RefPartnerSideA>[G10] ExternalInterfaceExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A14">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A14] FakePairing_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A14_V10">
+      <RefPartnerSideA>[A14] FakePairing_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V10] BluetoothPairingVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V10_G11">
+      <RefPartnerSideA>[V10] BluetoothPairingVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G11] BluetoothExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A15">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A15] WiFiTheft_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A15_V11">
+      <RefPartnerSideA>[A15] WiFiTheft_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V11] WPA3Vuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V11_G12">
+      <RefPartnerSideA>[V11] WPA3Vuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G12] WiFiExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G12_G10">
+      <RefPartnerSideA>[G12] WiFiExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G10] ExternalInterfaceExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A16">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A16] USBDevice_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A16_V12">
+      <RefPartnerSideA>[A16] USBDevice_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V12] BadUSBVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V12_G13">
+      <RefPartnerSideA>[V12] BadUSBVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G13] USBExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G13_G10">
+      <RefPartnerSideA>[G13] USBExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G10] ExternalInterfaceExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A17">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A17] DiagnosticUSB_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A17_V13">
+      <RefPartnerSideA>[A17] DiagnosticUSB_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V13] USBFlashVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V13_G13">
+      <RefPartnerSideA>[V13] USBFlashVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G13] USBExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A18">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A18] APIAccess_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A18_V14">
+      <RefPartnerSideA>[A18] APIAccess_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V14] IDORVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V14_G15">
+      <RefPartnerSideA>[V14] IDORVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G15] APIExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G15_G14">
+      <RefPartnerSideA>[G15] APIExploit_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G14] CloudBackendCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G14_G00">
+      <RefPartnerSideA>[G14] CloudBackendCompromise_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A19">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A19] Phishing_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A19_V15">
+      <RefPartnerSideA>[A19] Phishing_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V15] JWTVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V15_G15">
+      <RefPartnerSideA>[V15] JWTVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G15] APIExploit_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A20">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A20] BackendAccess_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A20_H03">
+      <RefPartnerSideA>[A20] BackendAccess_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[H03] InsiderThreat_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="H03_G16">
+      <RefPartnerSideA>[H03] InsiderThreat_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G16] BackendInfraCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G16_G14">
+      <RefPartnerSideA>[G16] BackendInfraCompromise_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G14] CloudBackendCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A21">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A21] MaliciousApp_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A21_H04">
+      <RefPartnerSideA>[A21] MaliciousApp_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[H04] VendorBreach_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="H04_G16">
+      <RefPartnerSideA>[H04] VendorBreach_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G16] BackendInfraCompromise_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A22">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A22] DebugMode_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A22_V16">
+      <RefPartnerSideA>[A22] DebugMode_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V16] FakeUpdateVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V16_G18">
+      <RefPartnerSideA>[V16] FakeUpdateVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G18] UISpoofing_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G18_G17">
+      <RefPartnerSideA>[G18] UISpoofing_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G17] SocialEngineering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G17_G00">
+      <RefPartnerSideA>[G17] SocialEngineering_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A23">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A23] VoiceCommand_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A23_V17">
+      <RefPartnerSideA>[A23] VoiceCommand_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V17] VoiceCommandVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V17_G19">
+      <RefPartnerSideA>[V17] VoiceCommandVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G19] VoiceCommandInjection_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G19_G17">
+      <RefPartnerSideA>[G19] VoiceCommandInjection_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G17] SocialEngineering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A24">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A24] PhysicalAccess_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A24_V18">
+      <RefPartnerSideA>[A24] PhysicalAccess_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V18] JTAGVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V18_G21">
+      <RefPartnerSideA>[V18] JTAGVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G21] HardwareTampering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G21_G20">
+      <RefPartnerSideA>[G21] HardwareTampering_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G20] PhysicalAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G20_G00">
+      <RefPartnerSideA>[G20] PhysicalAttack_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A25">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A25] TamperedHardware_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A25_H05">
+      <RefPartnerSideA>[A25] TamperedHardware_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[H05] SupplyChainTampering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="H05_G22">
+      <RefPartnerSideA>[H05] SupplyChainTampering_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G22] SupplyChainTampering_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G22_G20">
+      <RefPartnerSideA>[G22] SupplyChainTampering_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G20] PhysicalAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A26">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A26] DDoS_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A26_V19">
+      <RefPartnerSideA>[A26] DDoS_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V19] FloodingVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V19_G24">
+      <RefPartnerSideA>[V19] FloodingVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G24] NetworkDoS_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G24_G23">
+      <RefPartnerSideA>[G24] NetworkDoS_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G23] DoSAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G23_G00">
+      <RefPartnerSideA>[G23] DoSAttack_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G00] IVIDisruption_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="U01_A27">
+      <RefPartnerSideA>[U01] Attacker_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[A27] InfiniteLoop_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="A27_V20">
+      <RefPartnerSideA>[A27] InfiniteLoop_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[V20] ResourceExhaustionVuln_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="V20_G25">
+      <RefPartnerSideA>[V20] ResourceExhaustionVuln_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G25] ResourceExhaustion_ExtIf</RefPartnerSideB>
+    </InternalLink>
+    <InternalLink Name="G25_G23">
+      <RefPartnerSideA>[G25] ResourceExhaustion_ExtIf</RefPartnerSideA>
+      <RefPartnerSideB>[G23] DoSAttack_ExtIf</RefPartnerSideB>
+    </InternalLink>
+  </InstanceHierarchy>
+
+  <InterfaceClassLib Name="ConnectionBetnAssets">
+    <Version>0</Version>
+    <InterfaceClass Name="Network" />
+    <InterfaceClass Name="Logic" />
+    <InterfaceClass Name="User" />
+    <InterfaceClass Name="HazardRef" />
+    <InterfaceClass Name="VulnerabilityRef" />
+  </InterfaceClassLib>
+
+  <RoleClassLib Name="RoleClassLib">
+    <Version>0</Version>
+    <RoleClass Name="AttackerRole" />
+    <RoleClass Name="MediaFileRole" />
+    <RoleClass Name="USBDebugRole" />
+    <RoleClass Name="DebugPortRole" />
+    <RoleClass Name="OTAUpdateRole" />
+    <RoleClass Name="USBFirmwareRole" />
+    <RoleClass Name="OBDIIRole" />
+    <RoleClass Name="CANGatewayRole" />
+    <RoleClass Name="ECURole" />
+    <RoleClass Name="CellularTowerRole" />
+    <RoleClass Name="WiFiAttackRole" />
+    <RoleClass Name="MITMRole" />
+    <RoleClass Name="SupplyChainRole" />
+    <RoleClass Name="BluetoothAttackRole" />
+    <RoleClass Name="FakePairingRole" />
+    <RoleClass Name="WiFiTheftRole" />
+    <RoleClass Name="USBDeviceRole" />
+    <RoleClass Name="DiagnosticUSBRole" />
+    <RoleClass Name="APIAccessRole" />
+    <RoleClass Name="PhishingRole" />
+    <RoleClass Name="BackendAccessRole" />
+    <RoleClass Name="MaliciousAppRole" />
+    <RoleClass Name="DebugModeRole" />
+    <RoleClass Name="VoiceCommandRole" />
+    <RoleClass Name="PhysicalAccessRole" />
+    <RoleClass Name="TamperedHardwareRole" />
+    <RoleClass Name="DDoSRole" />
+    <RoleClass Name="InfiniteLoopRole" />
+    <RoleClass Name="MediaParserVulnRole" />
+    <RoleClass Name="KernelExploitVulnRole" />
+    <RoleClass Name="APIAccessVulnRole" />
+    <RoleClass Name="SecureBootVulnRole" />
+    <RoleClass Name="CANAuthVulnRole" />
+    <RoleClass Name="CANFloodVulnRole" />
+    <RoleClass Name="RCEVulnRole" />
+    <RoleClass Name="OTAVulnRole" />
+    <RoleClass Name="BlueBorneVulnRole" />
+    <RoleClass Name="BluetoothPairingVulnRole" />
+    <RoleClass Name="WPA3VulnRole" />
+    <RoleClass Name="BadUSBVulnRole" />
+    <RoleClass Name="USBFlashVulnRole" />
+    <RoleClass Name="IDORVulnRole" />
+    <RoleClass Name="JWTVulnRole" />
+    <RoleClass Name="FakeUpdateVulnRole" />
+    <RoleClass Name="VoiceCommandVulnRole" />
+    <RoleClass Name="JTAGVulnRole" />
+    <RoleClass Name="FloodingVulnRole" />
+    <RoleClass Name="ResourceExhaustionVulnRole" />
+    <RoleClass Name="CompromisedIVIRole" />
+    <RoleClass Name="CompromisedUpdateServerRole" />
+    <RoleClass Name="InsiderThreatRole" />
+    <RoleClass Name="VendorBreachRole" />
+    <RoleClass Name="SupplyChainTamperingRole" />
+    <RoleClass Name="IVIDisruptionRole" />
+    <RoleClass Name="IVIVulnExploitRole" />
+    <RoleClass Name="IVIOSCompromiseRole" />
+    <RoleClass Name="MaliciousFirmwareRole" />
+    <RoleClass Name="CANInjectionRole" />
+    <RoleClass Name="CANFrameInjectionRole" />
+    <RoleClass Name="CANDoSRole" />
+    <RoleClass Name="TCUCompromiseRole" />
+    <RoleClass Name="TCUVulnExploitRole" />
+    <RoleClass Name="OTATamperingRole" />
+    <RoleClass Name="ExternalInterfaceExploitRole" />
+    <RoleClass Name="BluetoothExploitRole" />
+    <RoleClass Name="WiFiExploitRole" />
+    <RoleClass Name="USBExploitRole" />
+    <RoleClass Name="CloudBackendCompromiseRole" />
+    <RoleClass Name="APIExploitRole" />
+    <RoleClass Name="BackendInfraCompromiseRole" />
+    <RoleClass Name="SocialEngineeringRole" />
+    <RoleClass Name="UISpoofingRole" />
+    <RoleClass Name="VoiceCommandInjectionRole" />
+    <RoleClass Name="PhysicalAttackRole" />
+    <RoleClass Name="HardwareTamperingRole" />
+    <RoleClass Name="DoSAttackRole" />
+    <RoleClass Name="NetworkDoSRole" />
+    <RoleClass Name="ResourceExhaustionRole" />
+  </RoleClassLib>
+
+  <SystemUnitClassLib Name="AssetOfICS">
+    <Version>0</Version>
+    <SystemUnitClass Name="Hardware">
+      <SystemUnitClass Name="Machine">
+        <ExternalInterface Name="HardwareInterface" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      </SystemUnitClass>
+    </SystemUnitClass>
+    <SystemUnitClass Name="Software">
+      <SystemUnitClass Name="Application">
+        <ExternalInterface Name="SoftwareInterface" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      </SystemUnitClass>
+    </SystemUnitClass>
+    <SystemUnitClass Name="User">
+      <ExternalInterface Name="UserInterface" RefBaseClassPath="ConnectionBetnAssets/User"/>
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="HazardforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Hazard">
+      <ExternalInterface Name="HazardInterface" RefBaseClassPath="ConnectionBetnAssets/HazardRef"/>
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="VulnerabilityforSystem">
+    <Version>0</Version>
+    <SystemUnitClass Name="Vulnerability">
+      <Attribute Name="CVE" AttributeDataType="xs:string"/>
+      <Attribute Name="CVSS" AttributeDataType="xs:string"/>
+      <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+      <Attribute Name="Attack Name" AttributeDataType="xs:string"/>
+      <ExternalInterface Name="VulnerabilityInterface" RefBaseClassPath="ConnectionBetnAssets/VulnerabilityRef"/>
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <AttributeTypeLib Name="AttributeTypeLib">
+    <Version>0</Version>
+    <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
+      <Attribute Name="Vendor" AttributeDataType="xs:string"/>
+      <Attribute Name="Part" AttributeDataType="xs:string"/>
+      <Attribute Name="Product" AttributeDataType="xs:string"/>
+      <Attribute Name="Version" AttributeDataType="xs:string"/>
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"/>
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float"/>
+      <Attribute Name="Date of first use" AttributeDataType="xs:string"/>
+    </AttributeType>
+    <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
+      <Attribute Name="CVE" AttributeDataType="xs:string"/>
+      <Attribute Name="CVSS" AttributeDataType="xs:string"/>
+      <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+      <Attribute Name="Attack Name" AttributeDataType="xs:string"/>
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string"/>
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"/>
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"/>
+    </AttributeType>
+  </AttributeTypeLib>
+</CAEXFile>
+```
