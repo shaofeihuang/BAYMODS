@@ -78,23 +78,9 @@ def main():
     cve_id = args.cve
     api_key = args.nvd_api_key
 
-    # Retrieve and show EPSS time series and LEV
-    epss_scores = get_epss_time_series(cve_id)
-    if epss_scores:
-        lev_score = calculate_lev(epss_scores)
-        print(f"EPSS time series for {cve_id}: {epss_scores}")
-        print(f"LEV score for {cve_id}: {lev_score:.4f} ({lev_score * 100:.4f}%)")
-    else:
-        lev_score = None
-        print(f"No EPSS time series data available for {cve_id}")
-
-    # Retrieve latest EPSS score
-    latest_epss = get_epss_score(cve_id)
-    if latest_epss:
-        print(f"Latest EPSS score for {cve_id}: {latest_epss}")
-    else:
-        print(f"No latest EPSS score available for {cve_id}")
-
+    print("--------------------------------------------------------")
+    print(f"Vulnerability Scoring for {cve_id}")
+    print("--------------------------------------------------------")
     # Retrieve CVSS score
     try:
         cvss_score = get_cvss_score(cve_id, api_key)
@@ -105,27 +91,54 @@ def main():
     except requests.HTTPError as err:
         print(f"Error retrieving CVSS score: {err}")
 
+    print("--------------------------------------------------------")
+
+    # Retrieve and show EPSS time series
+    epss_scores = get_epss_time_series(cve_id)
+    print(f"EPSS time series for {cve_id}: {epss_scores}")
+  
+    # Retrieve latest EPSS score
+    latest_epss = get_epss_score(cve_id)
+    if latest_epss:
+        print(f"[*] Latest EPSS score for {cve_id}: {latest_epss}")
+    else:
+        print(f"[*]No latest EPSS score available for {cve_id}")
+
+    print("--------------------------------------------------------")
+
+    # Calculate LEV
+    if epss_scores:
+        lev_score = calculate_lev(epss_scores)
+        print(f"LEV score for {cve_id}: {lev_score:.4f} ({lev_score * 100:.4f}%)")
+    else:
+        lev_score = None
+        print(f"No EPSS time series data available for {cve_id}")
+
+    print("--------------------------------------------------------")
+
     # Check KEV status
     kev = check_kev_status(cve_id)
     print(f"Is {cve_id} in KEV catalog?: {'Yes' if kev else 'No'}")
 
-    print("-----------------------------------------------")
+    print("--------------------------------------------------------")
 
-    # Composite Probability
+    # Compute Exploitation Probability
     try:
         if kev:
-            composite = 1.0
-            print(f"Composite Probability for {cve_id} = 1.0 (KEV listed)")
+            finalprob = 1.0
+            print(f"[*] Exploitation Probability for {cve_id} = 1.0 (KEV listed)")
         else:
             if lev_score is not None and (latest_epss is None or lev_score > float(latest_epss)):
-                composite = lev_score
+                finalprob = lev_score
             elif latest_epss is not None:
-                composite = float(latest_epss)
+                finalprob = float(latest_epss)
             else:
-                composite = "N/A"
-            print(f"Composite Probability for {cve_id} = {composite:.4f}")
+                finalprob = "N/A"
+            print(f"[*] Exploitation Probability for {cve_id} = {finalprob:.4f}")
     except Exception as e:
-        print(f"Error calculating composite probability: {e}")
+        print(f"Error calculating exploitation probability: {e}")
+
+    print("--------------------------------------------------------")
 
 if __name__ == "__main__":
     main()
