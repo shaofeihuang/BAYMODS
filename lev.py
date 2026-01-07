@@ -1,5 +1,6 @@
 import requests
 import argparse
+from datetime import datetime
 
 def get_epss_score(cve_id):
     url = f"https://api.first.org/data/v1/epss?cve={cve_id}"
@@ -80,7 +81,9 @@ def main():
 
     print("--------------------------------------------------------")
     print(f"Vulnerability Scoring for {cve_id}")
+    print("Date:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("--------------------------------------------------------")
+
     # Retrieve CVSS score
     try:
         cvss_score = get_cvss_score(cve_id, api_key)
@@ -93,16 +96,16 @@ def main():
 
     print("--------------------------------------------------------")
 
-    # Retrieve and show EPSS time series
+    # Retrieve and display EPSS time series
     epss_scores = get_epss_time_series(cve_id)
     print(f"EPSS time series for {cve_id}: {epss_scores}")
   
-    # Retrieve latest EPSS score
+    # Display latest EPSS score
     latest_epss = get_epss_score(cve_id)
     if latest_epss:
         print(f"[*] Latest EPSS score for {cve_id}: {latest_epss}")
     else:
-        print(f"[*]No latest EPSS score available for {cve_id}")
+        print(f"[*] No latest EPSS score available for {cve_id}")
 
     print("--------------------------------------------------------")
 
