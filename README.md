@@ -71,14 +71,14 @@ BAYMODS/
 ├── logo.png          # Application logo
 ├── requirements.txt  # Python package dependencies (optional)
 ├── examples/         # Example attack model files
-│   ├── BlackEnergy.aml
+    ├── BlackEnergy.aml
     ├── Frosty-Goop.aml
-        ├── Generic_CPS.aml
+    ├── Generic_CPS.aml
     ├── Railway-CBTC.aml
-                ├── Smart-Healthcare.aml
-                    ├── Solar-PV-Inverter.aml
-                        ├── Stuxnet.aml
-                            └── Tesla-IVI.aml
+    ├── Smart-Healthcare.aml
+    ├── Solar-PV-Inverter.aml
+    ├── Stuxnet.aml
+    └── Tesla-IVI.aml
 
 ## File Format
 
