@@ -1,3 +1,5 @@
+<img src="logo.png" alt="BAYMODS" width="140" height="140" style="display: block; margin: 0 auto 20px;">
+
 # BAYMODS (Bayesian and Multi-Objective Decision Support)
 
 ## Overview
