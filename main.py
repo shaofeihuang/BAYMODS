@@ -27,12 +27,8 @@ if __name__ == "__main__":
 
     with tab1:
         st.title("Probabilistic Risk Analysis")
-        st.markdown("""
-        This module performs probabilistic risk analysis using Bayesian Networks to compute the likelihood of successful attacks, serious impacts, and overall risk scores based on the provided system model.
-        """)
-        st.markdown("""
-        **Note:** If you encounter "ValueError: Node Attacker not in graph", please ensure that the Attacker ID you selected matches the one defined in your AutomationML file.
-        """)
+        st.info("This module performs probabilistic risk analysis using Bayesian Networks to compute the likelihood of successful attacks, serious impacts, and overall risk scores based on the provided system model.")
+        st.warning("If you encounter \"ValueError: Node Attacker not in graph\", please ensure that the Attacker ID you selected matches the one defined in your AutomationML file.")
         st.markdown("""---""")
 
         uploaded_aml = st.file_uploader("Upload your AutomationML file", type=["aml", "xml"])
