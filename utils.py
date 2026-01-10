@@ -1,19 +1,27 @@
-import streamlit as st
-import numpy as np
-import pandas as pd
-import xml.etree.ElementTree as ET
-import networkx as nx
-import matplotlib.pyplot as plt
-import re, os, csv, json, pickle, glob, ast
+# Standard library imports
+import csv
+import json
 import math
-import optuna
-from datetime import date, datetime
-from dataclasses import dataclass, field
+import os
+import dill
+import re
 from collections import defaultdict
-from pgmpy.models import DiscreteBayesianNetwork
+from dataclasses import dataclass, field
+from datetime import date, datetime
+import xml.etree.ElementTree as ET
+
+# Third-party library imports
+import matplotlib.pyplot as plt
+import networkx as nx
+import numpy as np
+import optuna
+import streamlit as st
+
+# pgmpy imports
 from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import VariableElimination
-from concurrent.futures import ProcessPoolExecutor
+from pgmpy.models import DiscreteBayesianNetwork
+
 
 ns = {'caex': 'http://www.dke.de/CAEX'}
 
@@ -357,10 +365,6 @@ def generate_cpd_values_exposure(node_context: NodeContext, NodeType: str):
         if ref_base_for_node.startswith ('AssetOfICS/'):
             probability_of_failure_for_node = node_context.matching_asset_nodes[0]['Probability of Failure']
 
-###########################################################################################################
-#   Scaling Algorithm
-###########################################################################################################
-
             connections_from_to = defaultdict(list)
 
             for connection in aml_data.connections_mapped:
@@ -387,9 +391,6 @@ def generate_cpd_values_exposure(node_context: NodeContext, NodeType: str):
                 if num_vulns > 0:
                     scaling_factor = 1.0 / num_vulns
                     probability_of_failure_for_node = min(1.0, scaling_factor * sum_mitigation)
-                    #print("Asset:", asset, "Probability of failure:", probability_of_failure_for_node)
-
-###########################################################################################################
 
             if probability_of_failure_for_node:
                 poff = float(probability_of_failure_for_node)
@@ -415,7 +416,6 @@ def generate_cpd_values_exposure(node_context: NodeContext, NodeType: str):
 
     cpd_values /= np.sum(cpd_values, axis=0)  # Normalize the CPD values
     return cpd_values.reshape((2, -1))
-
 
 def generate_cpd_values_impact(node, node_context: NodeContext, NodeType: str):
     num_states = 2
@@ -472,14 +472,12 @@ def generate_cpd_values_impact(node, node_context: NodeContext, NodeType: str):
     cpd_values /= np.sum(cpd_values, axis=0)  # Normalize the CPD values
     return cpd_values.reshape((2, -1))
 
-
 def shortest_path_length(graph, start_node, end_node):
     try:
         length = nx.shortest_path_length(graph, source=start_node, target=end_node)
         return length
     except nx.NetworkXNoPath:
         return float('inf')
-
 
 def create_bbn_exposure():
     cpds = {}
@@ -525,7 +523,6 @@ def create_bbn_exposure():
 #    print("\n[*] Last node in BBN:", last_node)
 
     return bbn_exposure, last_node
-
 
 def create_bbn_impact(bbn_exposure):
     cpds = {}
@@ -591,7 +588,6 @@ def compute_risk_score():
     st.info(f"Posterior Probability of Impact: {cpd_impact}")
     st.info(f"Risk Score: {risk_score:.2f} %")
     display_metrics()
-
 
 def check_bbn_models(bbn_exposure, bbn_impact):
     st.write("[*] Checking BBN (Exposure) structure consistency:", bbn_exposure.check_model())
@@ -723,7 +719,7 @@ def objective(trial):
 
     with open("session.json", "rb") as f:
         try:
-            data = pickle.load(f)
+            data = dill.load(f)
             st.session_state.update(data)
         except json.JSONDecodeError:
             st.session_state = {}

@@ -1,3 +1,17 @@
+# Standard library imports
+import ast
+import concurrent.futures
+from dataclasses import dataclass, field
+import datetime
+import dill
+import glob
+import os
+
+# Third-party imports
+import pandas as pd
+import streamlit as st
+
+# Local application imports
 from utils import *
 
 st.session_state['af_modifier_input'] = 0.1 # Attack Feasibility Modifier
@@ -17,7 +31,7 @@ if __name__ == "__main__":
         """)
         st.session_state['start_node'] = st.selectbox(
             "Attacker ID in the system model",
-            ("Attacker", "[U01] Attacker", "User"),
+            ("[U01] Attacker", "Attacker", "User"),
             index=0,
             placeholder="Select or enter attacker ID",
             accept_new_options=True,
@@ -36,7 +50,7 @@ if __name__ == "__main__":
         if uploaded_aml is not None:
                 aml_content = uploaded_aml.read().decode("utf-8")
                 st.session_state['aml_file'] = aml_content
-                st.success("AutomationML file uploaded successfully.")
+                st.success("AutomationML file uploaded successfully. Next step: Confirm attacker ID and compute risk score.")
 
         if st.button("Compute Risk Score"):
             load_model_attributes()
@@ -44,13 +58,13 @@ if __name__ == "__main__":
                 key: st.session_state[key]
                 for key in st.session_state.keys()
             }
-            print (saved_session_state.keys())
+            #print (saved_session_state.keys())
             with open("session.json", "wb") as f:
-                pickle.dump(saved_session_state, f)
+                dill.dump(saved_session_state, f)
 
             compute_risk_score()
 
-            st.success("Risk assessment completed!")
+            st.success("Risk assessment completed! You can now proceed to the Multi-Objective Optimisation tab.")
 
     with tab2:
         st.title("Multi-Objective Optimisation")
@@ -60,9 +74,9 @@ if __name__ == "__main__":
         n_trials = st.number_input("Number of Trials per Run", min_value=10, max_value=10000, value=1000, step=10)
         n_runs = st.number_input("Number of Optimisation Runs", min_value=1, max_value=20, value=1, step=1)
         if 'aml_data' in st.session_state:
-            st.write("Number of vulnerabilitiies detected in model: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
-        graph = st.checkbox("Show Optimisation Graph", value=False)
-        verbose = st.checkbox("Verbose Console Output", value=True)
+            st.info("Number of vulnerabilitiies detected in model: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
+            verbose = st.checkbox("Verbose Console Output", value=True)
+            graph = st.checkbox("Show Optimisation Graph", value=False)
 
         if st.button("Start Optimisation"):
             files_to_remove = glob.glob("results-*.csv")
@@ -81,7 +95,7 @@ if __name__ == "__main__":
             start_time = datetime.now()
 
             with st.spinner("Optimisation in progress... This may take several minutes."):
-                with ProcessPoolExecutor() as executor:
+                with concurrent.futures.ProcessPoolExecutor() as executor:
                     futures = [
                         executor.submit(run_study, n_trials, graph, verbose, st.session_state['output_filename'])
                         for run in range(n_runs)
