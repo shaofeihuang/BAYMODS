@@ -1,3 +1,5 @@
+<img src="logo.png" alt="BAYMODS" width="140" height="140" style="display: block; margin: 0 auto 20px;">
+
 # BAYMODS (Bayesian and Multi-Objective Decision Support)
 
 ## Overview
@@ -39,6 +41,25 @@ Or install all dependencies at once:
 pip install streamlit pgmpy pandas networkx matplotlib numpy scipy optuna
 ```
 
+Alternatively, create a `requirements.txt` file with the following content:
+
+```
+streamlit>=1.28.0
+pgmpy>=0.1.23
+pandas>=2.0.0
+networkx>=3.0
+matplotlib>=3.7.0
+numpy>=1.24.0
+scipy>=1.10.0
+optuna>=3.0.0
+```
+
+Then install using:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Usage
 
 ### Running the Application
@@ -74,9 +95,12 @@ streamlit run main.py
 
 ```
 BAYMODS/
+├── .gitignore        # Git ignore file
+├── LICENSE           # MIT License
 ├── main.py           # Main Streamlit application
 ├── utils.py          # Utility functions for Bayesian Network operations
 ├── logo.png          # Application logo
+├── requirements.txt  # Python package dependencies (optional)
 ├── examples/         # Example attack model files
 │   ├── BlackEnergy.aml
 │   ├── Generic_CPS.aml
