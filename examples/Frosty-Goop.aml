@@ -1,0 +1,1456 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<CAEXFile SchemaVersion="3.0" FileName="cps.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+  <InstanceHierarchy Name="Assets">
+    <Version>1.0</Version>
+    <InternalElement Name="Building Management System (BMS) with Weak Authentication" ID="[A01] Building Management System (BMS) with Weak Authentication" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Siemens</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>BMS-2000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Building Management System</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.2.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0001</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-01-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="BMS_Interface" ID="[A01] BMS_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A01] Building Management System (BMS) with Weak Authentication"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Wireless Field Devices (Sensors/Actuators)" ID="[A02] Wireless Field Devices (Sensors/Actuators)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Honeywell</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>WFD-500</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Wireless Field Device</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.1.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.85</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-05-10</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WirelessFieldDevices_Interface" ID="[A02] WirelessFieldDevices_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A02] Wireless Field Devices (Sensors/Actuators)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Programmable Logic Controllers (PLCs) with Modifiable Logic" ID="[A03] Programmable Logic Controllers (PLCs) with Modifiable Logic" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Schneider Electric</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PLC-1000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Programmable Logic Controller</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>4.3.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00005</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-11-20</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PLCs_Interface" ID="[A03] PLCs_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A03] Programmable Logic Controllers (PLCs) with Modifiable Logic"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Human-Machine Interfaces (HMIs) with Manual Override Capabilities" ID="[A05] Human-Machine Interfaces (HMIs) with Manual Override Capabilities" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Rockwell Automation</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>HMI-3000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Human-Machine Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>5.0.1</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00015</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.92</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-03-05</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="HMIs_Interface" ID="[A05] HMIs_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A05] Human-Machine Interfaces (HMIs) with Manual Override Capabilities"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Historian Databases Storing Process Logs/Audit Trails" ID="[A06] Historian Databases Storing Process Logs/Audit Trails" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>OSIsoft</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PI-Historian</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Historian Database</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2018 R2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00008</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.88</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-09-12</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="Historian_Interface" ID="[A06] Historian_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A06] Historian Databases Storing Process Logs/Audit Trails"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="PLC Event Logs or Time Synchronization Records" ID="[A07] PLC Event Logs or Time Synchronization Records" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Siemens</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PLC-Logs</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>PLC Event Logs</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.5.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00007</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.82</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-07-18</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PLC_Logs_Interface" ID="[A07] PLC_Logs_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A07] PLC Event Logs or Time Synchronization Records"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="HMI Web Interface with Sensitive Configuration Data" ID="[A08] HMI Web Interface with Sensitive Configuration Data" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>GE Digital</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>HMI-Web</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>HMI Web Interface</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>3.1.4</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00012</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.87</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-02-28</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="HMI_Web_Interface" ID="[A08] HMI_Web_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A08] HMI Web Interface with Sensitive Configuration Data"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Engineering Workstations with Project Files/Backups" ID="[A09] Engineering Workstations with Project Files/Backups" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Dell</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>EW-2000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Engineering Workstation</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2.4.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00018</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.91</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-12-03</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="EngineeringWorkstations_Interface" ID="[A09] EngineeringWorkstations_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A09] Engineering Workstations with Project Files/Backups"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Industrial Switches/Routers Connecting OT Networks" ID="[A10] Industrial Switches/Routers Connecting OT Networks" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Cisco</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>ISR-4000</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Industrial Switch/Router</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>16.9.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00009</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.93</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-08-22</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SwitchesRouters_Interface" ID="[A10] SwitchesRouters_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A10] Industrial Switches/Routers Connecting OT Networks"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="PLCs with Limited Processing/Memory Resources" ID="[A11] PLCs with Limited Processing/Memory Resources" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>ABB</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>PLC-Lite</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Limited Resource PLC</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>1.2.5</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00025</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.89</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-06-14</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="LimitedPLCs_Interface" ID="[A11] LimitedPLCs_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A11] PLCs with Limited Processing/Memory Resources"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Engineering Software with Hardcoded Credentials" ID="[A12] Engineering Software with Hardcoded Credentials" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>AVEVA</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>ES-2020</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Engineering Software</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>10.1.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00011</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.94</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2019-04-19</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="EngineeringSoftware_Interface" ID="[A12] EngineeringSoftware_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A12] Engineering Software with Hardcoded Credentials"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Shared IT/OT Active Directory with Weak Segmentation" ID="[A13] Shared IT/OT Active Directory with Weak Segmentation" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Microsoft</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>AD-2019</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Active Directory</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2019 LTSC</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00006</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.96</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2018-10-11</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="AD_Interface" ID="[A13] AD_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A13] Shared IT/OT Active Directory with Weak Segmentation"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Flat Network Between IT and OT (Lack of Segmentation)" ID="[A14] Flat Network Between IT and OT (Lack of Segmentation)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Generic</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>Flat-Net</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Flat Network</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0003</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.97</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2017-01-05</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FlatNetwork_Interface" ID="[A14] FlatNetwork_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A14] Flat Network Between IT and OT (Lack of Segmentation)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Remote Access Gateways (VPN/RDP) with Excessive Permissions" ID="[A15] Remote Access Gateways (VPN/RDP) with Excessive Permissions" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Palo Alto</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>RAG-2021</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Remote Access Gateway</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>9.1.3</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00013</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-11-30</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="RemoteAccess_Interface" ID="[A15] RemoteAccess_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A15] Remote Access Gateways (VPN/RDP) with Excessive Permissions"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Third-Party Firmware Updates for PLCs/RTUs" ID="[A16] Third-Party Firmware Updates for PLCs/RTUs" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Third-Party</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>FW-Update</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Firmware Update</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>2021.2</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.0002</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.86</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2021-05-15</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FirmwareUpdates_Interface" ID="[A16] FirmwareUpdates_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A16] Third-Party Firmware Updates for PLCs/RTUs"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Vendor-Provided Engineering Tools with Vulnerabilities" ID="[A17] Vendor-Provided Engineering Tools with Vulnerabilities" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string">
+          <Value>Siemens</Value>
+        </Attribute>
+        <Attribute Name="Part" AttributeDataType="xs:string">
+          <Value>TIA-Portal</Value>
+        </Attribute>
+        <Attribute Name="Product" AttributeDataType="xs:string">
+          <Value>Engineering Tool</Value>
+        </Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string">
+          <Value>17.0</Value>
+        </Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float">
+          <Value>0.00014</Value>
+        </Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+          <Value>0.92</Value>
+        </Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string">
+          <Value>2020-09-25</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="EngineeringTools_Interface" ID="[A17] EngineeringTools_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[A17] Vendor-Provided Engineering Tools with Vulnerabilities"/>
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Users">
+    <Version>1.0</Version>
+    <InternalElement Name="Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
+        <Value>100</Value>
+      </Attribute>
+      <ExternalInterface Name="Attacker_Interface" ID="[U01] Attacker_Interface" RefBaseClassPath="ConnectionBetnAssets/User">
+        <RefPartnerSideA rdf:resource="#[U01] Attacker"/>
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Vulnerabilities">
+    <Version>1.0</Version>
+    <InternalElement Name="Exploit CVE-2022-30280 (Authentication Bypass in BMS Protocol)" ID="[V01] Exploit CVE-2022-30280 (Authentication Bypass in BMS Protocol)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2022-30280</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.001</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Authentication Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2022_30280_Interface" ID="[V01] CVE_2022_30280_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V01] Exploit CVE-2022-30280 (Authentication Bypass in BMS Protocol)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Weak Encryption or Default Credentials in Wireless Protocols (Zigbee/LoRaWAN)" ID="[V02] Weak Encryption or Default Credentials in Wireless Protocols (Zigbee/LoRaWAN)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.05</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Weak Wireless Security</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="WeakWireless_Interface" ID="[V02] WeakWireless_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V02] Weak Encryption or Default Credentials in Wireless Protocols (Zigbee/LoRaWAN)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-22893 (Unauthorized PLC Control Logic Modification)" ID="[V03] Exploit CVE-2021-22893 (Unauthorized PLC Control Logic Modification)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-22893</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.01</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>PLC Logic Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2021_22893_Interface" ID="[V03] CVE_2021_22893_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V03] Exploit CVE-2021-22893 (Unauthorized PLC Control Logic Modification)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Tamper with PLC Firmware via Supply Chain or Physical Access" ID="[V04] Tamper with PLC Firmware via Supply Chain or Physical Access" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.005</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Firmware Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="FirmwareTampering_Interface" ID="[V04] FirmwareTampering_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V04] Tamper with PLC Firmware via Supply Chain or Physical Access"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Weak HMI Authentication or Session Hijacking" ID="[V05] Exploit Weak HMI Authentication or Session Hijacking" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.02</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>HMI Session Hijacking</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="HMISessionHijacking_Interface" ID="[V05] HMISessionHijacking_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V05] Exploit Weak HMI Authentication or Session Hijacking"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2020-14859 (Unauthorized Access to Log Files)" ID="[V06] Exploit CVE-2020-14859 (Unauthorized Access to Log Files)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2020-14859</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.008</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Log Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2020_14859_Interface" ID="[V06] CVE_2020_14859_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V06] Exploit CVE-2020-14859 (Unauthorized Access to Log Files)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoof NTP/PTP Time Synchronization for PLCs" ID="[V07] Spoof NTP/PTP Time Synchronization for PLCs" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.015</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Time Spoofing</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.7</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="TimeSpoofing_Interface" ID="[V07] TimeSpoofing_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V07] Spoof NTP/PTP Time Synchronization for PLCs"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-31956 (Information Disclosure in Web Interface)" ID="[V08] Exploit CVE-2021-31956 (Information Disclosure in Web Interface)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-31956</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.02</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Information Disclosure</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2021_31956_Interface" ID="[V08] CVE_2021_31956_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V08] Exploit CVE-2021-31956 (Information Disclosure in Web Interface)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Access Unsecured PLC Project Files or Backups" ID="[V09] Access Unsecured PLC Project Files or Backups" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.01</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Project File Theft</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ProjectFileTheft_Interface" ID="[V09] ProjectFileTheft_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V09] Access Unsecured PLC Project Files or Backups"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-31957 (DoS in Network Devices)" ID="[V10] Exploit CVE-2021-31957 (DoS in Network Devices)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-31957</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.03</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Network DoS</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2021_31957_Interface" ID="[V10] CVE_2021_31957_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V10] Exploit CVE-2021-31957 (DoS in Network Devices)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Send Rapid/Faulty Commands to Exhaust PLC Resources" ID="[V11] Send Rapid/Faulty Commands to Exhaust PLC Resources" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.02</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>PLC Resource Exhaustion</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.9</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="PLCResourceExhaustion_Interface" ID="[V11] PLCResourceExhaustion_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V11] Send Rapid/Faulty Commands to Exhaust PLC Resources"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit CVE-2021-31958 (Privilege Escalation in Engineering Software)" ID="[V12] Exploit CVE-2021-31958 (Privilege Escalation in Engineering Software)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>CVE-2021-31958</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.01</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Privilege Escalation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="CVE_2021_31958_Interface" ID="[V12] CVE_2021_31958_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V12] Exploit CVE-2021-31958 (Privilege Escalation in Engineering Software)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Misconfigured AD Group Policies or Kerberoasting" ID="[V13] Exploit Misconfigured AD Group Policies or Kerberoasting" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.04</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>AD Privilege Escalation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ADPrivilegeEscalation_Interface" ID="[V13] ADPrivilegeEscalation_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V13] Exploit Misconfigured AD Group Policies or Kerberoasting"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Lack of VLANs/Firewalls Between Purdue Levels" ID="[V14] Exploit Lack of VLANs/Firewalls Between Purdue Levels" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.05</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Network Segmentation Bypass</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="NetworkSegmentationBypass_Interface" ID="[V14] NetworkSegmentationBypass_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V14] Exploit Lack of VLANs/Firewalls Between Purdue Levels"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Misconfigured VPN or RDP Access to OT" ID="[V15] Exploit Misconfigured VPN or RDP Access to OT" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.03</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Remote Access Exploitation</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.8</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="RemoteAccessExploitation_Interface" ID="[V15] RemoteAccessExploitation_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V15] Exploit Misconfigured VPN or RDP Access to OT"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Inject Malicious Code into Legitimate Firmware Update" ID="[V16] Inject Malicious Code into Legitimate Firmware Update" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.005</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Supply Chain Compromise</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.3</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainCompromise_Interface" ID="[V16] SupplyChainCompromise_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V16] Inject Malicious Code into Legitimate Firmware Update"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Unsigned or Weakly Signed PLC Project Files" ID="[V17] Exploit Unsigned or Weakly Signed PLC Project Files" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string">
+          <Value>N/A</Value>
+        </Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string">
+          <Value>AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value>
+        </Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string">
+          <Value>0.008</Value>
+        </Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string">
+          <Value>Project File Tampering</Value>
+        </Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:string">
+          <Value>0.95</Value>
+        </Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string">
+          <Value>0.2</Value>
+        </Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string">
+          <Value>0.5</Value>
+        </Attribute>
+      </Attribute>
+      <ExternalInterface Name="ProjectFileTampering_Interface" ID="[V17] ProjectFileTampering_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[V17] Exploit Unsigned or Weakly Signed PLC Project Files"/>
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Hazards">
+    <Version>1.0</Version>
+    <InternalElement Name="Cause Overheating of Critical Equipment (Fire Hazard)" ID="[H02] Cause Overheating of Critical Equipment (Fire Hazard)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="OverheatingHazard_Interface" ID="[H02] OverheatingHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H02] Cause Overheating of Critical Equipment (Fire Hazard)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoof Temperature Readings/Control Commands to PLCs" ID="[H01] Spoof Temperature Readings/Control Commands to PLCs" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="SpoofCommandsHazard_Interface" ID="[H01] SpoofCommandsHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H01] Spoof Temperature Readings/Control Commands to PLCs"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Spoof Wireless Commands to Actuators/Valves" ID="[H03] Spoof Wireless Commands to Actuators/Valves" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.2</Value>
+      </Attribute>
+      <ExternalInterface Name="SpoofWirelessHazard_Interface" ID="[H03] SpoofWirelessHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H03] Spoof Wireless Commands to Actuators/Valves"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Unauthorized Actuation Leading to Process Disruption" ID="[H04] Unauthorized Actuation Leading to Process Disruption" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>7.9</Value>
+      </Attribute>
+      <ExternalInterface Name="UnauthorizedActuationHazard_Interface" ID="[H04] UnauthorizedActuationHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H04] Unauthorized Actuation Leading to Process Disruption"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Alter Heating Setpoints or Control Algorithms" ID="[H05] Alter Heating Setpoints or Control Algorithms" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="AlterSetpointsHazard_Interface" ID="[H05] AlterSetpointsHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H05] Alter Heating Setpoints or Control Algorithms"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Cause Inefficient Heating or System Failure" ID="[H06] Cause Inefficient Heating or System Failure" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>7.3</Value>
+      </Attribute>
+      <ExternalInterface Name="InefficientHeatingHazard_Interface" ID="[H06] InefficientHeatingHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H06] Cause Inefficient Heating or System Failure"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Corrupt PLC Logic Leading to Unpredictable Behavior" ID="[H07] Corrupt PLC Logic Leading to Unpredictable Behavior" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="CorruptLogicHazard_Interface" ID="[H07] CorruptLogicHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H07] Corrupt PLC Logic Leading to Unpredictable Behavior"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Perform Unauthorized Manual Overrides via HMI" ID="[H08] Perform Unauthorized Manual Overrides via HMI" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.8</Value>
+      </Attribute>
+      <ExternalInterface Name="HMIOverrideHazard_Interface" ID="[H08] HMIOverrideHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H08] Perform Unauthorized Manual Overrides via HMI"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Delete or Alter Log Files to Hide Malicious Activity" ID="[H10] Delete or Alter Log Files to Hide Malicious Activity" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>7.6</Value>
+      </Attribute>
+      <ExternalInterface Name="LogTamperingHazard_Interface" ID="[H10] LogTamperingHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H10] Delete or Alter Log Files to Hide Malicious Activity"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disrupt Event Timeline Integrity in Logs" ID="[H12] Disrupt Event Timeline Integrity in Logs" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>7.2</Value>
+      </Attribute>
+      <ExternalInterface Name="TimeDisruptionHazard_Interface" ID="[H12] TimeDisruptionHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H12] Disrupt Event Timeline Integrity in Logs"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exfiltrate User Credentials or System Configurations" ID="[H13] Exfiltrate User Credentials or System Configurations" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.0</Value>
+      </Attribute>
+      <ExternalInterface Name="CredentialTheftHazard_Interface" ID="[H13] CredentialTheftHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H13] Exfiltrate User Credentials or System Configurations"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Steal Proprietary Control Logic or System Designs" ID="[H15] Steal Proprietary Control Logic or System Designs" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.4</Value>
+      </Attribute>
+      <ExternalInterface Name="LogicTheftHazard_Interface" ID="[H15] LogicTheftHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H15] Steal Proprietary Control Logic or System Designs"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disrupt PLC-HMI Communication Leading to System Unresponsiveness" ID="[H16] Disrupt PLC-HMI Communication Leading to System Unresponsiveness" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.9</Value>
+      </Attribute>
+      <ExternalInterface Name="CommunicationDisruptionHazard_Interface" ID="[H16] CommunicationDisruptionHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H16] Disrupt PLC-HMI Communication Leading to System Unresponsiveness"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Crash PLCs or Cause Watchdog Timeouts" ID="[H18] Crash PLCs or Cause Watchdog Timeouts" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="PLCFailureHazard_Interface" ID="[H18] PLCFailureHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H18] Crash PLCs or Cause Watchdog Timeouts"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Full Compromise of Heating Control System" ID="[H20] Achieve Full Compromise of Heating Control System" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.8</Value>
+      </Attribute>
+      <ExternalInterface Name="FullCompromiseHazard_Interface" ID="[H20] FullCompromiseHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H20] Achieve Full Compromise of Heating Control System"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Move Laterally into OT from IT (e.g., via Engineering Workstations)" ID="[H22] Move Laterally into OT from IT (e.g., via Engineering Workstations)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.0</Value>
+      </Attribute>
+      <ExternalInterface Name="LateralMovementHazard_Interface" ID="[H22] LateralMovementHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H22] Move Laterally into OT from IT (e.g., via Engineering Workstations)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Compromise SCADA Server (Level 3) from Enterprise Network (Level 4)" ID="[H24] Compromise SCADA Server (Level 3) from Enterprise Network (Level 4)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.6</Value>
+      </Attribute>
+      <ExternalInterface Name="SCADACompromiseHazard_Interface" ID="[H24] SCADACompromiseHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H24] Compromise SCADA Server (Level 3) from Enterprise Network (Level 4)"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Deploy Malicious Logic to PLCs from Compromised Workstation" ID="[H26] Deploy Malicious Logic to PLCs from Compromised Workstation" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.4</Value>
+      </Attribute>
+      <ExternalInterface Name="MaliciousLogicDeploymentHazard_Interface" ID="[H26] MaliciousLogicDeploymentHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H26] Deploy Malicious Logic to PLCs from Compromised Workstation"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Install Backdoor in PLC Firmware via Supply Chain" ID="[H28] Install Backdoor in PLC Firmware via Supply Chain" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.7</Value>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainBackdoorHazard_Interface" ID="[H28] SupplyChainBackdoorHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H28] Install Backdoor in PLC Firmware via Supply Chain"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Deploy Malicious PLC Project File via Engineering Software" ID="[H30] Deploy Malicious PLC Project File via Engineering Software" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.5</Value>
+      </Attribute>
+      <ExternalInterface Name="MaliciousProjectFileHazard_Interface" ID="[H30] MaliciousProjectFileHazard_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[H30] Deploy Malicious PLC Project File via Engineering Software"/>
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="Goals">
+    <Version>1.0</Version>
+    <InternalElement Name="Achieve Spoofing of Legitimate Commands/Data" ID="[G01] Achieve Spoofing of Legitimate Commands/Data" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.5</Value>
+      </Attribute>
+      <ExternalInterface Name="SpoofingGoal_Interface" ID="[G01] SpoofingGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G01] Achieve Spoofing of Legitimate Commands/Data"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Tampering with Control Logic or Setpoints" ID="[G02] Achieve Tampering with Control Logic or Setpoints" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.0</Value>
+      </Attribute>
+      <ExternalInterface Name="TamperingGoal_Interface" ID="[G02] TamperingGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G02] Achieve Tampering with Control Logic or Setpoints"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Repudiation by Compromising Logging Mechanisms" ID="[G03] Achieve Repudiation by Compromising Logging Mechanisms" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>7.8</Value>
+      </Attribute>
+      <ExternalInterface Name="RepudiationGoal_Interface" ID="[G03] RepudiationGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G03] Achieve Repudiation by Compromising Logging Mechanisms"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Information Disclosure of Sensitive Data" ID="[G04] Achieve Information Disclosure of Sensitive Data" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.2</Value>
+      </Attribute>
+      <ExternalInterface Name="InformationDisclosureGoal_Interface" ID="[G04] InformationDisclosureGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G04] Achieve Information Disclosure of Sensitive Data"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Denial of Service (DoS) in Heating System" ID="[G05] Achieve Denial of Service (DoS) in Heating System" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>8.7</Value>
+      </Attribute>
+      <ExternalInterface Name="DoSGoal_Interface" ID="[G05] DoSGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G05] Achieve Denial of Service (DoS) in Heating System"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Privilege Escalation in OT/IT Systems" ID="[G06] Achieve Privilege Escalation in OT/IT Systems" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.2</Value>
+      </Attribute>
+      <ExternalInterface Name="PrivilegeEscalationGoal_Interface" ID="[G06] PrivilegeEscalationGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G06] Achieve Privilege Escalation in OT/IT Systems"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Achieve Lateral Movement Across OT/IT Networks" ID="[G07] Achieve Lateral Movement Across OT/IT Networks" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.1</Value>
+      </Attribute>
+      <ExternalInterface Name="LateralMovementGoal_Interface" ID="[G07] LateralMovementGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G07] Achieve Lateral Movement Across OT/IT Networks"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Exploit Supply Chain Vulnerabilities for Initial Access" ID="[G08] Exploit Supply Chain Vulnerabilities for Initial Access" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>9.3</Value>
+      </Attribute>
+      <ExternalInterface Name="SupplyChainExploitationGoal_Interface" ID="[G08] SupplyChainExploitationGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G08] Exploit Supply Chain Vulnerabilities for Initial Access"/>
+      </ExternalInterface>
+    </InternalElement>
+
+    <InternalElement Name="Disrupt or Stop Cyber-Physical System Operations (Heating System Focus)" ID="[G00] Disrupt or Stop Cyber-Physical System Operations (Heating System Focus)" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float">
+        <Value>10.0</Value>
+      </Attribute>
+      <ExternalInterface Name="SystemDisruptionGoal_Interface" ID="[G00] SystemDisruptionGoal_Interface" RefBaseClassPath="ConnectionBetnAssets/Network">
+        <RefPartnerSideA rdf:resource="#[G00] Disrupt or Stop Cyber-Physical System Operations (Heating System Focus)"/>
+      </ExternalInterface>
+    </InternalElement>
+  </InstanceHierarchy>
+
+  <InstanceHierarchy Name="InternalLinks">
+    <Version>1.0</Version>
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H02] OverheatingHazard_Interface" Name="U01_H02" />
+    <InternalLink RefPartnerSideA="[H02] OverheatingHazard_Interface" RefPartnerSideB="[H01] SpoofCommandsHazard_Interface" Name="H02_H01" />
+    <InternalLink RefPartnerSideA="[H01] SpoofCommandsHazard_Interface" RefPartnerSideB="[V01] CVE_2022_30280_Interface" Name="H01_V01" />
+    <InternalLink RefPartnerSideA="[V01] CVE_2022_30280_Interface" RefPartnerSideB="[A01] BMS_Interface" Name="V01_A01" />
+    <InternalLink RefPartnerSideA="[A01] BMS_Interface" RefPartnerSideB="[G01] SpoofingGoal_Interface" Name="A01_G01" />
+    <InternalLink RefPartnerSideA="[G01] SpoofingGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G01_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H04] UnauthorizedActuationHazard_Interface" Name="U01_H04" />
+    <InternalLink RefPartnerSideA="[H04] UnauthorizedActuationHazard_Interface" RefPartnerSideB="[H03] SpoofWirelessHazard_Interface" Name="H04_H03" />
+    <InternalLink RefPartnerSideA="[H03] SpoofWirelessHazard_Interface" RefPartnerSideB="[V02] WeakWireless_Interface" Name="H03_V02" />
+    <InternalLink RefPartnerSideA="[V02] WeakWireless_Interface" RefPartnerSideB="[A02] WirelessFieldDevices_Interface" Name="V02_A02" />
+    <InternalLink RefPartnerSideA="[A02] WirelessFieldDevices_Interface" RefPartnerSideB="[G01] SpoofingGoal_Interface" Name="A02_G01" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H06] InefficientHeatingHazard_Interface" Name="U01_H06" />
+    <InternalLink RefPartnerSideA="[H06] InefficientHeatingHazard_Interface" RefPartnerSideB="[H05] AlterSetpointsHazard_Interface" Name="H06_H05" />
+    <InternalLink RefPartnerSideA="[H05] AlterSetpointsHazard_Interface" RefPartnerSideB="[V03] CVE_2021_22893_Interface" Name="H05_V03" />
+    <InternalLink RefPartnerSideA="[V03] CVE_2021_22893_Interface" RefPartnerSideB="[A03] PLCs_Interface" Name="V03_A03" />
+    <InternalLink RefPartnerSideA="[A03] PLCs_Interface" RefPartnerSideB="[G02] TamperingGoal_Interface" Name="A03_G02" />
+    <InternalLink RefPartnerSideA="[G02] TamperingGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G02_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H07] CorruptLogicHazard_Interface" Name="U01_H07" />
+    <InternalLink RefPartnerSideA="[H07] CorruptLogicHazard_Interface" RefPartnerSideB="[A07] PLC_Logs_Interface" Name="H07_A07" />
+    <InternalLink RefPartnerSideA="[A07] PLC_Logs_Interface" RefPartnerSideB="[V04] FirmwareTampering_Interface" Name="A07_V04" />
+    <InternalLink RefPartnerSideA="[V04] FirmwareTampering_Interface" RefPartnerSideB="[A03] PLCs_Interface" Name="V04_A03" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H08] HMIOverrideHazard_Interface" Name="U01_H08" />
+    <InternalLink RefPartnerSideA="[H08] HMIOverrideHazard_Interface" RefPartnerSideB="[V05] HMISessionHijacking_Interface" Name="H08_V05" />
+    <InternalLink RefPartnerSideA="[V05] HMISessionHijacking_Interface" RefPartnerSideB="[A05] HMIs_Interface" Name="V05_A05" />
+    <InternalLink RefPartnerSideA="[A05] HMIs_Interface" RefPartnerSideB="[G02] TamperingGoal_Interface" Name="A05_G02" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H10] LogTamperingHazard_Interface" Name="U01_H10" />
+    <InternalLink RefPartnerSideA="[H10] LogTamperingHazard_Interface" RefPartnerSideB="[V06] CVE_2020_14859_Interface" Name="H10_V06" />
+    <InternalLink RefPartnerSideA="[V06] CVE_2020_14859_Interface" RefPartnerSideB="[A06] Historian_Interface" Name="V06_A06" />
+    <InternalLink RefPartnerSideA="[A06] Historian_Interface" RefPartnerSideB="[G03] RepudiationGoal_Interface" Name="A06_G03" />
+    <InternalLink RefPartnerSideA="[G03] RepudiationGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G03_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H12] TimeDisruptionHazard_Interface" Name="U01_H12" />
+    <InternalLink RefPartnerSideA="[H12] TimeDisruptionHazard_Interface" RefPartnerSideB="[V07] TimeSpoofing_Interface" Name="H12_V07" />
+    <InternalLink RefPartnerSideA="[V07] TimeSpoofing_Interface" RefPartnerSideB="[A07] PLC_Logs_Interface" Name="V07_A07" />
+    <InternalLink RefPartnerSideA="[A07] PLC_Logs_Interface" RefPartnerSideB="[G03] RepudiationGoal_Interface" Name="A07_G03" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H13] CredentialTheftHazard_Interface" Name="U01_H13" />
+    <InternalLink RefPartnerSideA="[H13] CredentialTheftHazard_Interface" RefPartnerSideB="[V08] CVE_2021_31956_Interface" Name="H13_V08" />
+    <InternalLink RefPartnerSideA="[V08] CVE_2021_31956_Interface" RefPartnerSideB="[A08] HMI_Web_Interface" Name="V08_A08" />
+    <InternalLink RefPartnerSideA="[A08] HMI_Web_Interface" RefPartnerSideB="[G04] InformationDisclosureGoal_Interface" Name="A08_G04" />
+    <InternalLink RefPartnerSideA="[G04] InformationDisclosureGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G04_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H15] LogicTheftHazard_Interface" Name="U01_H15" />
+    <InternalLink RefPartnerSideA="[H15] LogicTheftHazard_Interface" RefPartnerSideB="[V09] ProjectFileTheft_Interface" Name="H15_V09" />
+    <InternalLink RefPartnerSideA="[V09] ProjectFileTheft_Interface" RefPartnerSideB="[A09] EngineeringWorkstations_Interface" Name="V09_A09" />
+    <InternalLink RefPartnerSideA="[A09] EngineeringWorkstations_Interface" RefPartnerSideB="[G04] InformationDisclosureGoal_Interface" Name="A09_G04" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H16] CommunicationDisruptionHazard_Interface" Name="U01_H16" />
+    <InternalLink RefPartnerSideA="[H16] CommunicationDisruptionHazard_Interface" RefPartnerSideB="[V10] CVE_2021_31957_Interface" Name="H16_V10" />
+    <InternalLink RefPartnerSideA="[V10] CVE_2021_31957_Interface" RefPartnerSideB="[A10] SwitchesRouters_Interface" Name="V10_A10" />
+    <InternalLink RefPartnerSideA="[A10] SwitchesRouters_Interface" RefPartnerSideB="[G05] DoSGoal_Interface" Name="A10_G05" />
+    <InternalLink RefPartnerSideA="[G05] DoSGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G05_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H18] PLCFailureHazard_Interface" Name="U01_H18" />
+    <InternalLink RefPartnerSideA="[H18] PLCFailureHazard_Interface" RefPartnerSideB="[V11] PLCResourceExhaustion_Interface" Name="H18_V11" />
+    <InternalLink RefPartnerSideA="[V11] PLCResourceExhaustion_Interface" RefPartnerSideB="[A11] LimitedPLCs_Interface" Name="V11_A11" />
+    <InternalLink RefPartnerSideA="[A11] LimitedPLCs_Interface" RefPartnerSideB="[G05] DoSGoal_Interface" Name="A11_G05" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H20] FullCompromiseHazard_Interface" Name="U01_H20" />
+    <InternalLink RefPartnerSideA="[H20] FullCompromiseHazard_Interface" RefPartnerSideB="[V12] CVE_2021_31958_Interface" Name="H20_V12" />
+    <InternalLink RefPartnerSideA="[V12] CVE_2021_31958_Interface" RefPartnerSideB="[A12] EngineeringSoftware_Interface" Name="V12_A12" />
+    <InternalLink RefPartnerSideA="[A12] EngineeringSoftware_Interface" RefPartnerSideB="[G06] PrivilegeEscalationGoal_Interface" Name="A12_G06" />
+    <InternalLink RefPartnerSideA="[G06] PrivilegeEscalationGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G06_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H22] LateralMovementHazard_Interface" Name="U01_H22" />
+    <InternalLink RefPartnerSideA="[H22] LateralMovementHazard_Interface" RefPartnerSideB="[V13] ADPrivilegeEscalation_Interface" Name="H22_V13" />
+    <InternalLink RefPartnerSideA="[V13] ADPrivilegeEscalation_Interface" RefPartnerSideB="[A13] AD_Interface" Name="V13_A13" />
+    <InternalLink RefPartnerSideA="[A13] AD_Interface" RefPartnerSideB="[G06] PrivilegeEscalationGoal_Interface" Name="A13_G06" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H24] SCADACompromiseHazard_Interface" Name="U01_H24" />
+    <InternalLink RefPartnerSideA="[H24] SCADACompromiseHazard_Interface" RefPartnerSideB="[V14] NetworkSegmentationBypass_Interface" Name="H24_V14" />
+    <InternalLink RefPartnerSideA="[V14] NetworkSegmentationBypass_Interface" RefPartnerSideB="[A14] FlatNetwork_Interface" Name="V14_A14" />
+    <InternalLink RefPartnerSideA="[A14] FlatNetwork_Interface" RefPartnerSideB="[G07] LateralMovementGoal_Interface" Name="A14_G07" />
+    <InternalLink RefPartnerSideA="[G07] LateralMovementGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G07_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H26] MaliciousLogicDeploymentHazard_Interface" Name="U01_H26" />
+    <InternalLink RefPartnerSideA="[H26] MaliciousLogicDeploymentHazard_Interface" RefPartnerSideB="[V15] RemoteAccessExploitation_Interface" Name="H26_V15" />
+    <InternalLink RefPartnerSideA="[V15] RemoteAccessExploitation_Interface" RefPartnerSideB="[A15] RemoteAccess_Interface" Name="V15_A15" />
+    <InternalLink RefPartnerSideA="[A15] RemoteAccess_Interface" RefPartnerSideB="[G07] LateralMovementGoal_Interface" Name="A15_G07" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H28] SupplyChainBackdoorHazard_Interface" Name="U01_H28" />
+    <InternalLink RefPartnerSideA="[H28] SupplyChainBackdoorHazard_Interface" RefPartnerSideB="[V16] SupplyChainCompromise_Interface" Name="H28_V16" />
+    <InternalLink RefPartnerSideA="[V16] SupplyChainCompromise_Interface" RefPartnerSideB="[A16] FirmwareUpdates_Interface" Name="V16_A16" />
+    <InternalLink RefPartnerSideA="[A16] FirmwareUpdates_Interface" RefPartnerSideB="[G08] SupplyChainExploitationGoal_Interface" Name="A16_G08" />
+    <InternalLink RefPartnerSideA="[G08] SupplyChainExploitationGoal_Interface" RefPartnerSideB="[G00] SystemDisruptionGoal_Interface" Name="G08_G00" />
+    <InternalLink RefPartnerSideA="[U01] Attacker_Interface" RefPartnerSideB="[H30] MaliciousProjectFileHazard_Interface" Name="U01_H30" />
+    <InternalLink RefPartnerSideA="[H30] MaliciousProjectFileHazard_Interface" RefPartnerSideB="[V17] ProjectFileTampering_Interface" Name="H30_V17" />
+    <InternalLink RefPartnerSideA="[V17] ProjectFileTampering_Interface" RefPartnerSideB="[A17] EngineeringTools_Interface" Name="V17_A17" />
+    <InternalLink RefPartnerSideA="[A17] EngineeringTools_Interface" RefPartnerSideB="[G08] SupplyChainExploitationGoal_Interface" Name="A17_G08" />
+  </InstanceHierarchy>
+
+  <InterfaceClassLib Name="ConnectionBetnAssets">
+    <Version>1.0</Version>
+    <InterfaceClass Name="Network" />
+    <InterfaceClass Name="Logic" />
+    <InterfaceClass Name="User" />
+  </InterfaceClassLib>
+
+  <RoleClassLib Name="Requirements">
+    <Version>1.0</Version>
+    <RoleClass Name="Process" />
+    <RoleClass Name="Safety" />
+    <RoleClass Name="Security" />
+    <RoleClass Name="Communication" />
+  </RoleClassLib>
+
+  <SystemUnitClassLib Name="AssetOfICS">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Hardware" ID="Hardware">
+      <SystemUnitClass Name="Process device" ID="ProcessDevice">
+        <SystemUnitClass Name="Sensor" ID="Sensor">
+          <ExternalInterface Name="SensorOP" ID="SensorOP_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+          <ExternalInterface Name="SensorOP" ID="SensorOP_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Actuator" ID="Actuator">
+          <ExternalInterface Name="ActuatorIP" ID="ActuatorIP_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+          <ExternalInterface Name="ActuatorIP" ID="ActuatorIP_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Controller" ID="Controller">
+          <ExternalInterface Name="IOfromController" ID="IOfromController_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+          <ExternalInterface Name="IOfromController" ID="IOfromController_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Workstation" ID="Workstation">
+          <ExternalInterface Name="IOfromWS" ID="IOfromWS_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+          <ExternalInterface Name="IOfromWS" ID="IOfromWS_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Server" ID="Server">
+          <ExternalInterface Name="IOfromServer" ID="IOfromServer_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+          <ExternalInterface Name="IOfromServer" ID="IOfromServer_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Machine" ID="Machine">
+        <ExternalInterface Name="IOfromMC" ID="IOfromMC_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        <ExternalInterface Name="IOfromMC" ID="IOfromMC_Logic" RefBaseClassPath="ConnectionBetnAssets/Logic" />
+      </SystemUnitClass>
+      <SystemUnitClass Name="Network Devices" ID="NetworkDevices">
+        <SystemUnitClass Name="IO module" ID="IOModule">
+          <ExternalInterface Name="IOfromModule" ID="IOfromModule_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Switch" ID="Switch">
+          <ExternalInterface Name="IOfromSwitch" ID="IOfromSwitch_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Router" ID="Router">
+          <ExternalInterface Name="IOfromRouter" ID="IOfromRouter_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Gateway" ID="Gateway">
+          <ExternalInterface Name="IOfromGateway" ID="IOfromGateway_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        </SystemUnitClass>
+        <SystemUnitClass Name="Firewall" ID="Firewall">
+          <ExternalInterface Name="IOfromFirewall" ID="IOfromFirewall_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+        </SystemUnitClass>
+      </SystemUnitClass>
+      <SystemUnitClass Name="Non-Automation Devices" ID="NonAutomationDevices" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="Software" ID="Software">
+      <SystemUnitClass Name="Firmware/ Operating system" ID="FirmwareOS" />
+      <SystemUnitClass Name="Application" ID="Application">
+        <ExternalInterface Name="AppInterface" ID="AppInterface_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+      </SystemUnitClass>
+      <SystemUnitClass Name="Process logic" ID="ProcessLogic" />
+      <SystemUnitClass Name="OT adapters" ID="OTAdapters" />
+    </SystemUnitClass>
+    <SystemUnitClass Name="User" ID="User">
+      <ExternalInterface Name="IOfromUser" ID="IOfromUser_User" RefBaseClassPath="ConnectionBetnAssets/User" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="HazardforSystem">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Hazard" ID="Hazard">
+      <ExternalInterface Name="HazardRef" ID="HazardRef_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <SystemUnitClassLib Name="VulnerabilityforSystem">
+    <Version>1.0</Version>
+    <SystemUnitClass Name="Vulnerability" ID="Vulnerability">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+      <ExternalInterface Name="VulnerabilityRef" ID="VulnerabilityRef_Network" RefBaseClassPath="ConnectionBetnAssets/Network" />
+    </SystemUnitClass>
+  </SystemUnitClassLib>
+
+  <AttributeTypeLib Name="AttributeTypeLib">
+    <Version>1.0</Version>
+    <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
+      <Attribute Name="Vendor" AttributeDataType="xs:string" />
+      <Attribute Name="Part" AttributeDataType="xs:string" />
+      <Attribute Name="Product" AttributeDataType="xs:string" />
+      <Attribute Name="Version" AttributeDataType="xs:string" />
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float" />
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float" />
+      <Attribute Name="Date of first use" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Hazard" AttributeDataType="xs:string">
+      <Attribute Name="Name" AttributeDataType="xs:string" />
+      <Attribute Name="Severity" AttributeDataType="xs:string" />
+      <Attribute Name="Probability" AttributeDataType="xs:string" />
+      <Attribute Name="Consequence" AttributeDataType="xs:string" />
+      <Attribute Name="Causes" AttributeDataType="xs:string" />
+    </AttributeType>
+    <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
+      <Attribute Name="CVE" AttributeDataType="xs:string" />
+      <Attribute Name="CVSS" AttributeDataType="xs:string" />
+      <Attribute Name="EPSS" AttributeDataType="xs:string" />
+      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+    </AttributeType>
+  </AttributeTypeLib>
+</CAEXFile>
+```
