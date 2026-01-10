@@ -1,16 +1,15 @@
-# BAYMODS (Bayesian Modeling and Decision Support)
+# BAYMODS (Bayesian and Multi-Objective Decision Support)
 
 ## Overview
 
-BAYMODS (Bayesian Modeling and Decision Support) is an interactive web-based tool for Cyber-Physical Systems (CPS) risk assessment using Bayesian Networks. This application provides a user-friendly interface for analyzing security risks in CPS environments through probabilistic modeling and multi-objective optimization.
+BAYMODS (Bayesian and Multi-Objective Decision Support) is an interactive web-based tool for Cyber-Physical System (CPS) decision support using Bayesian Networks and multi-objective optimization. This application provides a user-friendly interface for analyzing vulnerabilities in CPS environments through probabilistic modeling and supporting decision-making with multi-objective optimization.
 
 ## Features
 
-- **Interactive Bayesian Network Visualization**: Upload and visualize CPS attack models in AML format
-- **Risk Assessment**: Calculate and analyze security risks using Bayesian inference
-- **Multi-Objective Optimization**: Find optimal defense strategies balancing cost and risk reduction
-- **Real-time Analysis**: Dynamic probability updates and risk calculations
-- **Example Models**: Pre-configured attack scenarios including BlackEnergy, Generic CPS, and Solar PV systems
+- **Bayesian Network Model Analysis**: Upload and analyze CPS attack models in AutomationML format
+- **Risk Assessment**: Calculate and analyze security risks using Bayesian inference techniques
+- **Multi-Objective Optimization**: Find optimal defense strategies balancing system availability and risk reduction
+- **Example Models**: Pre-configured attack scenarios including automotive, energy grid, and solar power systems
 
 ## Installation
 
@@ -61,20 +60,15 @@ streamlit run main.py
 
 ### Using the Application
 
-1. **Upload Attack Model**: Upload an AML (Attack Modeling Language) file from the sidebar
+1. **Upload Attack Model**: Upload an AutomationML file from the sidebar
    - Sample models are available in the `examples/` directory
-   - Supports BlackEnergy, Generic CPS, and Solar PV attack scenarios
+   - Supports various CPS attack scenarios
 
-2. **Configure Parameters**:
-   - Set detection rates for different attack types
-   - Define defense costs and effectiveness
-   - Adjust risk thresholds
+2. **Run Optimization Trials**:
+   - Execute single or multiple optimization runs with preset number of trials in each optimization run 
 
 3. **Analyze Results**:
-   - View Bayesian Network structure
-   - Examine conditional probability tables
-   - Review risk assessment metrics
-   - Explore optimized defense strategies
+   - Review and explore optimized defense strategies
 
 ## Project Structure
 
@@ -92,7 +86,7 @@ BAYMODS/
 
 ## File Format
 
-BAYMODS uses AML (Attack Modeling Language) files for attack model specification. These files define:
+BAYMODS uses AutomationML files for model specification. These files define:
 
 - Attack graph nodes and relationships
 - Conditional probability distributions
