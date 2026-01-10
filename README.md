@@ -24,42 +24,11 @@ BAYMODS (Bayesian and Multi-Objective Decision Support) is an interactive web-ba
 
 Install the required Python packages:
 
-```bash
-pip install streamlit
-pip install pgmpy
-pip install pandas
-pip install networkx
-pip install matplotlib
-pip install numpy
-pip install scipy
-pip install optuna
-```
-
-Or install all dependencies at once:
-
-```bash
-pip install streamlit pgmpy pandas networkx matplotlib numpy scipy optuna
-```
-
-Alternatively, create a `requirements.txt` file with the following content:
-
-```
-streamlit>=1.28.0
-pgmpy>=0.1.23
-pandas>=2.0.0
-networkx>=3.0
-matplotlib>=3.7.0
-numpy>=1.24.0
-scipy>=1.10.0
-optuna>=3.0.0
-```
-
-Then install using:
+The project includes a `requirements.txt` file with all necessary dependencies. Install using:
 
 ```bash
 pip install -r requirements.txt
 ```
-
 ## Usage
 
 ### Running the Application
@@ -103,10 +72,13 @@ BAYMODS/
 ├── requirements.txt  # Python package dependencies (optional)
 ├── examples/         # Example attack model files
 │   ├── BlackEnergy.aml
-│   ├── Generic_CPS.aml
-│   └── SolarPV.aml
-└── README.md         # This file
-```
+    ├── Frosty-Goop.aml
+        ├── Generic_CPS.aml
+    ├── Railway-CBTC.aml
+                ├── Smart-Healthcare.aml
+                    ├── Solar-PV-Inverter.aml
+                        ├── Stuxnet.aml
+                            └── Tesla-IVI.aml
 
 ## File Format
 
@@ -119,12 +91,15 @@ BAYMODS uses AutomationML files for model specification. These files define:
 
 ## Examples
 
-The `examples/` directory contains three pre-configured attack scenarios:
-
+The `examples/` directory contains eight pre-configured attack scenarios:
 - **BlackEnergy.aml**: Models the BlackEnergy malware attack scenario
 - **Generic_CPS.aml**: Generic cyber-physical system attack model
-- **SolarPV.aml**: Solar photovoltaic system security assessment
-
+- **Solar-PV-Inverter.aml**: Solar photovoltaic inverter system security assessment
+- **Frosty-Goop.aml**: Models the Frosty Goop attack on Ukrainian energy infrastructure
+- **Railway-CBTC.aml**: Railway Communications-Based Train Control (CBTC) system attack model
+- **Smart-Healthcare.aml**: Smart healthcare system security assessment
+- **Stuxnet.aml**: Models the Stuxnet malware attack scenario
+- **Tesla-IVI.aml**: Tesla In-Vehicle Infotainment (IVI) system attack model
 ## Author & Contact
 
 **Author**: Shaofei Huang
