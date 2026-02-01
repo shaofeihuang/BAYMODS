@@ -1,333 +1,1329 @@
-```xml
-<?xml version="1.0" encoding="utf-8"?>
 <CAEXFile SchemaVersion="3.0" FileName="cps.aml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.dke.de/CAEX" xsi:schemaLocation="http://www.dke.de/CAEX CAEX_ClassModel_V.3.0.xsd">
-
-  <InstanceHierarchy Name="CPS_Attack_Paths">
-    <Version>1.0</Version>
-
-    <!-- Attackers/Users -->
-    <InternalElement Name="Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
-      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string">
-        <Value>100</Value>
-      </Attribute>
-      <ExternalInterface Name="AttackSurface" ID="[U01]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/NetworkInterface" />
-    </InternalElement>
-
-    <!-- Assets -->
-    <InternalElement Name="DMZ Firewall/Proxy Server" ID="[A01] DMZ Firewall/Proxy Server" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Palo Alto</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>PA-3200 Series</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>10.2.3</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.2</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="FirewallRuleManagement" ID="[A01]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/EthernetIP" />
-    </InternalElement>
-
-    <InternalElement Name="VPN Concentrator" ID="[A02] VPN Concentrator" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Cisco</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>ASA 5500-X</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>9.16.2</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00002</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>8.8</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="VPNTunnel" ID="[A02]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/IPsec" />
-    </InternalElement>
-
-    <InternalElement Name="Siemens TIA Portal Workstation" ID="[A03] Siemens TIA Portal Workstation" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>TIA Portal V17</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>17.0.3</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00003</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.5</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="PLCProgramming" ID="[A03]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/Profinet" />
-    </InternalElement>
-
-    <InternalElement Name="PLC Control Logic (Ladder/Structured Text)" ID="[A04] PLC Control Logic" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>S7-1500</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>2.9.2</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000005</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>10.0</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="LogicExecution" ID="[A04]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/ModbusTCP" />
-    </InternalElement>
-
-    <InternalElement Name="DCS Controller (e.g., Honeywell Experion)" ID="[A06] DCS Controller" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Honeywell</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>Experion PKS</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>R510</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000001</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.8</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="ProcessControl" ID="[A06]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/OPCUA" />
-    </InternalElement>
-
-    <InternalElement Name="Main Steam Isolation Valve (MSIV)" ID="[A07] MSIV" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Fisher</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>ED Valve</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000002</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.9</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="ActuatorControl" ID="[A07]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/ModbusRTU" />
-    </InternalElement>
-
-    <InternalElement Name="Neutron Flux Detector" ID="[A13] Neutron Flux Detector" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Mirion</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>SPND</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0000005</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>10.0</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="SensorSignal" ID="[A13]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/Analog4-20mA" />
-    </InternalElement>
-
-    <InternalElement Name="Cisco IE-3000 Series Switch" ID="[A17] Cisco IE-3000 Switch" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Cisco</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>IE-3010</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>15.2(7)E</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00002</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>8.5</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="EthernetPort" ID="[A17]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/Ethernet" />
-    </InternalElement>
-
-    <InternalElement Name="Badge Access Control Server" ID="[A30] Badge Access Control Server" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
-      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
-        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Lenel</Value></Attribute>
-        <Attribute Name="Product" AttributeDataType="xs:string"><Value>OnGuard</Value></Attribute>
-        <Attribute Name="Version" AttributeDataType="xs:string"><Value>7.6</Value></Attribute>
-        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
-        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>7.0</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="AccessControlAPI" ID="[A30]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/HTTP" />
-    </InternalElement>
-
-    <!-- Vulnerabilities -->
-    <InternalElement Name="Default Credentials on Bastion Host" ID="[V02] Default Credentials" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
-      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
-        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
-        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H</Value></Attribute>
-        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
-        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Default Credential Abuse</Value></Attribute>
-        <Attribute Name="Probability of Impact" AttributeDataType="xs:string"><Value>0.9</Value></Attribute>
-        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"><Value>0.1</Value></Attribute>
-        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="AuthenticationBypass" ID="[V02]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/NetworkService" />
-    </InternalElement>
-
-    <InternalElement Name="Misconfigured Firewall Rules (Overly Permissive)" ID="[V01] Misconfigured Firewall" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
-      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
-        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
-        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>AV:N/AC:L/PR:N/UI:N/S:C/C:N/I:H/A:N</Value></Attribute>
-        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Firewall Rule Exploitation</Value></Attribute>
-        <Attribute Name="Probability of Impact" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
-        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"><Value>0.2</Value></Attribute>
-        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="TrafficRedirection" ID="[V01]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/FirewallPolicy" />
-    </InternalElement>
-
-    <InternalElement Name="Unpatched Firewall Firmware (CVE-2021-34527)" ID="[V03] Unpatched Firewall" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
-      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
-        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2021-34527</Value></Attribute>
-        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
-        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.04</Value></Attribute>
-        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Firewall Exploit</Value></Attribute>
-        <Attribute Name="Probability of Impact" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
-        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"><Value>0.3</Value></Attribute>
-        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"><Value>0.04</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="FirmwareExploit" ID="[V03]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/NetworkStack" />
-    </InternalElement>
-
-    <InternalElement Name="Unpatched TIA Portal (CVE-2021-27104)" ID="[V06] Unpatched TIA Portal" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
-      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
-        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2021-27104</Value></Attribute>
-        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H</Value></Attribute>
-        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>HMI Spoofing</Value></Attribute>
-        <Attribute Name="Probability of Impact" AttributeDataType="xs:string"><Value>0.85</Value></Attribute>
-        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"><Value>0.15</Value></Attribute>
-        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"><Value>0.02</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="CodeInjection" ID="[V06]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/HMIInterface" />
-    </InternalElement>
-
-    <InternalElement Name="Hardcoded Credentials in Controller" ID="[V09] Hardcoded Credentials" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
-      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
-        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
-        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>AV:L/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H</Value></Attribute>
-        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Backdoor Access</Value></Attribute>
-        <Attribute Name="Probability of Impact" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
-        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string"><Value>0.05</Value></Attribute>
-        <Attribute Name="Probability of Exposure" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
-      </Attribute>
-      <ExternalInterface Name="UnauthorizedAccess" ID="[V09]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/SerialPort" />
-    </InternalElement>
-
-    <!-- Hazards -->
-    <InternalElement Name="Spoofed Commands to Actuators" ID="[H01] Spoofed Commands" RefBaseSystemUnitPath="HazardforSystem/Hazard">
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.7</Value></Attribute>
-      <ExternalInterface Name="ActuatorManipulation" ID="[H01]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/ControlSignal" />
-    </InternalElement>
-
-    <InternalElement Name="False Data Injection (e.g., Neutron Flux Readings)" ID="[H02] False Data Injection" RefBaseSystemUnitPath="HazardforSystem/Hazard">
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>9.9</Value></Attribute>
-      <ExternalInterface Name="SensorSpoofing" ID="[H02]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/AnalogSignal" />
-    </InternalElement>
-
-    <InternalElement Name="Bypass Reactor Trip Logic" ID="[H03] Bypass Reactor Trip" RefBaseSystemUnitPath="HazardforSystem/Hazard">
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>10.0</Value></Attribute>
-      <ExternalInterface Name="SafetyOverride" ID="[H03]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/SafetyLogic" />
-    </InternalElement>
-
-    <!-- Goals -->
-    <InternalElement Name="Exploit DMZ Vulnerabilities for Lateral Movement" ID="[G03] Exploit DMZ" RefBaseSystemUnitPath="HazardforSystem/Hazard">
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>8.0</Value></Attribute>
-      <ExternalInterface Name="NetworkPivot" ID="[G03]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/NetworkHop" />
-    </InternalElement>
-
-    <InternalElement Name="Disrupt or Stop Cyber-Physical System Operations" ID="[G01] Disrupt Operations" RefBaseSystemUnitPath="HazardforSystem/Hazard">
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>10.0</Value></Attribute>
-      <ExternalInterface Name="SystemFailure" ID="[G01]_ExtIf_001" RefBaseClassPath="AutomationMLInterfaceClassLib/ProcessImpact" />
-    </InternalElement>
-
-    <!-- Internal Links -->
-    <InternalLink Name="U01_V02" RefPartnerSideA="[U01]_ExtIf_001" RefPartnerSideB="[V02]_ExtIf_001" />
-    <InternalLink Name="V02_V01" RefPartnerSideA="[V02]_ExtIf_001" RefPartnerSideB="[V01]_ExtIf_001" />
-    <InternalLink Name="V01_A01" RefPartnerSideA="[V01]_ExtIf_001" RefPartnerSideB="[A01]_ExtIf_001" />
-    <InternalLink Name="A01_G03" RefPartnerSideA="[A01]_ExtIf_001" RefPartnerSideB="[G03]_ExtIf_001" />
-    <InternalLink Name="G03_G01" RefPartnerSideA="[G03]_ExtIf_001" RefPartnerSideB="[G01]_ExtIf_001" />
-    <InternalLink Name="U01_V03" RefPartnerSideA="[U01]_ExtIf_001" RefPartnerSideB="[V03]_ExtIf_001" />
-    <InternalLink Name="V03_A01" RefPartnerSideA="[V03]_ExtIf_001" RefPartnerSideB="[A01]_ExtIf_001" />
-    <InternalLink Name="U01_V06" RefPartnerSideA="[U01]_ExtIf_001" RefPartnerSideB="[V06]_ExtIf_001" />
-    <InternalLink Name="V06_A03" RefPartnerSideA="[V06]_ExtIf_001" RefPartnerSideB="[A03]_ExtIf_001" />
-    <InternalLink Name="A03_A04" RefPartnerSideA="[A03]_ExtIf_001" RefPartnerSideB="[A04]_ExtIf_001" />
-    <InternalLink Name="A04_H01" RefPartnerSideA="[A04]_ExtIf_001" RefPartnerSideB="[H01]_ExtIf_001" />
-    <InternalLink Name="H01_A07" RefPartnerSideA="[H01]_ExtIf_001" RefPartnerSideB="[A07]_ExtIf_001" />
-    <InternalLink Name="U01_V09" RefPartnerSideA="[U01]_ExtIf_001" RefPartnerSideB="[V09]_ExtIf_001" />
-    <InternalLink Name="V09_A06" RefPartnerSideA="[V09]_ExtIf_001" RefPartnerSideB="[A06]_ExtIf_001" />
-    <InternalLink Name="A06_H03" RefPartnerSideA="[A06]_ExtIf_001" RefPartnerSideB="[H03]_ExtIf_001" />
-    <InternalLink Name="U01_H02" RefPartnerSideA="[U01]_ExtIf_001" RefPartnerSideB="[H02]_ExtIf_001" />
-    <InternalLink Name="H02_A13" RefPartnerSideA="[H02]_ExtIf_001" RefPartnerSideB="[A13]_ExtIf_001" />
-  </InstanceHierarchy>
-
-  <InterfaceClassLib Name="AutomationMLInterfaceClassLib">
-    <Version>0</Version>
-    <InterfaceClass Name="NetworkInterface" />
-    <InterfaceClass Name="EthernetIP" />
-    <InterfaceClass Name="IPsec" />
-    <InterfaceClass Name="Profinet" />
-    <InterfaceClass Name="ModbusTCP" />
-    <InterfaceClass Name="OPCUA" />
-    <InterfaceClass Name="ModbusRTU" />
-    <InterfaceClass Name="Analog4-20mA" />
-    <InterfaceClass Name="Ethernet" />
-    <InterfaceClass Name="HTTP" />
-    <InterfaceClass Name="NetworkService" />
-    <InterfaceClass Name="FirewallPolicy" />
-    <InterfaceClass Name="NetworkStack" />
-    <InterfaceClass Name="HMIInterface" />
-    <InterfaceClass Name="SerialPort" />
-    <InterfaceClass Name="ControlSignal" />
-    <InterfaceClass Name="AnalogSignal" />
-    <InterfaceClass Name="SafetyLogic" />
-    <InterfaceClass Name="NetworkHop" />
-    <InterfaceClass Name="ProcessImpact" />
+  <InterfaceClassLib Name="ConnectionBetnAssets">
+    <InterfaceClass Name="Network"/>
+    <InterfaceClass Name="User"/>
   </InterfaceClassLib>
-
-  <RoleClassLib Name="Requirements">
-    <Version>0</Version>
-    <RoleClass Name="Process" />
-    <RoleClass Name="Safety" />
-    <RoleClass Name="Security" />
-    <RoleClass Name="Communication" />
-  </RoleClassLib>
-
   <SystemUnitClassLib Name="AssetOfICS">
-    <Version>0</Version>
-    <SystemUnitClass Name="Hardware">
-      <SystemUnitClass Name="Machine">
-        <ExternalInterface Name="IOfromMC" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-      </SystemUnitClass>
-      <SystemUnitClass Name="Process device">
-        <SystemUnitClass Name="Sensor">
-          <ExternalInterface Name="SensorOP" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-        </SystemUnitClass>
-        <SystemUnitClass Name="Actuator">
-          <ExternalInterface Name="ActuatorIP" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-        </SystemUnitClass>
-        <SystemUnitClass Name="Controller">
-          <ExternalInterface Name="IOfromController" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-        </SystemUnitClass>
-      </SystemUnitClass>
-      <SystemUnitClass Name="Network Devices">
-        <SystemUnitClass Name="Switch">
-          <ExternalInterface Name="IOfromSwitch" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-        </SystemUnitClass>
-        <SystemUnitClass Name="Firewall">
-          <ExternalInterface Name="IOfromFirewall" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-        </SystemUnitClass>
-      </SystemUnitClass>
-    </SystemUnitClass>
     <SystemUnitClass Name="Software">
-      <SystemUnitClass Name="Application">
-        <ExternalInterface Name="IOfromApp" RefBaseClassPath="AutomationMLInterfaceClassLib/Network" />
-      </SystemUnitClass>
+      <SystemUnitClass Name="Application"/>
     </SystemUnitClass>
-    <SystemUnitClass Name="User">
-      <ExternalInterface Name="IOfromUser" RefBaseClassPath="AutomationMLInterfaceClassLib/User" />
+    <SystemUnitClass Name="Hardware">
+      <SystemUnitClass Name="Machine"/>
     </SystemUnitClass>
+    <SystemUnitClass Name="User"/>
   </SystemUnitClassLib>
-
-  <SystemUnitClassLib Name="HazardforSystem">
-    <Version>0</Version>
-    <SystemUnitClass Name="Hazard">
-      <ExternalInterface Name="HazardRef" RefBaseClassPath="AutomationMLInterfaceClassLib/HazardRef" />
-    </SystemUnitClass>
-  </SystemUnitClassLib>
-
   <SystemUnitClassLib Name="VulnerabilityforSystem">
-    <Version>0</Version>
     <SystemUnitClass Name="Vulnerability">
-      <Attribute Name="CVE" AttributeDataType="xs:string" />
-      <Attribute Name="CVSS" AttributeDataType="xs:string" />
-      <Attribute Name="EPSS" AttributeDataType="xs:string" />
-      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
-      <ExternalInterface Name="VulnerabilityRef" RefBaseClassPath="AutomationMLInterfaceClassLib/VulnerabilityRef" />
+      <Attribute Name="CVE" AttributeDataType="xs:string"/>
+      <Attribute Name="CVSS" AttributeDataType="xs:string"/>
+      <Attribute Name="EPSS" AttributeDataType="xs:string"/>
     </SystemUnitClass>
   </SystemUnitClassLib>
-
+  <SystemUnitClassLib Name="HazardforSystem">
+    <SystemUnitClass Name="Hazard"/>
+  </SystemUnitClassLib>
   <AttributeTypeLib Name="AttributeTypeLib">
-    <Version>0</Version>
     <AttributeType Name="AutomationEquipments" AttributeDataType="xs:string">
-      <Attribute Name="Vendor" AttributeDataType="xs:string" />
-      <Attribute Name="Product" AttributeDataType="xs:string" />
-      <Attribute Name="Version" AttributeDataType="xs:string" />
-      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float" />
-      <Attribute Name="Impact Rating" AttributeDataType="xs:float" />
+      <Attribute Name="Vendor" AttributeDataType="xs:string"/>
+      <Attribute Name="Version" AttributeDataType="xs:string"/>
+      <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"/>
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float"/>
+      <Attribute Name="Date of first use" AttributeDataType="xs:string"/>
     </AttributeType>
     <AttributeType Name="Vulnerability" AttributeDataType="xs:string">
-      <Attribute Name="CVE" AttributeDataType="xs:string" />
-      <Attribute Name="CVSS" AttributeDataType="xs:string" />
-      <Attribute Name="EPSS" AttributeDataType="xs:string" />
-      <Attribute Name="Attack Name" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Impact" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:string" />
-      <Attribute Name="Probability of Exposure" AttributeDataType="xs:string" />
+      <Attribute Name="CVE" AttributeDataType="xs:string"/>
+      <Attribute Name="CVSS" AttributeDataType="xs:string"/>
+      <Attribute Name="EPSS" AttributeDataType="xs:string"/>
+      <Attribute Name="Attack Name" AttributeDataType="xs:string"/>
+      <Attribute Name="Probability of Impact" AttributeDataType="xs:float"/>
+      <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"/>
+      <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"/>
+    </AttributeType>
+    <AttributeType Name="Hazard" AttributeDataType="xs:string">
+      <Attribute Name="Impact Rating" AttributeDataType="xs:float"/>
+      <Attribute Name="Consequence" AttributeDataType="xs:string"/>
+      <Attribute Name="Causes" AttributeDataType="xs:string"/>
+    </AttributeType>
+    <AttributeType Name="Goal" AttributeDataType="xs:string">
+      <Attribute Name="Priority" AttributeDataType="xs:float"/>
+      <Attribute Name="Complexity" AttributeDataType="xs:float"/>
     </AttributeType>
   </AttributeTypeLib>
+  <InstanceHierarchy Name="CPS_Architecture">
+    <Version>1.0</Version>
+    <InternalElement Name="[U01] Attacker" ID="[U01] Attacker" RefBaseSystemUnitPath="AssetOfICS/User">
+      <Attribute Name="HumanErrorEstimationPercentage" AttributeDataType="xs:string"><Value>0.05</Value></Attribute>
+      <ExternalInterface Name="Interface_U01" ID="Interface_U01" RefBaseClassPath="ConnectionBetnAssets/User"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A01" Name="U01_A01"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A02" Name="U01_A02"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A03" Name="U01_A03"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A04" Name="U01_A04"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A05" Name="U01_A05"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A06" Name="U01_A06"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A07" Name="U01_A07"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A08" Name="U01_A08"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A09" Name="U01_A09"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A10" Name="U01_A10"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A11" Name="U01_A11"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A12" Name="U01_A12"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A13" Name="U01_A13"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A14" Name="U01_A14"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A15" Name="U01_A15"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A16" Name="U01_A16"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A17" Name="U01_A17"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A18" Name="U01_A18"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A19" Name="U01_A19"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A20" Name="U01_A20"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A21" Name="U01_A21"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A22" Name="U01_A22"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A23" Name="U01_A23"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A24" Name="U01_A24"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A25" Name="U01_A25"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A26" Name="U01_A26"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A27" Name="U01_A27"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A28" Name="U01_A28"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A29" Name="U01_A29"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A30" Name="U01_A30"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A31" Name="U01_A31"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A32" Name="U01_A32"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A33" Name="U01_A33"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A34" Name="U01_A34"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A35" Name="U01_A35"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A36" Name="U01_A36"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A37" Name="U01_A37"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A38" Name="U01_A38"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A39" Name="U01_A39"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A40" Name="U01_A40"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A41" Name="U01_A41"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A42" Name="U01_A42"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A43" Name="U01_A43"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A44" Name="U01_A44"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A45" Name="U01_A45"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A46" Name="U01_A46"/>
+      <InternalLink RefPartnerSideA="Interface_U01" RefPartnerSideB="Interface_A47" Name="U01_A47"/>
+    </InternalElement>
+    <InternalElement Name="[A01] VPN Gateway (Corporate IT Perimeter)" ID="[A01] VPN Gateway (Corporate IT Perimeter)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Cisco</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>ASA 9.12</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2022-01-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A01" ID="Interface_A01" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A01" RefPartnerSideB="Interface_V01" Name="A01_V01"/>
+    </InternalElement>
+    <InternalElement Name="[V01] Exploit VPN Gateway Vulnerabilities (e.g., CVE-2019-11510)" ID="[V01] Exploit VPN Gateway Vulnerabilities (e.g., CVE-2019-11510)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2019-11510</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>VPN Gateway Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V01" ID="Interface_V01" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V01" RefPartnerSideB="Interface_G02" Name="V01_G02"/>
+    </InternalElement>
+    <InternalElement Name="[G02] Compromise Corporate IT Systems to Gain OT Access" ID="[G02] Compromise Corporate IT Systems to Gain OT Access" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G02" ID="Interface_G02" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G02" RefPartnerSideB="Interface_G01" Name="G02_G01"/>
+    </InternalElement>
+    <InternalElement Name="[G01] Disrupt or Stop Cyber-Physical System Operations in Nuclear Power Plant" ID="[G01] Disrupt or Stop Cyber-Physical System Operations in Nuclear Power Plant" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G01" ID="Interface_G01" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+    </InternalElement>
+    <InternalElement Name="[A02] Operator Workstation (Corporate IT)" ID="[A02] Operator Workstation (Corporate IT)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Dell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Windows 10 Pro</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0003</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-05-18</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A02" ID="Interface_A02" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A02" RefPartnerSideB="Interface_V02" Name="A02_V02"/>
+    </InternalElement>
+    <InternalElement Name="[V02] Phishing Attack on Operator Workstations" ID="[V02] Phishing Attack on Operator Workstations" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.92</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Phishing</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V02" ID="Interface_V02" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V02" RefPartnerSideB="Interface_G02" Name="V02_G02"/>
+    </InternalElement>
+    <InternalElement Name="[A03] Email Server (Corporate IT)" ID="[A03] Email Server (Corporate IT)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Microsoft</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Exchange Server 2019</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-11-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A03" ID="Interface_A03" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A03" RefPartnerSideB="Interface_V03" Name="A03_V03"/>
+    </InternalElement>
+    <InternalElement Name="[V03] Exploit Email Server Zero-Day (e.g., CVE-2021-44228)" ID="[V03] Exploit Email Server Zero-Day (e.g., CVE-2021-44228)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2021-44228</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.97</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Log4j Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V03" ID="Interface_V03" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V03" RefPartnerSideB="Interface_G02" Name="V03_G02"/>
+    </InternalElement>
+    <InternalElement Name="[A04] Proxy Server (DMZ)" ID="[A04] Proxy Server (DMZ)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>F5</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>BIG-IP 15.1</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00015</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-03-22</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A04" ID="Interface_A04" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A04" RefPartnerSideB="Interface_V04" Name="A04_V04"/>
+    </InternalElement>
+    <InternalElement Name="[V04] Misconfigured Proxy Server in DMZ" ID="[V04] Misconfigured Proxy Server in DMZ" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.88</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Proxy Misconfiguration</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.75</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V04" ID="Interface_V04" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V04" RefPartnerSideB="Interface_G03" Name="V04_G03"/>
+    </InternalElement>
+    <InternalElement Name="[G03] Compromise DMZ to Bridge IT-OT Gap" ID="[G03] Compromise DMZ to Bridge IT-OT Gap" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G03" ID="Interface_G03" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G03" RefPartnerSideB="Interface_G01" Name="G03_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A05] OPC UA Server (DMZ)" ID="[A05] OPC UA Server (DMZ)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>OPC UA Server 1.04</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-09-12</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A05" ID="Interface_A05" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A05" RefPartnerSideB="Interface_V05" Name="A05_V05"/>
+    </InternalElement>
+    <InternalElement Name="[V05] Weak Authentication in OPC UA Server (e.g., Anonymous Bind)" ID="[V05] Weak Authentication in OPC UA Server (e.g., Anonymous Bind)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.85</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Anonymous Bind Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V05" ID="Interface_V05" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V05" RefPartnerSideB="Interface_G03" Name="V05_G03"/>
+    </InternalElement>
+    <InternalElement Name="[A06] Data Historian (DMZ)" ID="[A06] Data Historian (DMZ)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>OSIsoft</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>PI System 2018</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-07-30</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A06" ID="Interface_A06" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A06" RefPartnerSideB="Interface_V06" Name="A06_V06"/>
+    </InternalElement>
+    <InternalElement Name="[V06] Unpatched Data Historian (e.g., OSIsoft PI System CVE-2020-6973)" ID="[V06] Unpatched Data Historian (e.g., OSIsoft PI System CVE-2020-6973)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2020-6973</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.9</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Data Historian Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.25</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V06" ID="Interface_V06" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V06" RefPartnerSideB="Interface_G03" Name="V06_G03"/>
+    </InternalElement>
+    <InternalElement Name="[A07] HMI Workstation (Level 3)" ID="[A07] HMI Workstation (Level 3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>WinCC 7.5</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-04-15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A07" ID="Interface_A07" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A07" RefPartnerSideB="Interface_V07" Name="A07_V07"/>
+    </InternalElement>
+    <InternalElement Name="[V07] Exploit HMI Software Vulnerability (e.g., Siemens WinCC CVE-2020-15782)" ID="[V07] Exploit HMI Software Vulnerability (e.g., Siemens WinCC CVE-2020-15782)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2020-15782</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.92</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>HMI Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V07" ID="Interface_V07" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V07" RefPartnerSideB="Interface_G04" Name="V07_G04"/>
+    </InternalElement>
+    <InternalElement Name="[G04] Compromise SCADA/DCS Systems for Process Control" ID="[G04] Compromise SCADA/DCS Systems for Process Control" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.98</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.75</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G04" ID="Interface_G04" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G04" RefPartnerSideB="Interface_G01" Name="G04_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A08] Engineering Workstation (SCADA, Level 3)" ID="[A08] Engineering Workstation (SCADA, Level 3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Honeywell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Experion PKS R500</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00015</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.98</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-02-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A08" ID="Interface_A08" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A08" RefPartnerSideB="Interface_V08" Name="A08_V08"/>
+    </InternalElement>
+    <InternalElement Name="[V08] Modify SCADA Logic via Engineering Workstation" ID="[V08] Modify SCADA Logic via Engineering Workstation" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>SCADA Logic Tampering</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.35</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V08" ID="Interface_V08" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V08" RefPartnerSideB="Interface_G04" Name="V08_G04"/>
+    </InternalElement>
+    <InternalElement Name="[A09] SCADA Communication Link (Level 3 ↔ Level 2)" ID="[A09] SCADA Communication Link (Level 3 ↔ Level 2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Hirschmann</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Industrial Ethernet Switch</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2018-11-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A09" ID="Interface_A09" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A09" RefPartnerSideB="Interface_V09" Name="A09_V09"/>
+    </InternalElement>
+    <InternalElement Name="[V09] Spoof SCADA Communication (e.g., Modbus/DNP3)" ID="[V09] Spoof SCADA Communication (e.g., Modbus/DNP3)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.75</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Protocol Spoofing</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V09" ID="Interface_V09" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V09" RefPartnerSideB="Interface_G04" Name="V09_G04"/>
+    </InternalElement>
+    <InternalElement Name="[A10] PLC Firmware (Level 1)" ID="[A10] PLC Firmware (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Schneider Electric</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Modicon M580 v3.0</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-08-12</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A10" ID="Interface_A10" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A10" RefPartnerSideB="Interface_V10" Name="A10_V10"/>
+    </InternalElement>
+    <InternalElement Name="[V10] Exploit PLC Firmware Vulnerability (e.g., Schneider Modicon CVE-2019-10956)" ID="[V10] Exploit PLC Firmware Vulnerability (e.g., Schneider Modicon CVE-2019-10956)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2019-10956</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>PLC Firmware Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.98</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V10" ID="Interface_V10" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V10" RefPartnerSideB="Interface_G05" Name="V10_G05"/>
+    </InternalElement>
+    <InternalElement Name="[G05] Compromise DCS/PLC for Direct Process Manipulation" ID="[G05] Compromise DCS/PLC for Direct Process Manipulation" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G05" ID="Interface_G05" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G05" RefPartnerSideB="Interface_G01" Name="G05_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A11] Engineering Workstation (PLC, Level 2)" ID="[A11] Engineering Workstation (PLC, Level 2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Rockwell Automation</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Studio 5000 v32</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.97</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-06-25</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A11" ID="Interface_A11" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A11" RefPartnerSideB="Interface_V11" Name="A11_V11"/>
+    </InternalElement>
+    <InternalElement Name="[V11] Tamper with PLC Ladder Logic via Engineering Workstation" ID="[V11] Tamper with PLC Ladder Logic via Engineering Workstation" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Ladder Logic Tampering</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.65</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V11" ID="Interface_V11" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V11" RefPartnerSideB="Interface_G05" Name="V11_G05"/>
+    </InternalElement>
+    <InternalElement Name="[A12] SIS PLC (Level 1, Safety Zone)" ID="[A12] SIS PLC (Level 1, Safety Zone)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Honeywell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Safety Manager R410</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2017-09-18</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A12" ID="Interface_A12" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A12" RefPartnerSideB="Interface_V12" Name="A12_V12"/>
+    </InternalElement>
+    <InternalElement Name="[V12] Disable Safety Instrumented System (SIS) Interlocks" ID="[V12] Disable Safety Instrumented System (SIS) Interlocks" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.6</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>SIS Interlock Bypass</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.99</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V12" ID="Interface_V12" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V12" RefPartnerSideB="Interface_G05" Name="V12_G05"/>
+    </InternalElement>
+    <InternalElement Name="[A13] Field Sensor (Level 0)" ID="[A13] Field Sensor (Level 0)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Emerson</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Rosemount 3051</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2016-04-22</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A13" ID="Interface_A13" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A13" RefPartnerSideB="Interface_V13" Name="A13_V13"/>
+    </InternalElement>
+    <InternalElement Name="[V13] Spoof Sensor Data (e.g., Temperature/Pressure Readings)" ID="[V13] Spoof Sensor Data (e.g., Temperature/Pressure Readings)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Sensor Data Spoofing</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V13" ID="Interface_V13" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V13" RefPartnerSideB="Interface_G06" Name="V13_G06"/>
+    </InternalElement>
+    <InternalElement Name="[G06] Compromise Field Devices for Sensor/Actuator Manipulation" ID="[G06] Compromise Field Devices for Sensor/Actuator Manipulation" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G06" ID="Interface_G06" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G06" RefPartnerSideB="Interface_G01" Name="G06_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A14] Field Actuator (Level 0)" ID="[A14] Field Actuator (Level 0)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Fisher</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Control Valve DVC6200</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000008</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2015-11-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A14" ID="Interface_A14" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A14" RefPartnerSideB="Interface_V14" Name="A14_V14"/>
+    </InternalElement>
+    <InternalElement Name="[V14] Manipulate Actuator (e.g., Valve/Pump Control)" ID="[V14] Manipulate Actuator (e.g., Valve/Pump Control)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.65</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Actuator Manipulation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.55</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.35</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V14" ID="Interface_V14" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V14" RefPartnerSideB="Interface_G06" Name="V14_G06"/>
+    </InternalElement>
+    <InternalElement Name="[A15] Wireless I/O Network (Level 0 ↔ Level 1)" ID="[A15] Wireless I/O Network (Level 0 ↔ Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Cisco</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Industrial Wireless 1552S</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2018-07-14</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A15" ID="Interface_A15" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A15" RefPartnerSideB="Interface_V15" Name="A15_V15"/>
+    </InternalElement>
+    <InternalElement Name="[V15] Exploit Wireless I/O Network Vulnerabilities" ID="[V15] Exploit Wireless I/O Network Vulnerabilities" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Wireless Network Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V15" ID="Interface_V15" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V15" RefPartnerSideB="Interface_G06" Name="V15_G06"/>
+    </InternalElement>
+    <InternalElement Name="[A16] Vendor Remote Access Portal (DMZ/Level 3)" ID="[A16] Vendor Remote Access Portal (DMZ/Level 3)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>TIA Portal V16</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-01-30</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A16" ID="Interface_A16" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A16" RefPartnerSideB="Interface_V16" Name="A16_V16"/>
+    </InternalElement>
+    <InternalElement Name="[V16] Exploit Vendor Remote Access Portal (e.g., Siemens TIA Portal)" ID="[V16] Exploit Vendor Remote Access Portal (e.g., Siemens TIA Portal)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.9</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Vendor Portal Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.25</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V16" ID="Interface_V16" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V16" RefPartnerSideB="Interface_G07" Name="V16_G07"/>
+    </InternalElement>
+    <InternalElement Name="[G07] Compromise Remote Access for External Control" ID="[G07] Compromise Remote Access for External Control" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.92</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G07" ID="Interface_G07" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G07" RefPartnerSideB="Interface_G01" Name="G07_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A17] VPN Credentials (Corporate IT/OT)" ID="[A17] VPN Credentials (Corporate IT/OT)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Generic</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>VPN Credentials</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2022-03-15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A17" ID="Interface_A17" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A17" RefPartnerSideB="Interface_V17" Name="A17_V17"/>
+    </InternalElement>
+    <InternalElement Name="[V17] Compromise VPN Credentials via Social Engineering" ID="[V17] Compromise VPN Credentials via Social Engineering" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Credential Harvesting</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V17" ID="Interface_V17" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V17" RefPartnerSideB="Interface_G07" Name="V17_G07"/>
+    </InternalElement>
+    <InternalElement Name="[A18] RDP Server (DMZ/Level 3)" ID="[A18] RDP Server (DMZ/Level 3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Microsoft</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Windows Server 2019</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-05-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A18" ID="Interface_A18" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A18" RefPartnerSideB="Interface_V18" Name="A18_V18"/>
+    </InternalElement>
+    <InternalElement Name="[V18] Exploit RDP Vulnerability (e.g., BlueKeep CVE-2019-0708)" ID="[V18] Exploit RDP Vulnerability (e.g., BlueKeep CVE-2019-0708)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2019-0708</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.98</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>RDP Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.99</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V18" ID="Interface_V18" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V18" RefPartnerSideB="Interface_G07" Name="V18_G07"/>
+    </InternalElement>
+    <InternalElement Name="[A19] Physical Access Control System (Level 0-3)" ID="[A19] Physical Access Control System (Level 0-3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>HID Global</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>iCLASS SE</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-12-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A19" ID="Interface_A19" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A19" RefPartnerSideB="Interface_V19" Name="A19_V19"/>
+    </InternalElement>
+    <InternalElement Name="[V19] Bypass Physical Access Control (e.g., Tailgating)" ID="[V19] Bypass Physical Access Control (e.g., Tailgating)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.6</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Physical Access Bypass</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V19" ID="Interface_V19" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V19" RefPartnerSideB="Interface_G08" Name="V19_G08"/>
+    </InternalElement>
+    <InternalElement Name="[G08] Compromise Physical Security for Direct Access" ID="[G08] Compromise Physical Security for Direct Access" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G08" ID="Interface_G08" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G08" RefPartnerSideB="Interface_G01" Name="G08_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A20] Engineering Workstation with USB Port (Level 2/3)" ID="[A20] Engineering Workstation with USB Port (Level 2/3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Dell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Precision 7540</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0003</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-08-12</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A20" ID="Interface_A20" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A20" RefPartnerSideB="Interface_V20" Name="A20_V20"/>
+    </InternalElement>
+    <InternalElement Name="[V20] Exploit USB Drive for Malware Introduction" ID="[V20] Exploit USB Drive for Malware Introduction" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:P/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.85</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>USB Malware Injection</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V20" ID="Interface_V20" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V20" RefPartnerSideB="Interface_G08" Name="V20_G08"/>
+    </InternalElement>
+    <InternalElement Name="[A21] Field Device (Level 0, Physical Access)" ID="[A21] Field Device (Level 0, Physical Access)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Yokogawa</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>EJA110A</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.75</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2015-03-18</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A21" ID="Interface_A21" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A21" RefPartnerSideB="Interface_V21" Name="A21_V21"/>
+    </InternalElement>
+    <InternalElement Name="[V21] Tamper with Field Device via Direct Physical Access" ID="[V21] Tamper with Field Device via Direct Physical Access" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.5</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Physical Tampering</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V21" ID="Interface_V21" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V21" RefPartnerSideB="Interface_G08" Name="V21_G08"/>
+    </InternalElement>
+    <InternalElement Name="[A22] Vendor Software Update (Supply Chain)" ID="[A22] Vendor Software Update (Supply Chain)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>DCS Patch</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2022-07-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A22" ID="Interface_A22" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A22" RefPartnerSideB="Interface_V22" Name="A22_V22"/>
+    </InternalElement>
+    <InternalElement Name="[V22] Compromise Vendor-Supplied Software (e.g., DCS Patch)" ID="[V22] Compromise Vendor-Supplied Software (e.g., DCS Patch)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Supply Chain Compromise</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V22" ID="Interface_V22" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V22" RefPartnerSideB="Interface_G09" Name="V22_G09"/>
+    </InternalElement>
+    <InternalElement Name="[G09] Exploit Supply Chain for Persistent Compromise" ID="[G09] Exploit Supply Chain for Persistent Compromise" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.98</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G09" ID="Interface_G09" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G09" RefPartnerSideB="Interface_G01" Name="G09_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A23] PLC/IED Hardware (Supply Chain)" ID="[A23] PLC/IED Hardware (Supply Chain)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Schneider Electric</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Modicon M580</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-02-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A23" ID="Interface_A23" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A23" RefPartnerSideB="Interface_V23" Name="A23_V23"/>
+    </InternalElement>
+    <InternalElement Name="[V23] Introduce Hardware Trojan in PLC/IED" ID="[V23] Introduce Hardware Trojan in PLC/IED" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:P/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.5</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Hardware Trojan</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V23" ID="Interface_V23" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V23" RefPartnerSideB="Interface_G09" Name="V23_G09"/>
+    </InternalElement>
+    <InternalElement Name="[A24] Third-Party Maintenance Credentials (Supply Chain)" ID="[A24] Third-Party Maintenance Credentials (Supply Chain)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Generic</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Maintenance Credentials</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2021-10-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A24" ID="Interface_A24" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A24" RefPartnerSideB="Interface_V24" Name="A24_V24"/>
+    </InternalElement>
+    <InternalElement Name="[V24] Compromise Third-Party Maintenance Credentials" ID="[V24] Compromise Third-Party Maintenance Credentials" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.9</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Credential Theft</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V24" ID="Interface_V24" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V24" RefPartnerSideB="Interface_G09" Name="V24_G09"/>
+    </InternalElement>
+    <InternalElement Name="[A25] Operator HMI Console (Level 3)" ID="[A25] Operator HMI Console (Level 3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>ABB</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>System 800xA 6.1</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-11-15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A25" ID="Interface_A25" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A25" RefPartnerSideB="Interface_V25" Name="A25_V25"/>
+    </InternalElement>
+    <InternalElement Name="[V25] Social Engineer Operator to Execute Malicious Actions" ID="[V25] Social Engineer Operator to Execute Malicious Actions" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.85</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Social Engineering</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V25" ID="Interface_V25" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V25" RefPartnerSideB="Interface_G10" Name="V25_G10"/>
+    </InternalElement>
+    <InternalElement Name="[G10] Exploit Human Factors for Insider Threats" ID="[G10] Exploit Human Factors for Insider Threats" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G10" ID="Interface_G10" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G10" RefPartnerSideB="Interface_G01" Name="G10_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A26] Privileged Engineer Access (Level 2/3)" ID="[A26] Privileged Engineer Access (Level 2/3)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Generic</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Admin Rights</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-06-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A26" ID="Interface_A26" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A26" RefPartnerSideB="Interface_V26" Name="A26_V26"/>
+    </InternalElement>
+    <InternalElement Name="[V26] Misuse Privileged Access (e.g., Engineer with Admin Rights)" ID="[V26] Misuse Privileged Access (e.g., Engineer with Admin Rights)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Privilege Abuse</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V26" ID="Interface_V26" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V26" RefPartnerSideB="Interface_G10" Name="V26_G10"/>
+    </InternalElement>
+    <InternalElement Name="[A27] Safety Procedure Bypass (Human Factor)" ID="[A27] Safety Procedure Bypass (Human Factor)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Generic</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Safety Procedures</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2018-09-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A27" ID="Interface_A27" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A27" RefPartnerSideB="Interface_V27" Name="A27_V27"/>
+    </InternalElement>
+    <InternalElement Name="[V27] Bypass Safety Procedures via Human Error" ID="[V27] Bypass Safety Procedures via Human Error" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.6</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Procedure Bypass</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V27" ID="Interface_V27" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V27" RefPartnerSideB="Interface_G10" Name="V27_G10"/>
+    </InternalElement>
+    <InternalElement Name="[A28] Industrial Network Switch (Level 1-3)" ID="[A28] Industrial Network Switch (Level 1-3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Cisco</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>IE-4000</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2017-05-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A28" ID="Interface_A28" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A28" RefPartnerSideB="Interface_V28" Name="A28_V28"/>
+    </InternalElement>
+    <InternalElement Name="[V28] DoS Attack on Industrial Switch (e.g., Cisco CVE-2019-18218)" ID="[V28] DoS Attack on Industrial Switch (e.g., Cisco CVE-2019-18218)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>CVE-2019-18218</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.95</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Network DoS</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V28" ID="Interface_V28" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V28" RefPartnerSideB="Interface_G11" Name="V28_G11"/>
+    </InternalElement>
+    <InternalElement Name="[G11] Disrupt Network Infrastructure for Communication Failure" ID="[G11] Disrupt Network Infrastructure for Communication Failure" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G11" ID="Interface_G11" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G11" RefPartnerSideB="Interface_G01" Name="G11_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A29] Industrial Router (Level 2/3)" ID="[A29] Industrial Router (Level 2/3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Moxa</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>EDR-810</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00008</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2016-10-12</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A29" ID="Interface_A29" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A29" RefPartnerSideB="Interface_V29" Name="A29_V29"/>
+    </InternalElement>
+    <InternalElement Name="[V29] Exploit Router Vulnerability for Traffic Redirection" ID="[V29] Exploit Router Vulnerability for Traffic Redirection" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Traffic Redirection</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V29" ID="Interface_V29" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V29" RefPartnerSideB="Interface_G11" Name="V29_G11"/>
+    </InternalElement>
+    <InternalElement Name="[A30] Wireless Communication Link (Level 0 ↔ Level 1)" ID="[A30] Wireless Communication Link (Level 0 ↔ Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Honeywell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>WirelessHART</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00003</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2018-04-25</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A30" ID="Interface_A30" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A30" RefPartnerSideB="Interface_V30" Name="A30_V30"/>
+    </InternalElement>
+    <InternalElement Name="[V30] Jam Wireless Communication (e.g., WirelessHART)" ID="[V30] Jam Wireless Communication (e.g., WirelessHART)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Wireless Jamming</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V30" ID="Interface_V30" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V30" RefPartnerSideB="Interface_G11" Name="V30_G11"/>
+    </InternalElement>
+    <InternalElement Name="[A31] Emergency Shutdown System (SIS, Level 1)" ID="[A31] Emergency Shutdown System (SIS, Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Honeywell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Safety Manager</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0000001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2014-07-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A31" ID="Interface_A31" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A31" RefPartnerSideB="Interface_V31" Name="A31_V31"/>
+    </InternalElement>
+    <InternalElement Name="[V31] Disable Emergency Shutdown Mechanisms (e.g., Reactor Trip System)" ID="[V31] Disable Emergency Shutdown Mechanisms (e.g., Reactor Trip System)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.4</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>SIS Disablement</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V31" ID="Interface_V31" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V31" RefPartnerSideB="Interface_G12" Name="V31_G12"/>
+    </InternalElement>
+    <InternalElement Name="[G12] Manipulate Safety Systems for Catastrophic Failure" ID="[G12] Manipulate Safety Systems for Catastrophic Failure" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G12" ID="Interface_G12" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G12" RefPartnerSideB="Interface_G01" Name="G12_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A32] Radiation Monitoring System (Level 0/1)" ID="[A32] Radiation Monitoring System (Level 0/1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Mirion Technologies</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>RDS-31</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2013-11-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A32" ID="Interface_A32" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A32" RefPartnerSideB="Interface_V32" Name="A32_V32"/>
+    </InternalElement>
+    <InternalElement Name="[V32] Tamper with Radiation Monitors to Mask Leaks" ID="[V32] Tamper with Radiation Monitors to Mask Leaks" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.3</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Radiation Data Tampering</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V32" ID="Interface_V32" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V32" RefPartnerSideB="Interface_G12" Name="V32_G12"/>
+    </InternalElement>
+    <InternalElement Name="[A33] Emergency Diesel Generator Controller (Level 1)" ID="[A33] Emergency Diesel Generator Controller (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Caterpillar</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>EMCP 4.4</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2015-05-15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A33" ID="Interface_A33" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A33" RefPartnerSideB="Interface_V33" Name="A33_V33"/>
+    </InternalElement>
+    <InternalElement Name="[V33] Compromise Emergency Diesel Generators (EDG)" ID="[V33] Compromise Emergency Diesel Generators (EDG)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.4</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>EDG Compromise</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V33" ID="Interface_V33" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V33" RefPartnerSideB="Interface_G12" Name="V33_G12"/>
+    </InternalElement>
+    <InternalElement Name="[A34] Modbus Communication Link (Level 1 ↔ Level 2)" ID="[A34] Modbus Communication Link (Level 1 ↔ Level 2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Schneider Electric</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Modbus/TCP</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2017-08-30</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A34" ID="Interface_A34" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A34" RefPartnerSideB="Interface_V34" Name="A34_V34"/>
+    </InternalElement>
+    <InternalElement Name="[V34] Exploit Modbus Unauthenticated Write (FC5/6)" ID="[V34] Exploit Modbus Unauthenticated Write (FC5/6)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.8</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Modbus Write Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.2</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V34" ID="Interface_V34" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V34" RefPartnerSideB="Interface_G13" Name="V34_G13"/>
+    </InternalElement>
+    <InternalElement Name="[G13] Exploit Industrial Protocol Weaknesses" ID="[G13] Exploit Industrial Protocol Weaknesses" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G13" ID="Interface_G13" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G13" RefPartnerSideB="Interface_G01" Name="G13_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A35] DNP3 Communication Link (Level 1 ↔ Level 2)" ID="[A35] DNP3 Communication Link (Level 1 ↔ Level 2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>GE</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>DNP3 Protocol</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2016-12-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A35" ID="Interface_A35" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A35" RefPartnerSideB="Interface_V35" Name="A35_V35"/>
+    </InternalElement>
+    <InternalElement Name="[V35] DNP3 Replay Attack for Command Spoofing" ID="[V35] DNP3 Replay Attack for Command Spoofing" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.7</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>DNP3 Replay Attack</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V35" ID="Interface_V35" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V35" RefPartnerSideB="Interface_G13" Name="V35_G13"/>
+    </InternalElement>
+    <InternalElement Name="[A36] OPC UA Communication Link (DMZ ↔ Level 3)" ID="[A36] OPC UA Communication Link (DMZ ↔ Level 3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>OPC UA</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00003</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-06-18</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A36" ID="Interface_A36" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A36" RefPartnerSideB="Interface_V36" Name="A36_V36"/>
+    </InternalElement>
+    <InternalElement Name="[V36] Exploit OPC UA Weak Encryption/Certificate Validation" ID="[V36] Exploit OPC UA Weak Encryption/Certificate Validation" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.65</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>OPC UA Exploitation</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.35</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V36" ID="Interface_V36" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V36" RefPartnerSideB="Interface_G13" Name="V36_G13"/>
+    </InternalElement>
+    <InternalElement Name="[A37] PLC with Malware (Level 1)" ID="[A37] PLC with Malware (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>S7-1500</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2018-03-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A37" ID="Interface_A37" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A37" RefPartnerSideB="Interface_V37" Name="A37_V37"/>
+    </InternalElement>
+    <InternalElement Name="[V37] Install Malware on PLC (e.g., Stuxnet-like Rootkit)" ID="[V37] Install Malware on PLC (e.g., Stuxnet-like Rootkit)" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.5</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>PLC Malware Injection</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.4</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V37" ID="Interface_V37" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V37" RefPartnerSideB="Interface_G14" Name="V37_G14"/>
+    </InternalElement>
+    <InternalElement Name="[G14] Achieve Persistent Compromise in OT Environment" ID="[G14] Achieve Persistent Compromise in OT Environment" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G14" ID="Interface_G14" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G14" RefPartnerSideB="Interface_G01" Name="G14_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A38] Backdoored Engineering Workstation (Level 2/3)" ID="[A38] Backdoored Engineering Workstation (Level 2/3)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Dell</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Precision 7530</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0003</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.98</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-11-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A38" ID="Interface_A38" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A38" RefPartnerSideB="Interface_V38" Name="A38_V38"/>
+    </InternalElement>
+    <InternalElement Name="[V38] Backdoor Engineering Workstation for Future Access" ID="[V38] Backdoor Engineering Workstation for Future Access" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.6</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Workstation Backdoor</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.5</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V38" ID="Interface_V38" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V38" RefPartnerSideB="Interface_G14" Name="V38_G14"/>
+    </InternalElement>
+    <InternalElement Name="[A39] Firmware Update Server (Level 3)" ID="[A39] Firmware Update Server (Level 3)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Firmware Update Server</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.99</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-09-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A39" ID="Interface_A39" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A39" RefPartnerSideB="Interface_V39" Name="A39_V39"/>
+    </InternalElement>
+    <InternalElement Name="[V39] Compromise Firmware Update Mechanism" ID="[V39] Compromise Firmware Update Mechanism" RefBaseSystemUnitPath="VulnerabilityforSystem/Vulnerability">
+      <Attribute Name="Vulnerability" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Vulnerability">
+        <Attribute Name="CVE" AttributeDataType="xs:string"><Value>N/A</Value></Attribute>
+        <Attribute Name="CVSS" AttributeDataType="xs:string"><Value>CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H</Value></Attribute>
+        <Attribute Name="EPSS" AttributeDataType="xs:string"><Value>0.75</Value></Attribute>
+        <Attribute Name="Attack Name" AttributeDataType="xs:string"><Value>Firmware Update Compromise</Value></Attribute>
+        <Attribute Name="Probability of Impact" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Probability of Exposure" AttributeDataType="xs:float"><Value>0.6</Value></Attribute>
+        <Attribute Name="Probability of Mitigation" AttributeDataType="xs:float"><Value>0.1</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_V39" ID="Interface_V39" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_V39" RefPartnerSideB="Interface_G14" Name="V39_G14"/>
+    </InternalElement>
+    <InternalElement Name="[A40] Coolant Pump Controller (Level 1)" ID="[A40] Coolant Pump Controller (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>ABB</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>ACS880</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2017-02-18</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A40" ID="Interface_A40" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A40" RefPartnerSideB="Interface_H01" Name="A40_H01"/>
+    </InternalElement>
+    <InternalElement Name="[H01] Overheat Reactor Core via Coolant Pump Manipulation" ID="[H01] Overheat Reactor Core via Coolant Pump Manipulation" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Core Meltdown</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Coolant Pump Failure</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H01" ID="Interface_H01" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H01" RefPartnerSideB="Interface_G15" Name="H01_G15"/>
+    </InternalElement>
+    <InternalElement Name="[G15] Cause Physical Damage to Critical Infrastructure" ID="[G15] Cause Physical Damage to Critical Infrastructure" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G15" ID="Interface_G15" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G15" RefPartnerSideB="Interface_G01" Name="G15_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A41] Turbine Control System (Level 1/2)" ID="[A41] Turbine Control System (Level 1/2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>GE</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Mark VIe</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2015-09-22</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A41" ID="Interface_A41" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A41" RefPartnerSideB="Interface_H02" Name="A41_H02"/>
+    </InternalElement>
+    <InternalElement Name="[H02] Damage Turbine via Erratic Steam Flow Control" ID="[H02] Damage Turbine via Erratic Steam Flow Control" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Turbine Destruction</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Steam Flow Manipulation</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H02" ID="Interface_H02" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H02" RefPartnerSideB="Interface_G15" Name="H02_G15"/>
+    </InternalElement>
+    <InternalElement Name="[A42] Grid Interface IEDs (Level 0/1)" ID="[A42] Grid Interface IEDs (Level 0/1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>7SA6</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000002</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2014-06-10</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A42" ID="Interface_A42" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A42" RefPartnerSideB="Interface_H03" Name="A42_H03"/>
+    </InternalElement>
+    <InternalElement Name="[H03] Disrupt Grid Synchronization via IED Manipulation" ID="[H03] Disrupt Grid Synchronization via IED Manipulation" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Grid Instability</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>IED Command Injection</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H03" ID="Interface_H03" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H03" RefPartnerSideB="Interface_G15" Name="H03_G15"/>
+    </InternalElement>
+    <InternalElement Name="[A43] Pressure Valve Controller (Level 1)" ID="[A43] Pressure Valve Controller (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Fisher</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>DVC6200</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000008</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2016-01-15</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A43" ID="Interface_A43" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A43" RefPartnerSideB="Interface_H04" Name="A43_H04"/>
+    </InternalElement>
+    <InternalElement Name="[H04] Cause Steam Explosion via Pressure Valve Tampering" ID="[H04] Cause Steam Explosion via Pressure Valve Tampering" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Steam Explosion</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Pressure Valve Failure</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H04" ID="Interface_H04" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H04" RefPartnerSideB="Interface_G15" Name="H04_G15"/>
+    </InternalElement>
+    <InternalElement Name="[A44] Containment System Controller (Level 1, Safety Zone)" ID="[A44] Containment System Controller (Level 1, Safety Zone)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Westinghouse</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Safety Controller</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0000001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2012-11-05</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A44" ID="Interface_A44" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A44" RefPartnerSideB="Interface_H05" Name="A44_H05"/>
+    </InternalElement>
+    <InternalElement Name="[H05] Disable Containment Systems for Radiation Leak" ID="[H05] Disable Containment Systems for Radiation Leak" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>1.0</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Radiation Leak</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Containment Failure</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H05" ID="Interface_H05" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H05" RefPartnerSideB="Interface_G15" Name="H05_G15"/>
+    </InternalElement>
+    <InternalElement Name="[A45] HVAC Control System (Level 2)" ID="[A45] HVAC Control System (Level 2)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Siemens</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Desigo CC</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.0001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2019-04-12</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A45" ID="Interface_A45" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A45" RefPartnerSideB="Interface_H06" Name="A45_H06"/>
+    </InternalElement>
+    <InternalElement Name="[H06] Disable HVAC Control for Equipment Overheating" ID="[H06] Disable HVAC Control for Equipment Overheating" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.8</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Equipment Overheating</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>HVAC Failure</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H06" ID="Interface_H06" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H06" RefPartnerSideB="Interface_G16" Name="H06_G16"/>
+    </InternalElement>
+    <InternalElement Name="[G16] Cause Prolonged Operational Disruption" ID="[G16] Cause Prolonged Operational Disruption" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="Goal" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Goal">
+        <Attribute Name="Priority" AttributeDataType="xs:float"><Value>0.85</Value></Attribute>
+        <Attribute Name="Complexity" AttributeDataType="xs:float"><Value>0.3</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_G16" ID="Interface_G16" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_G16" RefPartnerSideB="Interface_G01" Name="G16_G01"/>
+    </InternalElement>
+    <InternalElement Name="[A46] Data Historian (Level 3/4)" ID="[A46] Data Historian (Level 3/4)" RefBaseSystemUnitPath="AssetOfICS/Software/Application">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>OSIsoft</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>PI System 2020</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.00005</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.75</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2020-02-28</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A46" ID="Interface_A46" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A46" RefPartnerSideB="Interface_H07" Name="A46_H07"/>
+    </InternalElement>
+    <InternalElement Name="[H07] Corrupt Data Historian for False Process Trends" ID="[H07] Corrupt Data Historian for False Process Trends" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.7</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>False Process Trends</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Data Historian Corruption</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H07" ID="Interface_H07" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H07" RefPartnerSideB="Interface_G16" Name="H07_G16"/>
+    </InternalElement>
+    <InternalElement Name="[A47] Fuel Handling System Controller (Level 1)" ID="[A47] Fuel Handling System Controller (Level 1)" RefBaseSystemUnitPath="AssetOfICS/Hardware/Machine">
+      <Attribute Name="AutomationEquipments" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/AutomationEquipments">
+        <Attribute Name="Vendor" AttributeDataType="xs:string"><Value>Westinghouse</Value></Attribute>
+        <Attribute Name="Version" AttributeDataType="xs:string"><Value>Fuel Handling Controller</Value></Attribute>
+        <Attribute Name="FailureRatePerHour" AttributeDataType="xs:float"><Value>0.000001</Value></Attribute>
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.95</Value></Attribute>
+        <Attribute Name="Date of first use" AttributeDataType="xs:string"><Value>2013-08-20</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_A47" ID="Interface_A47" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_A47" RefPartnerSideB="Interface_H08" Name="A47_H08"/>
+    </InternalElement>
+    <InternalElement Name="[H08] Disrupt Fuel Handling Systems for Outage Extension" ID="[H08] Disrupt Fuel Handling Systems for Outage Extension" RefBaseSystemUnitPath="HazardforSystem/Hazard">
+      <Attribute Name="Hazard" AttributeDataType="xs:string" RefAttributeType="AttributeTypeLib/Hazard">
+        <Attribute Name="Impact Rating" AttributeDataType="xs:float"><Value>0.9</Value></Attribute>
+        <Attribute Name="Consequence" AttributeDataType="xs:string"><Value>Outage Extension</Value></Attribute>
+        <Attribute Name="Causes" AttributeDataType="xs:string"><Value>Fuel Handling Disruption</Value></Attribute>
+      </Attribute>
+      <ExternalInterface Name="Interface_H08" ID="Interface_H08" RefBaseClassPath="ConnectionBetnAssets/Network"/>
+      <InternalLink RefPartnerSideA="Interface_H08" RefPartnerSideB="Interface_G16" Name="H08_G16"/>
+    </InternalElement>
+  </InstanceHierarchy>
 </CAEXFile>
-```
