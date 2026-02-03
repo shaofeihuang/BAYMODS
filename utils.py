@@ -650,11 +650,11 @@ def bbn_inference(source_node):
         cpd_values = None
 
         if node_context.matching_hazard_nodes:
-            cpd_values = generate_cpd_values_impact(node, node_context, "Hazard")
+            cpd_values = generate_cpd_values_exposure(node_context, "Hazard")
         elif node_context.matching_vulnerability_nodes:
-            cpd_values = generate_cpd_values_impact(node, node_context, "Vulnerability")
+            cpd_values = generate_cpd_values_exposure(node_context, "Vulnerability")
         elif node_context.matching_asset_nodes:
-            cpd_values = generate_cpd_values_impact(node, node_context, "Asset")
+            cpd_values = generate_cpd_values_exposure(node_context, "Asset")
 
         if cpd_values is None or np.any(np.isnan(cpd_values)):
             raise ValueError(f"Missing or invalid CPD values for node {node}")
@@ -704,13 +704,16 @@ def bbn_inference(source_node):
 
     for nodes in aml_data.total_elements:
         if nodes == last_node:
-            values = [f"{element['ID']}: {element['Probability of Mitigation']}" for element in aml_data.AssetinSystem if element['ID'] in [f"V{j}" for j in range(1,12)]]
             prob_exposure = inference_exposure.query(variables=[nodes], evidence={source_node:1})
             prob_failure = inference_impact.query(variables=[nodes], evidence={source_node:1})
             cpd_prob = prob_exposure.values
             cpd_impact = prob_failure.values
-            st.write(", ".join(values), ",", cpd_prob[0], ",", cpd_impact[0], ", {:.2f}%".format(cpd_prob[0] * cpd_impact[0] * 100))
-            return cpd_prob[0], 1 - cpd_impact[0], cpd_prob[0] * cpd_impact[0] * 100
+            availability = (1 - cpd_prob[0]) * (1 - cpd_impact[0]) * 100
+            st.session_state['cpd_prob'] = cpd_prob[0]
+            st.session_state['cpd_impact'] = cpd_impact[0]
+            st.session_state['risk_score'] = cpd_prob[0] * cpd_impact[0] * 100
+            st.session_state['availability'] = availability
+            return cpd_prob[0], cpd_impact[0], availability
         else:
             pass
 

@@ -76,7 +76,7 @@ if __name__ == "__main__":
         if 'aml_data' in st.session_state:
             st.info("Number of vulnerabilitiies detected in model: {}".format(len(st.session_state['aml_data'].VulnerabilityinSystem)) )
             verbose = st.checkbox("Verbose Console Output", value=True)
-            graph = st.checkbox("Show Optimisation Graph", value=False)
+            graph = st.checkbox("Show Optimisation Graph", value=True)
 
         if st.button("Start Optimisation"):
             files_to_remove = glob.glob("results-*.csv")
